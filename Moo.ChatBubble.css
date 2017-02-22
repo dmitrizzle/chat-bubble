@@ -138,9 +138,9 @@ color: #029235;
 
 /* animated typing dogs */
 .bubbleTyping {
-	width: 68px;
+	width: 40px;
 	padding: 14px 16px;
-	height: 35px;
+	height: 8px;
 }
 .bubbleTyping.preBubble,
 .chatBubble.preBubble {

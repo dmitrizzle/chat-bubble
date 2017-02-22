@@ -6,7 +6,7 @@ var chatBubble = new Class({
 		scrollSensitivity: 1000,
 		mediumBubble: {
 			charLength: [80, 120],
-			width: 450
+			width: 350
 		},
 		contentWidthShim: 50
 	},

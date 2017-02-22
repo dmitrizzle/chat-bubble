@@ -1,0 +1,46 @@
+<style>
+#foo {
+	width: 150px;
+	height: 150px;
+	border: 5px solid black;
+	background: #fedcba;
+	padding: 20px;
+	position: absolute;
+	top: 150px;
+	left: 250px;
+}
+</style>
+
+<p>
+	When pinned, the element should remain stationary when you scroll. Unpinning should fix the element in place.
+</p>
+
+<p>
+	<a id="pin">pin</a> |
+	<a id="pin_force">pin (force window scroll event)</a> |
+	<a id="unpin">unpin</a>
+</p>
+
+<div id="foo">
+	This is a bunch of text. This is a bunch of text. This is a bunch of text. This is a bunch of text.
+	This is a bunch of text. This is a bunch of text. This is a bunch of text. This is a bunch of text.
+</div>
+
+<div style="height: 2000px"></div>
+
+
+<script src="/depender/build?require=More/Element.Pin"></script>
+<script>
+
+
+$('pin').addEvent('click', function(){
+	$('foo').pin();
+});
+$('pin_force').addEvent('click', function(){
+	$('foo').pin(null, true);
+});
+$('unpin').addEvent('click', function(){
+	$('foo').unpin();
+});
+
+</script>

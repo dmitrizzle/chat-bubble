@@ -1,0 +1,45 @@
+{
+  "name": "mootools",
+  "homepage": "https://github.com/mootools/mootools-core",
+  "authors": [
+    "Valerio Proietti"
+  ],
+  "main": [
+    "dist/mootools-core.js",
+    "dist/mootools-core-compat.js",
+    "dist/mootools-core-min.js",
+    "dist/mootools-core-compat-min.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Specs",
+    "Tests",
+    "Docs"
+  ],
+  "description": "MooTools is a compact, modular, Object-Oriented JavaScript framework designed for the intermediate to advanced JavaScript developer.",
+  "keywords": [
+    "mootools",
+    "browser",
+    "class",
+    "utilities",
+    "types",
+    "framework",
+    "DOM",
+    "Fx",
+    "Request"
+  ],
+  "version": "1.6.0",
+  "_release": "1.6.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.6.0",
+    "commit": "0b1d4364fd7ee7fe67aaf29d1fa59e7e4c8d0564"
+  },
+  "_source": "https://github.com/mootools/mootools-core.git",
+  "_target": "^1.6.0",
+  "_originalSource": "mootools",
+  "_direct": true
+}

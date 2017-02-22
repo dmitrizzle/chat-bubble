@@ -1,0 +1,40 @@
+<p>
+	Move your mouse to the edge of the element. Scroller shouldn't hiccup on entering/exiting DOM elements inside of scroller element.
+</p>
+
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+
+<div id="scrollExample" style="height: 300px; overflow: auto; width: 300px;">
+
+	<ul style="width: 500px;">
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget sem eget enim rhoncus pharetra. Cras est eros, suscipit eget, molestie nec, commodo quis, justo. Mauris at tellus luctus mauris.</li>
+	</ul>
+
+</div>
+
+<script src="/depender/build?require=More/Drag.Move,More/Scroller"></script>
+<script>
+
+var scr = new Scroller('scrollExample', {
+	area: 50
+});
+$('start').addEvent('click', scr.start.bind(scr));
+$('stop').addEvent('click', scr.stop.bind(scr));
+
+</script>

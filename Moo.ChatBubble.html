@@ -3,6 +3,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" media="all" href="Moo.ChatBubble.css">
+		<script src="vendor/mootools/dist/mootools-core.js"></script>
+		<script src="vendor/mootools-more/Source/Types/String.Extras.js"></script>
+		<script src="vendor/mootools-more/Source/Types/Object.Extras.js"></script>
+		<script src="vendor/mootools-more/Source/Locale/Locale.js"></script>
+		<script src="vendor/mootools-more/Source/Locale/Locale.en-US.Date.js"></script>
+		<script src="vendor/mootools-more/Source/Types/Date.js"></script>
+		<script src="vendor/mootools-more/Source/Element/Element.Shortcuts.js"></script>
 		<script src="Moo.ChatBubble.js"></script>
 		<title>Moo.ChatBubble DEMO</title>
 	</head>
@@ -14,7 +21,8 @@
 			</seciton>
 		</section>
 		<script>
-			new chatBubble({ chatWindow: $('chatBubble') });
+			var myChat = new chatBubble({ chatWindow: $('chatBubble') });
+			myChat.add('OK so in the <strong>past 7 days</strong>:');
 		</script>
 	</body>
 </html>

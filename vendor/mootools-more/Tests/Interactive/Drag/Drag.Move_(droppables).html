@@ -1,0 +1,88 @@
+<style>
+	#test {
+		position: relative;
+	}
+	.box {
+		width: 50px;
+		height: 50px;
+		background-color: #900;
+		border: 2px solid #fff;
+		padding: 5px;
+		margin: 7px;
+		color:#fff;
+	}
+	.fixed{
+		border: 1px solid red;
+		height: 220px;
+		position: fixed;
+		left: 500px;
+		width: 260px;
+	}
+	.container {
+		width: 150px;
+		height: 150px;
+		border: 4px solid black;
+		background: #ccc;
+		padding: 6px;
+		margin: 9px;
+	}
+	.container.fixed{
+		left: 800px;
+	}
+</style>
+
+<div id="togglers"><a id="enable">enable drag</a> | <a id="disable">disable drag</a></div>
+<h3 class="h3_test">Drag and Drop to a container</h3>
+<p>You should be able to drag red the box around and drop it into one of the containers. The fixed containers should still accept drops when page is scrolled down.</p>
+<div id="test">
+
+	<div id="a" class="container">
+		<p></p>
+	</div>
+
+	<div id="b" class="container fixed">
+		<p></p>
+	</div>
+
+	<div class="fixed">
+		<div id="c" class="container">
+			<p></p>
+		</div>
+	</div>
+
+	<div id="box" class="box">
+		<p></p>
+	</div>
+</div>
+
+
+<script src="/depender/build?require=More/Drag.Move"></script>
+<script>
+
+var dragger = $('box').makeDraggable({
+	droppables: '.container',
+	onDrop: function(element, droppable){
+		if (droppable) droppable.getElement('p').set('text','onDrop');
+		element.getElement('p').set('text', 'onDrop');
+	},
+	onEnter: function(element, droppable){
+		droppable.getElement('p').set('text','onEnter');
+	},
+	onLeave: function(element, droppable){
+		droppable.getElement('p').set('text','onLeave');
+	},
+	onStart: function(element){
+		$('test').getElements('p').set('text','');
+	}
+});
+
+$('enable').addEvent('click', function(){
+	dragger.attach();
+});
+$('disable').addEvent('click', function(){
+	dragger.detach();
+});
+
+</script>
+
+

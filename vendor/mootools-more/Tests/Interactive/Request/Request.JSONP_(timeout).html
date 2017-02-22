@@ -1,0 +1,46 @@
+<style>
+#imgs img {
+	display: inline;
+	margin: 10px;
+}
+</style>
+
+<p>
+	When fetching, the failure alert should only fire on script timeout. Also, onSuccess should not fire on timeout.
+</p>
+
+<button id="a">1000 ms timeout</button>
+<button id="b">5000 ms timeout</button>
+
+<hr/>
+
+<div id="imgs"></div>
+
+
+<script src="/depender/build?require=More/Request.JSONP,Core/Element.Event"></script>
+<script>
+
+$('a').addEvent('click', request.bind(this,1000));
+$('b').addEvent('click', request.bind(this,5000));
+
+function request(timeout){
+	new Request.JSONP({
+		log: true,
+		data: {
+			delay: 1
+		},
+		timeout: timeout,
+		url: '/echo/jsonp',
+		onFailure: function(){
+			alert("this request failed");
+		},
+		onTimeout: function(){
+			alert("this request timedout");
+		},
+		onSuccess: function(data){
+			alert('this request completed successfully');
+		}
+	}).send();
+}
+
+</script>

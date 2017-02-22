@@ -1,28 +1,45 @@
 <html>
 	<head>
+		<title>Moo.ChatBubble DEMO</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" media="all" href="Moo.ChatBubble.css">
-		<script src="vendor/mootools/dist/mootools-core.js"></script>
+		
+		<script src="vendor/mootools/dist/mootools-core-compat.js"></script>
+
+		<script src="vendor/mootools-more/Source/More/More.js"></script>
 		<script src="vendor/mootools-more/Source/Types/String.Extras.js"></script>
 		<script src="vendor/mootools-more/Source/Types/Object.Extras.js"></script>
 		<script src="vendor/mootools-more/Source/Locale/Locale.js"></script>
 		<script src="vendor/mootools-more/Source/Locale/Locale.en-US.Date.js"></script>
 		<script src="vendor/mootools-more/Source/Types/Date.js"></script>
 		<script src="vendor/mootools-more/Source/Element/Element.Shortcuts.js"></script>
+				
+		<script src="MooTools-More-1.6.0.js"></script>
+		
 		<script src="Moo.ChatBubble.js"></script>
-		<title>Moo.ChatBubble DEMO</title>
 	</head>
 	<body>
 		<main>
 			<section>
 				<h1>Moo.ChatBubble DEMO</h1>
-				<div id="chatBubble"></div>
+				<div id="chatBubble" style="background:#eee;padding:1em;height:400px;overflow:scroll;">
+					<div class="bubbleTyping preBubble">
+						<div class="circleG_1 circleG"></div>
+						<div class="circleG_2 circleG"></div>
+						<div class="circleG_3 circleG"></div>
+					</div>
+				</div>
 			</seciton>
 		</section>
 		<script>
 			var myChat = new chatBubble({ chatWindow: $('chatBubble') });
-			myChat.add('OK so in the <strong>past 7 days</strong>:');
+			myChat.add('Hi!');
+			myChat.add('Bunch of "Hipster Ipsm" is coming your way &#x1F602;');
+			myChat.add('Deep v chartreuse kitsch, neutra godard listicle lyft tumeric man braid letterpress waistcoat marfa pour-over brooklyn vape.');
+			myChat.add('Blue bottle semiotics chambray helvetica chartreuse fap 3 wolf moon. Occupy meggings asymmetrical vexillologist XOXO hell of, pitchfork +1 craft beer. Subway tile retro air plant pinterest pour-over gentrify. Meh mustache humblebrag, occupy flannel chillwave everyday carry direct trade man braid. La croix humblebrag banjo fanny pack, etsy fam man bun poke cray deep v fingerstache disrupt XOXO meditation distillery. ');
+			myChat.add('Distillery try-hard thundercats hashtag vaporware.');
+			myChat.add('Microdosing everyday carry locavore fam, vape helvetica tote bag unicorn iceland whatever. Meggings squid af la croix blue bottle. Vexillologist pop-up heirloom, kogi activated charcoal pork belly tumeric hot chicken. Vice raw denim salvia four dollar toast, vegan PBR&B art party raclette bicycle rights shoreditch mlkshk skateboard.');
 		</script>
 	</body>
 </html>

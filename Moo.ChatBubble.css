@@ -1,0 +1,180 @@
+.chatBubble, .bubbleTyping {
+	color: #212121;
+	background: rgba(255, 255, 255, 0.84);
+	padding: 9px 16px;
+	border-radius: 15px;
+	font-weight: 400;
+	text-transform: none;
+	text-align: left;
+	font-size: 16px;
+	letter-spacing: .5px;
+	margin: 5px 3px 0;
+	width: 100%;
+	float: none;
+	clear: both;
+	max-width: 700px;
+	line-height: 1.5em;
+	transform-origin: left top;
+	transition: all 350ms;
+}
+.chatBubble.divider {
+	background: rgba(255, 255, 255, 0.25);
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.41);
+	color: rgba(33, 33, 33, 0.82);
+}
+
+.chatBubble .bubbleContent {
+	transition: opacity 150ms;
+}
+.chatBubble:not(.showContent) .bubbleContent {
+	opacity: 0;
+}
+.chatBubble .bubbleContent .pink {
+	color: #fff;
+	background: #ce0564;
+	border-radius: 3px;
+	padding: 1px 3px;
+	height: 1.5em;
+	display: inline-block;
+}
+.chatBubble .bubbleContent .black {
+	color: #f00;
+	border: 1px dotted;
+	border-radius: 3px;
+	padding: 0px 2px;
+	height: 1.5em;
+	display: inline-block;
+}
+.chatBubble .bubbleContent .black::before {
+	content: "\2193 ";
+}
+.chatBubble .bubbleContent .lime {
+color: #029235;
+    border: 1px dotted;
+    border-radius: 3px;
+    padding: 0px 2px;
+    height: 1.5em;
+    display: inline-block;
+}
+.chatBubble .bubbleContent .lime::before {
+	content: "\2191 ";
+}
+
+.chatBubble .bubbleContent .green {
+    color: #fff;
+    background: #1faced;
+    border-radius: 3px;
+    padding: 1px 3px;
+    height: 1.5em;
+    display: inline-block;
+}
+
+.chatBubble .bubbleContent .yellow {
+    color: #2c2c2c;
+    background: #ffcc00;
+    border-radius: 3px;
+    padding: 1px 3px;
+    height: 1.5em;
+    display: inline-block;
+    font-weight: 700
+}
+
+
+.chatBubble.splitQuestion {
+	padding: 0 0 15px 0;
+	background: transparent;
+	float: right;
+	position: relative;
+}
+.chatBubble.splitQuestion .bubbleContent {
+	transition: all 300ms;
+}
+.chatBubble.splitQuestion .bubbleContent .bubbleBtn {
+	background: rgba(44, 44, 44, 0.67);
+	color: #fff;
+	padding: 9px 16px;
+	border-radius: 15px 15px 5px 15px;
+	cursor: pointer;
+	transition: all 300ms;
+	text-decoration: none;
+}
+.chatBubble.splitQuestion .bubbleContent .bubbleBtn.right {
+	border-radius: 15px 15px 15px 5px;
+	margin-left: 2px;
+}
+.chatBubble.splitQuestion:not(.answered) .bubbleContent .bubbleBtn:hover {
+	background: rgba(44, 44, 44, 1);
+}
+.chatBubble.splitQuestion.answered .bubbleContent .bubbleBtn {
+	opacity: .5;
+	cursor: default;
+}
+.chatBubble.splitQuestion .bubbleContent .bubbleBtn.selected {
+	background: #2c2c2c;
+	background: linear-gradient(166deg, #48121d, #0d4058 100%);
+	opacity: 1;
+}
+
+.chatBubble .bubbleContent input {
+	background: linear-gradient(193deg, #1faced, #5592dc 100%) !important;
+	box-shadow: 0 0px 1px 0px #000, 0 -1px 0 0px rgba(255, 255, 255, 0.38) inset;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.35);
+	border: 0;
+	outline: 0;
+}
+.chatBubble .bubbleContent input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(255,255,255,.5);
+  text-shadow: none;
+}
+.chatBubble .bubbleContent input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255,255,255,.5);
+  text-shadow: none;
+}
+.chatBubble .bubbleContent input:read-only {
+	background: linear-gradient(166deg, #48121d, #0d4058 100%) !important;
+}
+
+
+
+/* animated typing dogs */
+.bubbleTyping {
+	width: 68px;
+	padding: 14px 16px;
+	height: 35px;
+}
+.bubbleTyping.preBubble,
+.chatBubble.preBubble {
+	visibility: hidden;
+	transform: scale(0);
+	margin: 0;
+	
+	height: 0;
+	padding: 0;
+	transition: all 350ms, height 350ms 1s, padding 350ms 1s;
+}
+.chatBubble.preBubble {
+	height: 0;
+	padding: 0;
+}
+
+
+.circleG{
+	background-color:rgb(255,255,255);
+	float:left;
+	height:7px;
+	margin-left:4px;
+	width:7px;
+	animation-name:bounce_circleG;
+	animation-duration:2.24s;
+	animation-iteration-count:infinite;
+	animation-direction:normal;
+	border-radius:5px;
+}
+.circleG_1 { animation-delay:0.45s; }
+.circleG_2{ animation-delay:1.05s; }
+.circleG_3{ animation-delay:1.35s; }
+@keyframes bounce_circleG{
+	0%{}
+	50%{ background-color:rgb(0,0,0); }
+	100%{}
+}

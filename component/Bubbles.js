@@ -21,25 +21,28 @@ function Bubbles(container, self) {
   	this.reply();
   }
   this.reply = function(turn) {
-  	turn = typeof turn !== "undefined" ? turn : this.convo.default;
+  	turn = typeof turn !== "undefined" ? turn : this.convo.ice;
   	questionsHTML = "";
-		(turn.accepts).forEach(function(el, count){
-			questionsHTML
-				+= "<span class=\"bubble-button\" style=\"animation-delay: "
-				+ ( animationTime / 2 * count ) + "ms\" onClick=\""
-				+ self + ".answer('"
-				+ el.answer + "')\">"
-				+ el.question + "</span>";
-		});
+  	if(turn.reply !== undefined){
+			(turn.reply).forEach(function(el, count){
+				questionsHTML
+					+= "<span class=\"bubble-button\" style=\"animation-delay: "
+					+ ( animationTime / 2 * count ) + "ms\" onClick=\""
+					+ self + ".answer('"
+					+ el.answer + "')\">"
+					+ el.question + "</span>";
+			});
+		}
 		orderBubbles(turn.says, function(){
 			bubbleTyping.classList.remove("imagine");
-			addBubble(questionsHTML, function(){}, "accepts-two");
+			addBubble(questionsHTML, function(){}, "reply");
 		});
   }
   
   // navigate "answers"
   this.answer = function(key){
-  	this.reply(this.convo[key]);
+  	var func = function(key){ typeof window[key] === "function" ? eval(key)() : false; }
+  	this.convo[key] !== undefined ? this.reply(this.convo[key]) : func(key);
   };
   
   // "type" each message within the group
@@ -57,19 +60,19 @@ function Bubbles(container, self) {
   }
   
   // create a bubble
-	var addBubble = function(say, posted, accepts){
-		accepts = typeof accepts !== "undefined" ? accepts : "";
+	var addBubble = function(say, posted, reply){
+		reply = typeof reply !== "undefined" ? reply : "";
 		// create bubble element
 		var bubble = document.createElement("div");
 		var bubbleContent = document.createElement("span");
-		bubble.className = "bubble imagine " + accepts;
+		bubble.className = "bubble imagine " + reply;
 		bubbleContent.className = "bubble-content";
 		bubbleContent.innerHTML = say;
 		bubble.appendChild(bubbleContent);
 		container.insertBefore(bubble, bubbleTyping);
 		// time, size & animate
 		wait = animationTime * 2;
-		if(say.length * typeSpeed > animationTime && accepts == ""){
+		if(say.length * typeSpeed > animationTime && reply == ""){
 			wait += typeSpeed * say.length;
 			setTimeout(function() { bubbleTyping.classList.remove("imagine"); }, animationTime );
 		}

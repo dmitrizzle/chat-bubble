@@ -9,12 +9,12 @@
 	
 	<!-- stylesheets for bubbles -->
 	<link rel="stylesheet" media="all" href="../styles/says.css">
-	<link rel="stylesheet" media="all" href="../styles/accepts.css">
+	<link rel="stylesheet" media="all" href="../styles/reply.css">
 	<link rel="stylesheet" media="all" href="../styles/typing.css">
 	<style>
 		#chat {
 			background: #eee;
-			height: 150px;
+			height: 400px;
 			max-width: 750px;
 			width: calc(100% - 2em);
 			margin: 0 auto;
@@ -38,65 +38,103 @@
 	<!-- sample conversation structure JSON -->
 	<script>
 		var convo = {
-			"default": {
+			"ice": {
 				"says":
 				[
-					"Hi!",
-					"Bunch of \"Hipster Ipsm\" is coming your way &#x1F602;",
-					"Blue bottle semiotics chambray helvetica chartreuse fap 3 wolf moon. Occupy meggings asymmetrical vexillologist XOXO hell of, pitchfork +1 craft beer. Subway tile retro air plant pinterest pour-over gentrify. Meh mustache humblebrag, occupy flannel chillwave everyday carry direct trade man braid. La croix humblebrag banjo fanny pack, etsy fam man bun poke cray deep v fingerstache disrupt XOXO meditation distillery."
+					"YO",
+					"yoyoyoyo!",
+					"🔥😜",
+					"sup?",
+					"what ur plans for tonight?"
 				],
-				"accepts": [
+				"reply": [
 					{
-						"question": "Option 1",
-						"answer" : "yyy"
+						"question": "🍕",
+						"answer" : "party"
 					},
 					{
-						"question": "Option 2",
-						"answer" : "xxx"
+						"question": "🍺",
+						"answer" : "party"
 					},
 					{
-						"question": "Custom Function 1",
-						"answer" : "zzz"
+						"question": "🍕 + 🍺",
+						"answer" : "party"
 					},
 					{
-						"question": "Custom Function 2",
-						"answer" : "aaa"
+						"question": "dunno",
+						"answer" : "dunno"
 					}
 				]
 			},
-			"yyy": {
+			"party": {
 				"says":
 				[
-					"Option 1 (yyy), great choice!",
-					"Now you can either go for option 2 or start over:"
+					"noice",
+					"can i join?"
 				],
-				"accepts": [
+				"reply": [
 					{
-						"question": "Option 2",
-						"answer" : "xxx"
+						"question": "👍",
+						"answer" : "yes"
 					},
 					{
-						"question": "Start Over",
-						"answer" : "default"
+						"question": "👎",
+						"answer" : "no"
 					}
 				]
 			},
-			"xxx": {
+			"yes": {
 				"says":
 				[
-					"Option 2 (xxx), great choice!",
-					"Now you can either go for option 1 or start over:"
+					"W00000",
+					"😎😎😎",
+					"Sick! we's gonna do it up proper gangsta, bruh! it's gonna be of da fucken, off da fucken, fu... wat u call dat thing. i forget. anyways, it's gonna be good times, all the time. like for realz yo",
+					"oh, i remember",
+					"of da hook yaaaawww"
+				]
+			},
+			"no": {
+				"says":
+				[
+					"aight watever",
+					"🖕"
+				]
+			},			
+			"dunno": {
+				"says":
+				[
+					"ho bout somethin like um",
+					"how abooooutz"
 				],
-				"accepts": [
+				"reply": [
 					{
-						"question": "Option 1",
-						"answer" : "yyy"
+						"question": "pizza or sum shit",
+						"answer" : "yes"
 					},
 					{
-						"question": "Start Over",
-						"answer" : "default"
+						"question": "or shoot up da copz!",
+						"answer" : "copz"
 					}
 				]
+			},
+			"copz": {
+				"says":
+				[
+					"ahahahahahaha",
+					"i'm just playin wid you",
+					"you know i aint got no gun or nottin",
+					"jokes 😂😂😂🤣🤣🤣",
+					"man u silly"
+				],
+				"reply": [
+					{
+						"question": "lol nvm",
+						"answer": "nvm"
+					}
+				]
+			},
+			"nvm": {
+				"says": [ "aight, hit me up once you figure yo 💩 out" ]
 			}
 		};
 	</script>
@@ -105,6 +143,8 @@
 	<script>
 		var givemeBubbles = new Bubbles(document.getElementById('chat'), "givemeBubbles");
 		givemeBubbles.talk(convo);
+		functionOne = function(){ alert("Function One"); }
+		functionTwo = function(){ alert("Function Two"); }
 	</script>
 	
 	

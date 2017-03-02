@@ -10,7 +10,7 @@
 	text-align: left;
 	font-size: 16px;
 	letter-spacing: .5px;
-	margin: 5px 3px 0;
+	margin: 2px;
 	max-width: calc(100% - 38px);
 	float: none;
 	clear: both;
@@ -23,6 +23,15 @@
 }
 .bubble:not(.say) .bubble-content {
 	opacity: 0;
+}
+.bubble-typing.imagine,
+.bubble.imagine {
+	visibility: hidden;
+	transform: scale(0);
+	margin: 0;
+	height: 0;
+	padding: 0;
+	transition: all 350ms, height 350ms 1s, padding 350ms 1s;
 }
 
 /* removed color labels .pink, .black etc. */

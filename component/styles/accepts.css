@@ -1,34 +1,52 @@
 /* style usr response options */
 .bubble.accepts-two {
-	padding: 0 0 15px 0;
+	padding: 10px 0 15px 0;
 	background: transparent;
 	float: right;
 	position: relative;
+	transform-origin: right top;
 }
 .bubble.accepts-two .bubble-content {
 	transition: all 300ms;
 }
-.bubble.accepts-two .bubble-content .bubbleBtn {
+.bubble.accepts-two .bubble-content .bubble-button {
 	background: rgba(44, 44, 44, 0.67);
 	color: #fff;
 	padding: 9px 16px;
-	border-radius: 15px 15px 5px 15px;
+	border-radius: 15px 15px 5px 5px;
+	margin-left: 2px;
 	cursor: pointer;
 	transition: all 300ms;
 	text-decoration: none;
+	animation-duration: 1s;
+	animation-name: bubbleButton;
+	animation-play-state: paused;
+	animation-fill-mode: forwards;
+	opacity: 0;
 }
-.bubble.accepts-two .bubble-content .bubbleBtn.right {
+@keyframes bubbleButton {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+.bubble.accepts-two.say .bubble-content .bubble-button {
+	animation-play-state: running;
+}
+
+.bubble.accepts-two .bubble-content .bubble-button:first-child {
+	border-radius: 15px 15px 5px 15px;
+}
+.bubble.accepts-two .bubble-content .bubble-button:last-child {
 	border-radius: 15px 15px 15px 5px;
 	margin-left: 2px;
 }
-.bubble.accepts-two:not(.answered) .bubble-content .bubbleBtn:hover {
+.bubble.accepts-two:not(.answered) .bubble-content .bubble-button:hover {
 	background: rgba(44, 44, 44, 1);
 }
-.bubble.accepts-two.answered .bubble-content .bubbleBtn {
+.bubble.accepts-two.answered .bubble-content .bubble-button {
 	opacity: .5;
 	cursor: default;
 }
-.bubble.accepts-two .bubble-content .bubbleBtn.selected {
+.bubble.accepts-two .bubble-content .bubble-button.selected {
 	background: #2c2c2c;
 	background: linear-gradient(166deg, #48121d, #0d4058 100%);
 	opacity: 1;

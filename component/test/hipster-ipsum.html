@@ -14,7 +14,7 @@
 	<style>
 		#chat {
 			background: #eee;
-			height: 350px;
+			height: 150px;
 			max-width: 750px;
 			width: calc(100% - 2em);
 			margin: 0 auto;
@@ -45,10 +45,24 @@
 					"Bunch of \"Hipster Ipsm\" is coming your way &#x1F602;",
 					"Blue bottle semiotics chambray helvetica chartreuse fap 3 wolf moon. Occupy meggings asymmetrical vexillologist XOXO hell of, pitchfork +1 craft beer. Subway tile retro air plant pinterest pour-over gentrify. Meh mustache humblebrag, occupy flannel chillwave everyday carry direct trade man braid. La croix humblebrag banjo fanny pack, etsy fam man bun poke cray deep v fingerstache disrupt XOXO meditation distillery."
 				],
-				"accepts": {
-					"Option 1": "yyy",
-					"Option 2": "xxx"
-				}
+				"accepts": [
+					{
+						"question": "Option 1",
+						"answer" : "yyy"
+					},
+					{
+						"question": "Option 2",
+						"answer" : "xxx"
+					},
+					{
+						"question": "Custom Function 1",
+						"answer" : "zzz"
+					},
+					{
+						"question": "Custom Function 2",
+						"answer" : "aaa"
+					}
+				]
 			},
 			"yyy": {
 				"says":
@@ -56,10 +70,16 @@
 					"Option 1 (yyy), great choice!",
 					"Now you can either go for option 2 or start over:"
 				],
-				"accepts": {
-					"Option 2": "xxx",
-					"Start Over": "default"
-				}
+				"accepts": [
+					{
+						"question": "Option 2",
+						"answer" : "xxx"
+					},
+					{
+						"question": "Start Over",
+						"answer" : "default"
+					}
+				]
 			},
 			"xxx": {
 				"says":
@@ -67,17 +87,23 @@
 					"Option 2 (xxx), great choice!",
 					"Now you can either go for option 1 or start over:"
 				],
-				"accepts": {
-					"Option 1": "yyy",
-					"Start Over": "default"
-				}
+				"accepts": [
+					{
+						"question": "Option 1",
+						"answer" : "yyy"
+					},
+					{
+						"question": "Start Over",
+						"answer" : "default"
+					}
+				]
 			}
 		};
 	</script>
 	
 	<!-- initialize bubbles -->
 	<script>
-		var givemeBubbles = new Bubbles(document.getElementById('chat'));
+		var givemeBubbles = new Bubbles(document.getElementById('chat'), "givemeBubbles");
 		givemeBubbles.talk(convo);
 	</script>
 	

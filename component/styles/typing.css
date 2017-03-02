@@ -1,25 +1,10 @@
 /* style "loading" or "typing" stae */
 
 .bubble-typing {
-	width: 40px;
+	width: 38px;
 	padding: 14px 16px;
 	height: 8px;
 }
-.bubble-typing.imagine,
-.bubble.imagine {
-	visibility: hidden;
-	transform: scale(0);
-	margin: 0;
-	
-	height: 0;
-	padding: 0;
-	transition: all 350ms, height 350ms 1s, padding 350ms 1s;
-}
-.bubble.imagine {
-	height: 0;
-	padding: 0;
-}
-
 .dot {
 	background-color: rgb(255,255,255);
 	float: left;

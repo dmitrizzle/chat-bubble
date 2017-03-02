@@ -1,0 +1,28 @@
+
+/* style bubbles */
+.bubble, .bubble-typing {
+	color: #212121;
+	background: rgba(255, 255, 255, 0.84);
+	padding: 9px 16px;
+	border-radius: 15px;
+	font-weight: 400;
+	text-transform: none;
+	text-align: left;
+	font-size: 16px;
+	letter-spacing: .5px;
+	margin: 5px 3px 0;
+	max-width: calc(100% - 38px);
+	float: none;
+	clear: both;
+	line-height: 1.5em;
+	transform-origin: left top;
+	transition: all 350ms;
+}
+.bubble .bubble-content {
+	transition: opacity 150ms;
+}
+.bubble:not(.say) .bubble-content {
+	opacity: 0;
+}
+
+/* removed color labels .pink, .black etc. */

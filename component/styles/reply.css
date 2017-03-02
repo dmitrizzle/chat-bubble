@@ -6,7 +6,9 @@
 	position: relative;
 	transform-origin: right top;
 	padding: 0;
-	margin: 0;
+}
+.bubble.reply.say {
+	margin: 15px 0;
 }
 .bubble.reply .bubble-content {
 	transition: all 300ms;

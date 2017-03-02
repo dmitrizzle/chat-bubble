@@ -35,7 +35,7 @@ function Bubbles(container, self) {
 		}
 		orderBubbles(turn.says, function(){
 			bubbleTyping.classList.remove("imagine");
-			addBubble(questionsHTML, function(){}, "reply");
+			questionsHTML !== "" ? addBubble(questionsHTML, function(){}, "reply") : bubbleTyping.classList.add("imagine");
 		});
   }
   

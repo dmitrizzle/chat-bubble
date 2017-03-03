@@ -31,7 +31,7 @@ function Bubbles(container, self) {
 					+= "<span class=\"bubble-button\" style=\"animation-delay: "
 					+ ( animationTime / 2 * count ) + "ms\" onClick=\""
 					+ self + ".answer('"
-					+ el.answer + "')\">"
+					+ el.answer + "');this.classList.add('bubble-pick')\">"
 					+ el.question + "</span>";
 			});
 		}
@@ -72,6 +72,18 @@ function Bubbles(container, self) {
 		bubbleContent.innerHTML = say;
 		bubble.appendChild(bubbleContent);
 		container.insertBefore(bubble, bubbleTyping);
+		// answer picker styles
+		if(reply !== ""){
+			bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
+			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - 32; });
+			bubble.addEventListener("click", function(){
+				bubbleButtons.forEach(function(el){
+					el.style.width = 0;
+					el.classList.contains("bubble-pick") ? el.style.width = "" : false;
+				});
+				this.classList.add("bubble-picked");
+			});
+		}
 		// time, size & animate
 		wait = animationTime * 2;
 		if(say.length * typeSpeed > animationTime && reply == ""){
@@ -87,7 +99,7 @@ function Bubbles(container, self) {
 			// animate scrolling
 			scrollDifference = container.scrollHeight - container.scrollTop;
 			scrollHop = scrollDifference / 40;
-			setTimeout(function(){
+			var scrollBubbles = function(){
 				for(var i = 1; i <= scrollDifference / scrollHop; i++){
 					(function(){
 						setTimeout(function(){
@@ -95,7 +107,8 @@ function Bubbles(container, self) {
 						}, (15 * i) );
 					})();
 				}
-			}, animationTime * 2);
+			}
+			setTimeout(scrollBubbles, animationTime );
 		}, wait);
 	}
 

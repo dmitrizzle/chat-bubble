@@ -38,21 +38,27 @@
 .bubble.reply.say .bubble-content .bubble-button {
 	animation-play-state: running;
 	margin-top: 3px;
+	height: 24px;
+	overflow: hidden;
 }
 
 .bubble.reply .bubble-content .bubble-button:first-child {
 	border-radius: 15px 15px 15px 5px;
 	margin-left: 2px;
 }
-.bubble.reply .bubble-content .bubble-button:last-child {
+.bubble.reply .bubble-content .bubble-button:last-child,
+.bubble.reply .bubble-content .bubble-button.bubble-pick {
 	border-radius: 15px 15px 5px 15px;
 }
-.bubble.reply:not(.answered) .bubble-content .bubble-button:hover {
-	background: rgba(44, 44, 44, 1);
+.bubble.reply.bubble-picked .bubble-content .bubble-button {
+	transform: scale(0);
+	padding: 0;
 }
-.bubble.reply.answered .bubble-content .bubble-button {
-	opacity: .5;
-	cursor: default;
+.bubble.reply:not(.bubble-picked) .bubble-content .bubble-button:hover,
+.bubble.reply .bubble-content .bubble-button.bubble-pick {
+	background: rgba(44, 44, 44, 1);
+	transform: scale(1);
+  padding: 8px 16px;
 }
 .bubble.reply .bubble-content .bubble-button.selected {
 	background: #2c2c2c;

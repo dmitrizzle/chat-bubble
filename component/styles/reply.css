@@ -2,6 +2,7 @@
 .bubble.reply {
 	padding: 10px 0 15px 0;
 	background: transparent;
+	box-shadow: none;
 	float: right;
 	position: relative;
 	transform-origin: right top;

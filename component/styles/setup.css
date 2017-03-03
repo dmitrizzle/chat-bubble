@@ -1,7 +1,6 @@
 /* setup container styles */
-
 .bubble-container {
-	background: #eee;
+	background: linear-gradient(145deg, #ce0564, #1faced);
 	padding: 10px;
 	border-radius: 3px;
 	height: 400px;
@@ -10,4 +9,15 @@
 	margin: 0 auto;
 	overflow: scroll;
 	-webkit-overflow-scrolling: touch;
+}
+
+/* optional page styles */
+h1 {
+	text-align: center;
+	font-weight: 300;
+	font-size: 4em;
+	margin: .5em auto 0.15em;
+}
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }

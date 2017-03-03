@@ -34,4 +34,11 @@
 	transition: all 350ms, height 350ms 1s, padding 350ms 1s;
 }
 
-/* removed color labels .pink, .black etc. */
+/* style media that's inside bubbles */
+.bubble .bubble-content img {
+	width: calc(100% + 32px);
+	margin: -4px -16px;
+	overflow: hidden;
+	display: block;
+	border-radius: 5px 15px 15px 15px;
+}

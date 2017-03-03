@@ -87,8 +87,10 @@ function Bubbles(container, self) {
 		}
 		// time, size & animate
 		wait = animationTime * 2;
+		minTypingWait = animationTime * 6;
 		if(say.length * typeSpeed > animationTime && reply == ""){
 			wait += typeSpeed * say.length;
+			wait < minTypingWait ? wait = minTypingWait : false;
 			setTimeout(function() { bubbleTyping.classList.remove("imagine"); }, animationTime );
 		}
 		setTimeout(function() { bubbleTyping.classList.add("imagine"); }, wait - animationTime * 2 );

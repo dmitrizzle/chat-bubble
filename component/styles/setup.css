@@ -1,6 +1,6 @@
 /* setup container styles */
 .bubble-container {
-	background: linear-gradient(145deg, rgb(227, 232, 239), rgb(244, 248, 251));
+	background: linear-gradient(145deg, #e5e9f1, #fff);
 	padding: 10px;
 	height: 400px;
 	max-width: 750px;

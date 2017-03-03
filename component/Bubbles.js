@@ -4,6 +4,7 @@ function Bubbles(container, self) {
 	animationTime = 350;	// how long it takes to animate chat bubble, also set in CSS
 	typeSpeed = 6;				// delay per character, to simulate the machine "typing"
 	widerBy = 2;					// add a little extra width to bubbles to make sure they don't break
+	sidePadding = 16; 		// padding on both sides of chat bubbles
 	
 	// init typing bubble
 	container.classList.add("bubble-container");
@@ -75,7 +76,7 @@ function Bubbles(container, self) {
 		// answer picker styles
 		if(reply !== ""){
 			bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
-			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - 32; });
+			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - sidePadding * 2 + widerBy; });
 			bubble.addEventListener("click", function(){
 				bubbleButtons.forEach(function(el){
 					el.style.width = 0;
@@ -98,18 +99,18 @@ function Bubbles(container, self) {
 			posted();
 			// animate scrolling
 			scrollDifference = container.scrollHeight - container.scrollTop;
-			scrollHop = scrollDifference / 40;
+			scrollHop = scrollDifference / 100;
 			var scrollBubbles = function(){
 				for(var i = 1; i <= scrollDifference / scrollHop; i++){
 					(function(){
 						setTimeout(function(){
 							container.scrollTop = container.scrollTop + scrollHop;
-						}, (15 * i) );
+						}, (5 * i) );
 					})();
 				}
 			}
-			setTimeout(scrollBubbles, animationTime );
-		}, wait);
+			setTimeout(scrollBubbles, 0 );
+		}, wait + animationTime);
 	}
 
 }

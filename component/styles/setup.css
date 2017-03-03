@@ -2,9 +2,9 @@
 
 .bubble-container {
 	background: #eee;
-	padding: 5px;
+	padding: 10px;
 	border-radius: 3px;
-	height: 400px;
+	height: 200px;
 	max-width: 750px;
 	width: calc(100% - 2em);
 	margin: 0 auto;

@@ -1,0 +1,148 @@
+<html>
+<head>
+	<title>Bubbles</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	
+	<!-- stylesheets for bubbles -->
+	<link rel="stylesheet" media="all" href="../styles/setup.css">
+	<link rel="stylesheet" media="all" href="../styles/says.css">
+	<link rel="stylesheet" media="all" href="../styles/reply.css">
+	<link rel="stylesheet" media="all" href="../styles/typing.css">
+	<style>
+		h1 { text-align: center; }
+	</style>
+	
+	<!-- the script -->
+	<script src="../Bubbles.js"></script>
+	
+	
+	
+</head><body><h1>Bubbles Test</h1>
+	
+
+	
+	<!-- placeholder -->
+	<div id="chat"></div>
+			
+	<!-- sample conversation structure JSON -->
+	<script>
+		var convo = {
+			"ice": {
+				"says":
+				[
+					"YO",
+					"yoyoyoyo!",
+					"🔥😜",
+					"sup?",
+					"what ur plans for tonight?"
+				],
+				"reply": [
+					{
+						"question": "🍕",
+						"answer" : "party"
+					},
+					{
+						"question": "🍺",
+						"answer" : "party"
+					},
+					{
+						"question": "🍕 + 🍺",
+						"answer" : "party"
+					},
+					{
+						"question": "dunno",
+						"answer" : "dunno"
+					}
+				]
+			},
+			"party": {
+				"says":
+				[
+					"noice",
+					"can i join?"
+				],
+				"reply": [
+					{
+						"question": "👍",
+						"answer" : "yes"
+					},
+					{
+						"question": "👎",
+						"answer" : "no"
+					}
+				]
+			},
+			"yes": {
+				"says":
+				[
+					"W00000",
+					"😎😎😎",
+					"Sick! we's gonna do it up proper gangsta, bruh! it's gonna be of da fucken, off da fucken, fu... wat u call dat thing. i forget. anyways, it's gonna be good times, all the time. like for realz yo",
+// 					"oh, i remember",
+// 					"of da hook yaaaawww"
+				]
+			},
+			"no": {
+				"says":
+				[
+					"aight watever",
+					"🖕"
+				]
+			},			
+			"dunno": {
+				"says":
+				[
+					"ho bout somethin like um",
+					"how abooooutz"
+				],
+				"reply": [
+					{
+						"question": "pizza or sum shit",
+						"answer" : "yes"
+					},
+					{
+						"question": "or shoot up da copz!",
+						"answer" : "copz"
+					}
+				]
+			},
+			"copz": {
+				"says":
+				[
+					"ahahahahahaha",
+					"i'm just playin wid you",
+					"you know i aint got no gun or nottin",
+					"jokes 😂😂😂🤣🤣🤣",
+					"man u silly"
+				],
+				"reply": [
+					{
+						"question": "lol nvm",
+						"answer": "nvm"
+					}
+				]
+			},
+			"nvm": {
+				"says": [ "aight, hit me up once you figure yo 💩 out" ]
+			}
+		};
+	</script>
+	
+	<!-- initialize bubbles -->
+	<script>
+		var givemeBubbles = new Bubbles(document.getElementById('chat'), "givemeBubbles");
+		givemeBubbles.talk(convo);
+		functionOne = function(){ alert("Function One"); }
+		functionTwo = function(){ alert("Function Two"); }
+	</script>
+	
+	
+	
+	
+	
+</body>
+</html>

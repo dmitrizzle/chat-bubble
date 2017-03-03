@@ -94,7 +94,7 @@ function Bubbles(container, self) {
 		setTimeout(function() { bubbleTyping.classList.add("imagine"); }, wait - animationTime * 2 );
 		setTimeout(function() {
 			bubble.classList.remove("imagine");
-			bubble.style.width = bubbleContent.offsetWidth + widerBy;
+			bubble.style.width = reply == "" ? bubbleContent.offsetWidth + widerBy : "";
 			bubble.classList.add("say");
 			posted();
 			// animate scrolling

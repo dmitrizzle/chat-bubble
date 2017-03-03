@@ -6,6 +6,7 @@ function Bubbles(container, self) {
 	widerBy = 2;					// add a little extra width to bubbles to make sure they don't break
 	
 	// init typing bubble
+	container.classList.add("bubble-container");
 	var bubbleTyping = document.createElement("div");
 	bubbleTyping.className = "bubble-typing imagine";
 	for (dots = 0; dots < 3; dots++) {
@@ -24,6 +25,7 @@ function Bubbles(container, self) {
   	turn = typeof turn !== "undefined" ? turn : this.convo.ice;
   	questionsHTML = "";
   	if(turn.reply !== undefined){
+  		turn.reply.reverse();
 			(turn.reply).forEach(function(el, count){
 				questionsHTML
 					+= "<span class=\"bubble-button\" style=\"animation-delay: "
@@ -85,13 +87,15 @@ function Bubbles(container, self) {
 			// animate scrolling
 			scrollDifference = container.scrollHeight - container.scrollTop;
 			scrollHop = scrollDifference / 40;
-			for(var i = 1; i <= scrollDifference / scrollHop; i++){
-				(function(){
-					setTimeout(function(){
-						container.scrollTop = container.scrollTop + scrollHop;
-					}, (15 * i) );
-				})();
-			}
+			setTimeout(function(){
+				for(var i = 1; i <= scrollDifference / scrollHop; i++){
+					(function(){
+						setTimeout(function(){
+							container.scrollTop = container.scrollTop + scrollHop;
+						}, (15 * i) );
+					})();
+				}
+			}, animationTime * 2);
 		}, wait);
 	}
 

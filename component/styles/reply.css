@@ -8,7 +8,8 @@
 	padding: 0;
 }
 .bubble.reply.say {
-	margin: 15px 0;
+  margin: 8px 0 10px;
+  min-width: 350px;
 }
 .bubble.reply .bubble-content {
 	transition: all 300ms;
@@ -16,9 +17,11 @@
 .bubble.reply .bubble-content .bubble-button {
 	background: rgba(44, 44, 44, 0.67);
 	color: #fff;
-	padding: 9px 16px;
+	padding: 8px 16px;
 	border-radius: 15px 15px 5px 5px;
 	margin-left: 2px;
+	display: inline-block;
+  float: right;
 	cursor: pointer;
 	transition: all 300ms;
 	text-decoration: none;
@@ -34,15 +37,15 @@
 }
 .bubble.reply.say .bubble-content .bubble-button {
 	animation-play-state: running;
-	margin-top: 5px;
+	margin-top: 3px;
 }
 
 .bubble.reply .bubble-content .bubble-button:first-child {
-	border-radius: 15px 15px 5px 15px;
-}
-.bubble.reply .bubble-content .bubble-button:last-child {
 	border-radius: 15px 15px 15px 5px;
 	margin-left: 2px;
+}
+.bubble.reply .bubble-content .bubble-button:last-child {
+	border-radius: 15px 15px 5px 15px;
 }
 .bubble.reply:not(.answered) .bubble-content .bubble-button:hover {
 	background: rgba(44, 44, 44, 1);

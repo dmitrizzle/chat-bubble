@@ -1,0 +1,12 @@
+/* style "loading" or "typing" stae */
+
+.bubble-container {
+	background: #eee;
+	padding: 5px;
+	border-radius: 3px;
+	height: 400px;
+	max-width: 750px;
+	width: calc(100% - 2em);
+	margin: 0 auto;
+	overflow: scroll;
+}

@@ -1,0 +1,336 @@
+<html>
+<head>
+	<title>Bubblebot says Hello!</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	
+	
+	
+	<!-- stylesheets for bubbles -->
+	<link rel="stylesheet" media="all" href="../styles/setup.css">
+	<link rel="stylesheet" media="all" href="../styles/says.css">
+	<link rel="stylesheet" media="all" href="../styles/reply.css">
+	<link rel="stylesheet" media="all" href="../styles/typing.css">
+	<style>
+		h1 { text-align: center; }
+	</style>
+	
+	<!-- the script -->
+	<script src="../Bubbles.js"></script>
+	
+	
+	
+</head><body><h1>Hello!</h1>
+	
+
+	
+	<!-- placeholder -->
+	<div id="chat"></div>
+			
+	<!-- sample conversation structure JSON -->
+	<script>
+		var convo = {
+			"ice": {
+				"says":
+				[
+					"Hiiiiii! 😜",
+					"This is <strong>bubblebot</strong> 🤖",
+					"I'm here to help you create your own bot script, just like this one. It's really easy! 🍰"
+				],
+				"reply": [
+					{
+						"question": "👍",
+						"answer" : "start"
+					},
+					{
+						"question": "What for? 🤔",
+						"answer" : "why"
+					},
+				]
+			},
+			"why": {
+				"says":
+				[
+					"Because it's fun, of course!",
+					"...AAAAnd, unlike other tools out there, here you'll learn a little bit of code.",
+					"You'll be hacking in no-time!",
+					"<img src=images/eliot.jpg>",
+				],
+				"reply": [
+					{
+						"question": "Go on...😏",
+						"answer" : "start"
+					},
+				]
+			},
+			"start": {
+				"says":
+				[
+					"OK check this. Some of us bots are quite smart, but out of the box, when we are baby material (that's what you'll be getting). We aren't that clever. 🐥",
+					"You need to teach your bot to say just the right thing to the people who chat with it...",
+					"...Him/her... whatever. Anyways,",
+					"Basically you just write a script for the bot, and everything plays out from there. 🎭"
+				],
+				"reply": [
+					{
+						"question": "Got it, next! 👌",
+						"answer" : "chapter-one"
+					},
+					{
+						"question": "Can't you learn on your own?",
+						"answer" : "ai-style"
+					},
+				]
+			},
+			"ai-style": {
+				"says":
+				[
+					"Not really, no.",
+					"Basically I'm a very simple script written for the browser to interpret your written words as beautiful bubbles in anticipation of user input.",
+					"Even the most powerful AI machines of today still need to be taught. Maybe you should be thankful for that, human! 😈"
+				],
+				"reply": [
+					{
+						"question": "O...K... 😧",
+						"answer" : "chapter-one"
+					},
+				]
+			},
+			"chapter-one": {
+				"says":
+				[
+					"Cool,",
+					"If you are new to programming, don't worry. You won't need to actually do anything complicated. 😅",
+					"But you do need to pay attention to details. Things like quotations, commas, curly and square brackets need to be checked and double-checked.",
+					"Computers are finicky things and they like everything to be perfect."
+				],
+				"reply": [
+					{
+						"question": "Sounds hard! 😰",
+						"answer" : "chapter-one-hard"
+					},
+					{
+						"question": "Got it, next! 😁",
+						"answer" : "chapter-two"
+					},
+				]
+			},
+			"chapter-one-hard": {
+				"says":
+				[
+					"I'm sure you can do it! It really isn't that difficult. Persevere, human! 💪"
+				],
+				"reply": [
+					{
+						"question": "Alright, let's do it! 🙂",
+						"answer" : "chapter-two"
+					},
+				]
+			},
+			"chapter-two": {
+				"says":
+				[
+					"To understand what to say I read scripts written in JSON format. It looks like something like this:",
+					"<img src=images/json.jpg>",
+					"You can have a look yourself at the code if you open this file (hello.html) in a text editor. Any editor will do, but it can't be a rich-text editor like Microsoft Word. If you're on Windows, TextPad will do. On Mac, TextEdit is good (make sure rich text is disabled). 🗒"
+				],
+				"reply": [
+					{
+						"question": "Cool. So how do I write those scripts? 🤔",
+						"answer" : "chapter-three"
+					},
+				]
+			},
+			"chapter-three": {
+				"says":
+				[
+					"Easy! Just follow these simple temmplate:",
+					"&lt;div id=\"chat\"&gt;&lt;/div&gt;<br>&lt;script&gt;var convo = <strong>JSON</strong>;<br>var givemeBubbles = new Bubbles(document.getElementById(\"chat\"), \"givemeBubbles\");<br>givemeBubbles.talk(convo);&lt;/script&gt;"
+				],
+				"reply": [
+					{
+						"question": "Can you explain what those things mean? 😕",
+						"answer" : "chapter-four"
+					},
+				]
+			},
+			"chapter-four": {
+				"says":
+				[
+					"Sure. If you aren't really familiar with JavaScript, no worries. Actually, you don't need to worry about anything but the <strong>JSON</strong> part, which you'll need to replace with your script for the chatbot.",
+					"And here's what you replace it with..."
+				],
+				"reply": [
+					{
+						"question": "Tell me! 😃",
+						"answer" : "chapter-five"
+					},
+				]
+			},
+			"chapter-five": {
+				"says":
+				[
+					"OK, so what you do is replace <strong>JSON</strong> with this:",
+					"{ \"ice\": { \"says\": [ \"Hi\" ] } }",
+					"That's really all that you need to get started!",
+				],
+				"reply": [
+					{
+						"question": "Doesn't seem too hard! 🙂",
+						"answer" : "chapter-six"
+					},
+				]
+			},
+			"chapter-six": {
+				"says":
+				[
+					"Youp!",
+					"Here's how a simple example would look like:",
+					"<img src=images/example-1.jpg>",
+					"Why don't you give this a try? Create a text file and copy there everything from above and save as example.html",
+					"Then open that file with your browser"
+				],
+				"reply": [
+					{
+						"question": "I'm lazy... Can't you give me the text to copy-paste?",
+						"answer" : "example-text"
+					},
+					{
+						"question": "Done!",
+						"answer" : "chapter-seven"
+					},
+				]
+			},
+			"example-text": {
+				"says":
+				[
+					"Aw, alright",
+					"Copy and paste this into your editor and save as example.html",
+					"&lt;div id=\"chat\"&gt;&lt;/div&gt;<br>&lt;script&gt;<br>var convo = { \"ice\": { \"says\": [ \"Hi\" ] } };<br>var givemeBubbles = new Bubbles(document.getElementById(\"chat\"), \"givemeBubbles\");<br>givemeBubbles.talk(convo);<br>&lt;/script&gt;"
+				],
+				"reply": [
+					{
+						"question": "Done!",
+						"answer" : "chapter-seven"
+					},
+				]
+			},
+			"chapter-seven": {
+				"says":
+				[
+					"Now, if you open this file with your browser... it won't work. 😧",
+					"That's because you'll need to set up the actual tool to download the scripts that make the magic happen.",
+					"Here's how you do it..."
+				],
+				"reply": [
+					{
+						"question": "How?",
+						"answer" : "chapter-eight"
+					},
+				]
+			},
+			"chapter-eight": {
+				"says":
+				[
+					"<strong>1.</strong> <a href=https://github.com/dmitrizzle/chat-bubble/archive/master.zip>Download this file</a> and unzip it it.",
+					"<strong>2.</strong> Move the file you've created inside <strong>component</strong> folder.",
+					"<strong>3.</strong> Add the following lines to the top of your file:"
+				],
+				"reply": [
+					{
+						"question": "What do I add... 😒",
+						"answer" : "chapter-nine"
+					},
+				]
+			},
+			"chapter-nine": {
+				"says":
+				[
+					"This:",
+					"&lt;link rel=\"stylesheet\" href=\"styles/setup.css\"&gt;<br>&lt;link rel=\"stylesheet\" href=\"styles/says.css\"&gt;<br>&lt;link rel=\"stylesheet\" href=\"styles/reply.css\"&gt;<br>&lt;link rel=\"stylesheet\" href=\"styles/typing.css\"&gt;<br>&lt;script src=\"Bubbles.js\"&gt;&lt;/script&gt;",
+					"<strong>And</strong> Move the file you've created inside that <strong>component</strong> folder.",
+				],
+				"reply": [
+					{
+						"question": "It's working! 🙃",
+						"answer" : "chapter-ten"
+					},
+					{
+						"question": "It's NOT woriking! 😩",
+						"answer" : "chapter-nine-help"
+					},
+				]
+			},
+			"chapter-nine-help": {
+				"says":
+				[
+					"Double-check your spelling, and punctuation in the file. Make sure you <a href=https://github.com/dmitrizzle/chat-bubble/archive/master.zip>donloaded this file</a> and unzipped it. Your file needs to be INSIDE of that <strong>component</strong> folder.",
+					"If that still doesn't work, open example-help.html with your text document (inside of the <strong>component</strong> folder) and compare it to your work.",
+					"You can open <a href=../example-help.html target=blank>example-help.html</a> in your browser and see how it's supposed to work."
+				],
+				"reply": [
+					{
+						"question": "It's working! 🙃",
+						"answer" : "chapter-ten"
+					},
+					{
+						"question": "It's NOT woriking! 😩",
+						"answer" : "chapter-nine-help-2"
+					},
+				]
+			},
+			"chapter-nine-help-2": {
+				"says":
+				[
+					"Daym... Why don't give <a href=https://twitter.com/dmitrizzle>@dmitrizzle</a> a shout then? He made this whole thing after all..."
+				],
+				"reply": [
+					{
+						"question": "I fixed it! 🙃",
+						"answer" : "chapter-ten"
+					},
+				]
+			},
+			"chapter-ten": {
+				"says":
+				[
+					"Sweet! 🎉",
+					"Now all you gotta do is add more text bubbles, with commas like this:",
+					"[ \"Hi\", \"I'm the new awesome bot!\", \"Let's chat!\" ]",
+					"Do give this a try!"
+				],
+				"reply": [
+					{
+						"question": "What about adding options, like this button I'm clicking right now?",
+						"answer" : "chapter-eleven"
+					},
+				]
+			},
+			"chapter-eleven": {
+				"says":
+				[
+					"That's for later. For now, practice your bubbles 😜",
+					"Or you can view-source of this file and write something more complex, if you're into hacking, proper 😎",
+					"Bye for now! 👋"
+				]
+			}
+			
+			
+		};
+	</script>
+	
+	<!-- initialize bubbles -->
+	<script>
+		var givemeBubbles = new Bubbles(document.getElementById('chat'), "givemeBubbles");
+		givemeBubbles.talk(convo);
+		functionOne = function(){ alert("Function One"); }
+		functionTwo = function(){ alert("Function Two"); }
+	</script>
+	
+	
+	
+	
+	
+</body>
+</html>

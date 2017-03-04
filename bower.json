@@ -1,11 +1,11 @@
 {
-  "name": "Moo.ChatBubble",
-  "main": "Moo.ChatBubble.js",
-  "homepage": "https://github.com/dmitrizzle/Moo.ChatBubble",
+  "name": "chat-bubble",
+  "main": "component/Bubble.js",
+  "homepage": "https://github.com/dmitrizzle/chat-bubble",
   "authors": [
     "dmitrizzle <d@analog.cafe>"
   ],
-  "description": "Easily create chatbot interface using MooTools",
+  "description": "Simple chatbot bubble creator based on JSON",
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -15,9 +15,5 @@
     "vendor",
     "test",
     "tests"
-  ],
-  "dependencies": {
-    "mootools": "^1.6.0",
-    "mootools-more": "^1.6.0"
-  }
+  ]
 }

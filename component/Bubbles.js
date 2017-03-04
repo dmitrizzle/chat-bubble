@@ -105,6 +105,8 @@ function Bubbles(container, self) {
 			scrollDifference = container.scrollHeight - container.scrollTop;
 			scrollHop = scrollDifference / 100;
 			var scrollBubbles = function(){
+				container.style.overflow = "hidden";
+				setTimeout(function(){ container.style.overflow = ""; }, (scrollDifference / scrollHop) * 5);
 				for(var i = 1; i <= scrollDifference / scrollHop; i++){
 					(function(){
 						setTimeout(function(){

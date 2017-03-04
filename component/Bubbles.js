@@ -81,12 +81,13 @@ function Bubbles(container, self) {
 		bubbleWrap.insertBefore(bubble, bubbleTyping);
 		// answer picker styles
 		if(reply !== ""){
-			bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
+			var bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
 			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - sidePadding * 2 + widerBy; });
 			bubble.addEventListener("click", function(){
 				bubbleButtons.forEach(function(el){
 					el.style.width = 0;
 					el.classList.contains("bubble-pick") ? el.style.width = "" : false;
+					el.removeAttribute("onclick");
 				});
 				this.classList.add("bubble-picked");
 			});

@@ -1,15 +1,23 @@
 /* setup container styles */
 .bubble-container {
 	background: linear-gradient(145deg, #e5e9f1, #fff);
-	padding: 10px;
 	height: 400px;
 	max-width: 750px;
-	width: calc(100% - 2em);
+	width: 100%;
 	margin: 0 auto;
-	overflow: scroll;
+	overflow: hidden;
+	position: relative;
+}
+.bubble-wrap {
+position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: -17px;
+	padding: 10px calc(17px + 10px) 10px 10px;
+	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
-
 /* optional page styles */
 h1 {
 	text-align: center;
@@ -19,4 +27,5 @@ h1 {
 }
 body {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	margin: 0;
 }

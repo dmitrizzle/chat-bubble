@@ -6,8 +6,14 @@ function Bubbles(container, self) {
 	widerBy = 2;					// add a little extra width to bubbles to make sure they don't break
 	sidePadding = 16; 		// padding on both sides of chat bubbles
 	
-	// init typing bubble
+	// set up the stage
 	container.classList.add("bubble-container");
+	var bubbleWrap = document.createElement("div");
+	bubbleWrap.className = "bubble-wrap";
+	container.appendChild(bubbleWrap);
+	
+	
+	// init typing bubble
 	var bubbleTyping = document.createElement("div");
 	bubbleTyping.className = "bubble-typing imagine";
 	for (dots = 0; dots < 3; dots++) {
@@ -15,7 +21,7 @@ function Bubbles(container, self) {
 		dot.className = "dot_" + dots + " dot";
 		bubbleTyping.appendChild(dot);
 	}
-	container.appendChild(bubbleTyping);
+	bubbleWrap.appendChild(bubbleTyping);
   
   // accept JSON & create bubbles
   this.talk = function(convo) {
@@ -72,7 +78,7 @@ function Bubbles(container, self) {
 		bubbleContent.className = "bubble-content";
 		bubbleContent.innerHTML = say;
 		bubble.appendChild(bubbleContent);
-		container.insertBefore(bubble, bubbleTyping);
+		bubbleWrap.insertBefore(bubble, bubbleTyping);
 		// answer picker styles
 		if(reply !== ""){
 			bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
@@ -102,15 +108,13 @@ function Bubbles(container, self) {
 			bubble.classList.add("say");
 			posted();
 			// animate scrolling
-			scrollDifference = container.scrollHeight - container.scrollTop;
+			scrollDifference = bubbleWrap.scrollHeight - bubbleWrap.scrollTop;
 			scrollHop = scrollDifference / 100;
 			var scrollBubbles = function(){
-				container.style.overflow = "hidden";
-				setTimeout(function(){ container.style.overflow = ""; }, (scrollDifference / scrollHop) * 5);
 				for(var i = 1; i <= scrollDifference / scrollHop; i++){
 					(function(){
 						setTimeout(function(){
-							container.scrollTop = container.scrollTop + scrollHop;
+							bubbleWrap.scrollTop = bubbleWrap.scrollTop + scrollHop;
 						}, (5 * i) );
 					})();
 				}

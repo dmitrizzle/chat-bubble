@@ -10,7 +10,9 @@
 }
 .bubble.reply.say {
   margin: 8px 0 10px;
+/* 
   min-width: 350px;
+ */
 }
 .bubble.reply .bubble-content {
 	transition: all 300ms;

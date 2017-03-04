@@ -111,13 +111,13 @@ function Bubbles(container, self) {
 			// animate scrolling
 			containerHeight = container.offsetHeight;
 			scrollDifference = bubbleWrap.scrollHeight - bubbleWrap.scrollTop;
-			scrollHop = scrollDifference / 100;
+			scrollHop = scrollDifference / 200;
 			var scrollBubbles = function(){
 				for(var i = 1; i <= scrollDifference / scrollHop; i++){
 					(function(){
 						setTimeout(function(){
 							bubbleWrap.scrollHeight - bubbleWrap.scrollTop > containerHeight ? bubbleWrap.scrollTop = bubbleWrap.scrollTop + scrollHop : false;
-						}, (i * 10) );
+						}, (i * 5) );
 					})();
 				}
 			}

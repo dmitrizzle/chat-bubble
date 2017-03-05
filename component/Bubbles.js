@@ -5,6 +5,7 @@ function Bubbles(container, self) {
 	typeSpeed = 5;				// delay per character, to simulate the machine "typing"
 	widerBy = 2;					// add a little extra width to bubbles to make sure they don't break
 	sidePadding = 16; 		// padding on both sides of chat bubbles
+	topPadding = 8;				// padding on top and bottom of chat bubbles
 	
 	// set up the stage
 	container.classList.add("bubble-container");
@@ -85,8 +86,11 @@ function Bubbles(container, self) {
 			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - sidePadding * 2 + widerBy; });
 			bubble.addEventListener("click", function(){
 				bubbleButtons.forEach(function(el){
-					el.style.width = 0;
-					el.classList.contains("bubble-pick") ? el.style.width = "" : false;
+					el.style.height = el.offsetHeight - topPadding * 2;
+						el.classList.contains("bubble-pick") ? false : el.style.width = 0;
+					setTimeout(function(){
+						el.classList.contains("bubble-pick") ? false : el.style.height = 0;
+					}, animationTime );
 					el.removeAttribute("onclick");
 				});
 				this.classList.add("bubble-picked");
@@ -105,23 +109,25 @@ function Bubbles(container, self) {
 			bubble.classList.remove("imagine");
 			var bubbleWidthCalc = bubbleContent.offsetWidth + widerBy;
 			bubble.style.width = reply == "" ? bubbleWidthCalc : "";
-			bubble.style.width = say.includes("<img src=") ? "50%" : bubble.style.width;
+			bubble.style.width = say.includes("<img src=") ? "65%" : bubble.style.width;
 			bubble.classList.add("say");
 			posted();
 			// animate scrolling
 			containerHeight = container.offsetHeight;
 			scrollDifference = bubbleWrap.scrollHeight - bubbleWrap.scrollTop;
 			scrollHop = scrollDifference / 200;
+			var userScrolling = false;
 			var scrollBubbles = function(){
 				for(var i = 1; i <= scrollDifference / scrollHop; i++){
 					(function(){
 						setTimeout(function(){
+							console.log(bubbleWrap.scrollHeight - bubbleWrap.scrollTop  > containerHeight);
 							bubbleWrap.scrollHeight - bubbleWrap.scrollTop > containerHeight ? bubbleWrap.scrollTop = bubbleWrap.scrollTop + scrollHop : false;
 						}, (i * 5) );
 					})();
 				}
 			}
-			setTimeout(scrollBubbles, animationTime / 2);
+			bubbleWrap.scrollHeight - bubbleWrap.scrollTop > containerHeight ? setTimeout(scrollBubbles, animationTime / 2) : false;
 		}, wait + animationTime * 2);
 	}
 

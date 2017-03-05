@@ -15,6 +15,7 @@
 	float: none;
 	clear: both;
 	line-height: 1.5em;
+	word-break: break-word;
 	transform-origin: left top;
 	transition: all 200ms;
 }

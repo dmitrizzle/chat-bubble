@@ -9,7 +9,7 @@
 	position: relative;
 }
 .bubble-wrap {
-position: absolute;
+	position: absolute;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -17,6 +17,7 @@ position: absolute;
 	padding: 10px calc(17px + 10px) 30px 10px;
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
+	-webkit-transform: translate3d(0, 0, 0);
 }
 /* optional page styles */
 h1 {

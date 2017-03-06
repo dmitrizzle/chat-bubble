@@ -54,6 +54,14 @@ function Bubbles(container, self) {
   	this.convo[key] !== undefined ? this.reply(this.convo[key]) : func(key);
   };
   
+  // api for typing bubble
+  this.think = function(){
+  	bubbleTyping.classList.remove("imagine");
+  	this.stop = function(){
+  		bubbleTyping.classList.add("imagine");
+  	}
+  }
+  
   // "type" each message within the group
   var orderBubbles = function(q, callback){
   	var start = function(){ setTimeout(function() { callback() }, animationTime); };

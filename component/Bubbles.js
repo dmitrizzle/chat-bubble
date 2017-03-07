@@ -1,11 +1,11 @@
-function Bubbles(container, self) {
+function Bubbles(container, self, options) {
 
-	// constants
-	animationTime = 200;	// how long it takes to animate chat bubble, also set in CSS
-	typeSpeed = 5;				// delay per character, to simulate the machine "typing"
-	widerBy = 2;					// add a little extra width to bubbles to make sure they don't break
-	sidePadding = 16; 		// padding on both sides of chat bubbles
-	topPadding = 8;				// padding on top and bottom of chat bubbles
+	// options
+	options = typeof options !== "undefined" ? options : {};
+	animationTime = 	options.animationTime || 200;	// how long it takes to animate chat bubble, also set in CSS
+	typeSpeed = 			options.typeSpeed || 5;				// delay per character, to simulate the machine "typing"
+	widerBy = 				options.widerBy || 2;					// add a little extra width to bubbles to make sure they don't break
+	sidePadding = 		1options.sidePadding || 6; 		// padding on both sides of chat bubbles
 	
 	// set up the stage
 	container.classList.add("bubble-container");
@@ -55,6 +55,14 @@ function Bubbles(container, self) {
   	this.convo[key] !== undefined ? this.reply(this.convo[key]) : func(key);
   };
   
+  // api for typing bubble
+  this.think = function(){
+  	bubbleTyping.classList.remove("imagine");
+  	this.stop = function(){
+  		bubbleTyping.classList.add("imagine");
+  	}
+  }
+  
   // "type" each message within the group
   var orderBubbles = function(q, callback){
   	var start = function(){ setTimeout(function() { callback() }, animationTime); };
@@ -83,14 +91,11 @@ function Bubbles(container, self) {
 		// answer picker styles
 		if(reply !== ""){
 			var bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
-			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - sidePadding * 2 + widerBy; });
+			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px"; });
 			bubble.addEventListener("click", function(){
 				bubbleButtons.forEach(function(el){
-					el.style.height = el.offsetHeight - topPadding * 2;
-						el.classList.contains("bubble-pick") ? false : el.style.width = 0;
-					setTimeout(function(){
-						el.classList.contains("bubble-pick") ? false : el.style.height = 0;
-					}, animationTime );
+					el.style.width = 0 + "px";
+					el.classList.contains("bubble-pick") ? el.style.width = "" : false;
 					el.removeAttribute("onclick");
 				});
 				this.classList.add("bubble-picked");
@@ -107,27 +112,25 @@ function Bubbles(container, self) {
 		setTimeout(function() { bubbleTyping.classList.add("imagine"); }, wait - animationTime * 2 );
 		setTimeout(function() {
 			bubble.classList.remove("imagine");
-			var bubbleWidthCalc = bubbleContent.offsetWidth + widerBy;
+			var bubbleWidthCalc = bubbleContent.offsetWidth + widerBy + "px";
 			bubble.style.width = reply == "" ? bubbleWidthCalc : "";
-			bubble.style.width = say.includes("<img src=") ? "65%" : bubble.style.width;
+			bubble.style.width = say.includes("<img src=") ? "50%" : bubble.style.width;
 			bubble.classList.add("say");
 			posted();
 			// animate scrolling
 			containerHeight = container.offsetHeight;
 			scrollDifference = bubbleWrap.scrollHeight - bubbleWrap.scrollTop;
 			scrollHop = scrollDifference / 200;
-			var userScrolling = false;
 			var scrollBubbles = function(){
 				for(var i = 1; i <= scrollDifference / scrollHop; i++){
 					(function(){
 						setTimeout(function(){
-							console.log(bubbleWrap.scrollHeight - bubbleWrap.scrollTop  > containerHeight);
 							bubbleWrap.scrollHeight - bubbleWrap.scrollTop > containerHeight ? bubbleWrap.scrollTop = bubbleWrap.scrollTop + scrollHop : false;
 						}, (i * 5) );
 					})();
 				}
 			}
-			bubbleWrap.scrollHeight - bubbleWrap.scrollTop > containerHeight ? setTimeout(scrollBubbles, animationTime / 2) : false;
+			setTimeout(scrollBubbles, animationTime / 2);
 		}, wait + animationTime * 2);
 	}
 

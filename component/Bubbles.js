@@ -5,7 +5,7 @@ function Bubbles(container, self, options) {
 	animationTime = 	options.animationTime || 200;	// how long it takes to animate chat bubble, also set in CSS
 	typeSpeed = 			options.typeSpeed || 5;				// delay per character, to simulate the machine "typing"
 	widerBy = 				options.widerBy || 2;					// add a little extra width to bubbles to make sure they don't break
-	sidePadding = 		1options.sidePadding || 6; 		// padding on both sides of chat bubbles
+	sidePadding = 		options.sidePadding || 6; 		// padding on both sides of chat bubbles
 	
 	// set up the stage
 	container.classList.add("bubble-container");

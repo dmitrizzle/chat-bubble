@@ -51,7 +51,7 @@ function Bubbles(container, self, options) {
   
   // navigate "answers"
   this.answer = function(key){
-  	var func = function(key){ typeof window[key] === "function" ? eval(key)() : false; }
+  	var func = function(key){ typeof window[key] === "function" ? window[key]() : false; }
   	this.convo[key] !== undefined ? this.reply(this.convo[key]) : func(key);
   };
   

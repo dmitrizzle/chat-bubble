@@ -1,0 +1,26 @@
+/* style user input field */
+.input-wrap {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	color: #2c2c2c;
+	background: rgba(255, 255, 255, 0.95);
+}
+.input-wrap textarea {
+	width: calc(100% - 20px);
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	color: #2c2c2c;
+	background: #fafafa;
+	font-size: 1em;
+	letter-spacing: .5px;
+	font-weight: 400;
+	margin: 10px;
+	border-radius: 15px;
+	border: none;
+	padding: 10px 15px;
+	outline: none;
+	box-shadow: 0 0 0 1px #d0d0d0 inset;
+	line-height: 1.25em;
+}

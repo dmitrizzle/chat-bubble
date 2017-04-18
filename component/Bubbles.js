@@ -6,13 +6,24 @@ function Bubbles(container, self, options) {
 	typeSpeed = 			options.typeSpeed || 5;				// delay per character, to simulate the machine "typing"
 	widerBy = 				options.widerBy || 2;					// add a little extra width to bubbles to make sure they don't break
 	sidePadding = 		options.sidePadding || 6; 		// padding on both sides of chat bubbles
-	
+	showInput = 			options.input || true;				// should we display an input field?
+		
 	// set up the stage
 	container.classList.add("bubble-container");
 	var bubbleWrap = document.createElement("div");
 	bubbleWrap.className = "bubble-wrap";
 	container.appendChild(bubbleWrap);
 	
+	// install user input textfield
+	if(showInput){
+		var inputWrap = document.createElement("div");
+		inputWrap.className = "input-wrap";
+		var inputText = document.createElement("textarea");
+		inputText.setAttribute("placeholder", "Type your question...");
+		inputWrap.appendChild(inputText);
+		container.appendChild(inputWrap);
+		bubbleWrap.style.paddingBottom = "100px";
+	}
 	
 	// init typing bubble
 	var bubbleTyping = document.createElement("div");

@@ -1,7 +1,7 @@
 function Bubbles(container, self, options) {
 
 	// options
-	options = typeof options !== "undefined" ? options : {};
+	options = 				typeof options !== "undefined" ? options : {};
 	animationTime = 	options.animationTime || 200;	// how long it takes to animate chat bubble, also set in CSS
 	typeSpeed = 			options.typeSpeed || 5;				// delay per character, to simulate the machine "typing"
 	widerBy = 				options.widerBy || 2;					// add a little extra width to bubbles to make sure they don't break
@@ -21,6 +21,16 @@ function Bubbles(container, self, options) {
 		var inputText = document.createElement("textarea");
 		inputText.setAttribute("placeholder", "Type your question...");
 		inputWrap.appendChild(inputText);
+		inputText.addEventListener("keypress", function(e){ // register user input
+			if(e.keyCode == 13){
+				e.preventDefault();
+				typeof bubbleQueue !== false ? clearTimeout(bubbleQueue) : false; // allow user to interrupt the bot
+				var lastBubble = document.querySelectorAll(".bubble.say"); lastBubble = lastBubble[lastBubble.length-1];
+				lastBubble.classList.contains("reply") && !lastBubble.classList.contains("reply-freeform")  ? lastBubble.classList.add("bubble-hidden") : false;
+				addBubble("<span class=\"bubble-button bubble-pick\">" + this.value + "</span>", function(){}, "reply reply-freeform");
+				this.value = "";
+			}
+		});
 		container.appendChild(inputWrap);
 		bubbleWrap.style.paddingBottom = "100px";
 	}
@@ -89,6 +99,7 @@ function Bubbles(container, self, options) {
   }
   
   // create a bubble
+  var bubbleQueue = false;
 	var addBubble = function(say, posted, reply){
 		reply = typeof reply !== "undefined" ? reply : "";
 		// create bubble element
@@ -121,7 +132,7 @@ function Bubbles(container, self, options) {
 			setTimeout(function() { bubbleTyping.classList.remove("imagine"); }, animationTime );
 		}
 		setTimeout(function() { bubbleTyping.classList.add("imagine"); }, wait - animationTime * 2 );
-		setTimeout(function() {
+		bubbleQueue = setTimeout(function() {
 			bubble.classList.remove("imagine");
 			var bubbleWidthCalc = bubbleContent.offsetWidth + widerBy + "px";
 			bubble.style.width = reply == "" ? bubbleWidthCalc : "";

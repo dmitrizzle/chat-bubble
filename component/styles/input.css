@@ -1,5 +1,5 @@
 /* style user input field */
-.input-wrap {
+.bubble-container .input-wrap {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -8,7 +8,7 @@
 	color: #2c2c2c;
 	background: rgba(255, 255, 255, 0.95);
 }
-.input-wrap textarea {
+.bubble-container .input-wrap textarea {
 	width: calc(100% - 20px);
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	color: #2c2c2c;
@@ -23,4 +23,16 @@
 	outline: none;
 	box-shadow: 0 0 0 1px #d0d0d0 inset;
 	line-height: 1.25em;
+}
+.bubble.reply-freeform {
+	margin: 0;
+}
+.bubble.reply.reply-freeform.say .bubble-content .bubble-button {
+	margin-top: 1px;
+	text-align: left;
+}
+.bubble.reply.say.bubble-hidden {
+	margin: 0;
+	transform: scale(0);
+	height: 0;
 }

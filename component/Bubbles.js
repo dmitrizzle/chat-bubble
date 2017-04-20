@@ -6,7 +6,7 @@ function Bubbles(container, self, options) {
 	typeSpeed = 			options.typeSpeed || 5;				// delay per character, to simulate the machine "typing"
 	widerBy = 				options.widerBy || 2;					// add a little extra width to bubbles to make sure they don't break
 	sidePadding = 		options.sidePadding || 6; 		// padding on both sides of chat bubbles
-	showInput = 			options.input || true;				// should we display an input field?
+	inputCallbackFn = options.inputCallbackFn || (function(o){ console.log(o); });	// should we display an input field?
 		
 	// set up the stage
 	container.classList.add("bubble-container");
@@ -15,7 +15,7 @@ function Bubbles(container, self, options) {
 	container.appendChild(bubbleWrap);
 	
 	// install user input textfield
-	if(showInput){
+	this.typeInput = function(callbackFn){
 		var inputWrap = document.createElement("div");
 		inputWrap.className = "input-wrap";
 		var inputText = document.createElement("textarea");
@@ -28,12 +28,19 @@ function Bubbles(container, self, options) {
 				var lastBubble = document.querySelectorAll(".bubble.say"); lastBubble = lastBubble[lastBubble.length-1];
 				lastBubble.classList.contains("reply") && !lastBubble.classList.contains("reply-freeform")  ? lastBubble.classList.add("bubble-hidden") : false;
 				addBubble("<span class=\"bubble-button bubble-pick\">" + this.value + "</span>", function(){}, "reply reply-freeform");
+				// callback
+				typeof callbackFn === "function" ? callbackFn({
+					"input" : this.value,
+					"convo" : convo,
+					"standingAnswer": standingAnswer
+				}) : false;
 				this.value = "";
 			}
 		});
 		container.appendChild(inputWrap);
 		bubbleWrap.style.paddingBottom = "100px";
 	}
+	inputCallbackFn ? this.typeInput(inputCallbackFn) : false;
 	
 	// init typing bubble
 	var bubbleTyping = document.createElement("div");
@@ -46,9 +53,9 @@ function Bubbles(container, self, options) {
 	bubbleWrap.appendChild(bubbleTyping);
   
   // accept JSON & create bubbles
-  this.talk = function(convo) {
+  this.talk = function(convo, here) {
   	this.convo = convo;
-  	this.reply();
+  	this.reply(this.convo[here]);
   }
   this.reply = function(turn) {
   	turn = typeof turn !== "undefined" ? turn : this.convo.ice;
@@ -71,9 +78,10 @@ function Bubbles(container, self, options) {
   }
   
   // navigate "answers"
+  var standingAnswer = false;
   this.answer = function(key){
   	var func = function(key){ typeof window[key] === "function" ? window[key]() : false; }
-  	this.convo[key] !== undefined ? this.reply(this.convo[key]) : func(key);
+  	this.convo[key] !== undefined ? (this.reply(this.convo[key]), standingAnswer = key) : func(key);
   };
   
   // api for typing bubble

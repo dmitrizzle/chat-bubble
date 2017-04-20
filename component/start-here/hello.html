@@ -323,7 +323,29 @@
 	
 	<!-- initialize bubbles -->
 	<script>
-		var givemeBubbles = new Bubbles(document.getElementById("chat"), "givemeBubbles");
+		var givemeBubbles = new Bubbles(document.getElementById("chat"), "givemeBubbles", {
+// 			inputCallbackFn: function(o){
+// 				console.log(1);
+// 				givemeBubbles.talk({
+// 					"ice": {
+// 						"says":
+// 						[
+// 							"WTF are you talking about?",
+// 						],
+// 						// "reply": [
+// // 							{
+// // 								"question": "👍",
+// // 								"answer" : "start"
+// // 							},
+// // 						]
+// 						"reply" : {
+// 							"question": o.standingAnswer,
+// 							"answer" : "start"
+// 						}
+// 					},
+// 				})
+// 			}
+		});
 		givemeBubbles.talk(convo);
 		functionOne = function(){ alert("Function One"); }
 		functionTwo = function(){ alert("Function Two"); }

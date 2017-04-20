@@ -7,6 +7,8 @@ function Bubbles(container, self, options) {
 	widerBy = 				options.widerBy || 2;					// add a little extra width to bubbles to make sure they don't break
 	sidePadding = 		options.sidePadding || 6; 		// padding on both sides of chat bubbles
 	inputCallbackFn = options.inputCallbackFn || (function(o){ console.log(o); });	// should we display an input field?
+	
+  var standingAnswer = "ice"; // remember where to restart convo if interrupted
 		
 	// set up the stage
 	container.classList.add("bubble-container");
@@ -56,6 +58,7 @@ function Bubbles(container, self, options) {
   this.talk = function(convo, here) {
   	this.convo = convo;
   	this.reply(this.convo[here]);
+  	here ? standingAnswer = here : false;
   }
   this.reply = function(turn) {
   	turn = typeof turn !== "undefined" ? turn : this.convo.ice;
@@ -78,7 +81,6 @@ function Bubbles(container, self, options) {
   }
   
   // navigate "answers"
-  var standingAnswer = "ice";
   this.answer = function(key){
   	var func = function(key){ typeof window[key] === "function" ? window[key]() : false; }
   	this.convo[key] !== undefined ? (this.reply(this.convo[key]), standingAnswer = key) : func(key);

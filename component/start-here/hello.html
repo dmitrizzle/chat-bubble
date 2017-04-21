@@ -325,16 +325,14 @@
 	<script>
 		var givemeBubbles = new Bubbles(document.getElementById("chat"), "givemeBubbles", {
 			inputCallbackFn: function(o){
-			
-				console.log(o);
-				
+							
 				// do this if no answer matched
 				var miss = function(){
 					givemeBubbles.talk({
 						"ice": {
 							"says":
 							[
-								"WTF are you talking about?",
+								"Sorry, I don't get it 😕. Pls repeat? Or you can just click below 👇",
 							],
 							"reply" : o.convo[o.standingAnswer].reply
 						},
@@ -343,7 +341,6 @@
 				
 				// do this if answer found
 				var match = function(key){
-					console.log(key);
 					givemeBubbles.talk(convo, key); // restart current convo from point found in the answer
 				}
 				
@@ -353,10 +350,13 @@
 				}
 				
 				// search function
+				var found = false;
 				o.convo[o.standingAnswer].reply.forEach(function(e, i) {
-					(strip(e.question).includes(strip(o.input)) && o.input.length > 0) ? found = e.answer : found = false;
+					(strip(e.question).includes(strip(o.input)) && o.input.length > 0) ? found = e.answer : found ? null : found = false;
 				});
 				found ? match(found) : miss();
+				
+				
 				
 			}
 		});

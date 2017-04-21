@@ -6,9 +6,11 @@ function Bubbles(container, self, options) {
 	typeSpeed = 			options.typeSpeed || 5;				// delay per character, to simulate the machine "typing"
 	widerBy = 				options.widerBy || 2;					// add a little extra width to bubbles to make sure they don't break
 	sidePadding = 		options.sidePadding || 6; 		// padding on both sides of chat bubbles
-	inputCallbackFn = options.inputCallbackFn || (function(o){ console.log(o); });	// should we display an input field?
+	inputCallbackFn = options.inputCallbackFn || (function(o){ return false });	// should we display an input field?
 	
   var standingAnswer = "ice"; // remember where to restart convo if interrupted
+		
+		
 		
 	// set up the stage
 	container.classList.add("bubble-container");
@@ -43,6 +45,8 @@ function Bubbles(container, self, options) {
 		bubbleWrap.style.paddingBottom = "100px";
 	}
 	inputCallbackFn ? this.typeInput(inputCallbackFn) : false;
+	
+	
 	
 	// init typing bubble
 	var bubbleTyping = document.createElement("div");
@@ -108,6 +112,8 @@ function Bubbles(container, self, options) {
   	start();
   }
   
+  
+  
   // create a bubble
   var bubbleQueue = false;
 	var addBubble = function(say, posted, reply){
@@ -123,7 +129,10 @@ function Bubbles(container, self, options) {
 		// answer picker styles
 		if(reply !== ""){
 			var bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
-			bubbleButtons.forEach(function(el){ el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px"; });
+			bubbleButtons.forEach(function(el){
+				if(!el.parentNode.parentNode.classList.contains("reply-freeform"))
+				el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px";
+			});
 			bubble.addEventListener("click", function(){
 				bubbleButtons.forEach(function(el){
 					el.style.width = 0 + "px";
@@ -166,4 +175,6 @@ function Bubbles(container, self, options) {
 		}, wait + animationTime * 2);
 	}
 
-}
+
+
+}  // close function

@@ -15,6 +15,7 @@
 	<link rel="stylesheet" media="all" href="../styles/input.css">
 	<style>
 		h1 { text-align: center; }
+		#note { padding: 20px; color: #999; font-size: 14px; line-height: 18px; margin: 0 auto; max-width: 720px; }
 	</style>
 	
 	<!-- the script -->
@@ -28,6 +29,13 @@
 	
 	<!-- placeholder -->
 	<div id="chat"></div>
+	
+	<!-- notes -->
+	<section id="note">
+		<p>
+			<strong>Note:</strong> This is a simple script that isn't connected to any Natural Language Cognition networks. Whatever you type on the keyboard will be matched against the possible options given (dark grey bubbles). This script can't correct your spelling, it can't infer from synonyms or slang etc. But it is forgiving in terms of punctuation, capitalization and amount of text you type. For example, if one of the accepted answers is "Do 👉 this," you can simply type "do" and it'll work.
+		</p>
+	</section>
 			
 	<!-- sample conversation structure JSON -->
 	<script>
@@ -100,7 +108,7 @@
 				"says":
 				[
 					"Cool,",
-					"If you are new to programming, don't worry. You won't need to actually do anything complicated. 😅",
+					"If you are new to bot scripting, don't worry. You won't need to actually do anything complicated. 😅",
 				],
 				"reply": [
 					{
@@ -114,11 +122,11 @@
 				[
 					"To understand what to say I read scripts written in JSON format. It looks like something like this:",
 					"<img src=images/tutor-json.jpg>",
-					"You can have a look yourself at the code if you open this file (hello.html) in a text editor. Any editor will do, but it can't be a rich-text editor like Microsoft Word. If you're on Windows, TextPad will do. On Mac, TextEdit is good (make sure rich text is disabled). 🗒"
+					"You can have a look yourself at the code if you open this file in your text editor 🗒"
 				],
 				"reply": [
 					{
-						"question": "Cool. So how do I write those scripts? 🤔",
+						"question": "So what are the basics? 🤔",
 						"answer" : "chapter-three"
 					},
 				]
@@ -126,12 +134,12 @@
 			"chapter-three": {
 				"says":
 				[
-					"Easy! Just follow these simple temmplate:",
-					"&lt;div id=\"chat\"&gt;&lt;/div&gt;<br>&lt;script&gt;var convo = <strong>JSON</strong>;<br>var givemeBubbles = new Bubbles(document.getElementById(\"chat\"), \"givemeBubbles\");<br>givemeBubbles.talk(convo);&lt;/script&gt;"
+					"&lt;div id=\"chat\"&gt;&lt;/div&gt;",
+					"☝️ This is a placeholder in your HTML where the chat window is gonna be rendered.",
 				],
 				"reply": [
 					{
-						"question": "Can you explain what those things mean? 😕",
+						"question": "How about JavaScript? ☕️",
 						"answer" : "chapter-four"
 					},
 				]
@@ -139,12 +147,13 @@
 			"chapter-four": {
 				"says":
 				[
-					"Sure. If you aren't really familiar with JavaScript, no worries. Actually, you don't need to worry about anything but the <strong>JSON</strong> part, which you'll need to replace with your script for the chatbot.",
-					"And here's what you replace it with..."
+					"// setup<br>var givemeBubbles = new Bubbles(document.getElementById(\"chat\"), <em>\"givemeBubbles\"</em>);",
+					"// launch command<br>givemeBubbles.talk(<strong>[YOUR JSON SCRIPT]</strong>);",
+					"☝️ When you construct a new Bubbles() instance, you'll need to <em>pass the name of that variable as an option</em>. This helps with being able to call your custom functions from within the script securely."
 				],
 				"reply": [
 					{
-						"question": "Tell me! 😃",
+						"question": "What about JSON? 🤔",
 						"answer" : "chapter-five"
 					},
 				]
@@ -152,13 +161,15 @@
 			"chapter-five": {
 				"says":
 				[
-					"OK, so what you do is replace <strong>JSON</strong> with this:",
+					"This is the most basic setup possible:",
 					"{ \"ice\": { \"says\": [ \"Hi\" ] } }",
-					"That's really all that you need to get started!",
+					"<strong>\"ice\"</strong> is the marker for default place for the chatbot to start at. It has to be there, unless you want to tell it where exactly to start:",
+					"givemeBubbles.talk([YOUR JSON SCRIPT], <strong>[KEY]</strong>);",
+					"...If you look at the example scripts, you'll also learn how to add reply buttons (very simple)"
 				],
 				"reply": [
 					{
-						"question": "Doesn't seem too hard! 🙂",
+						"question": "What else can I do? 🙂",
 						"answer" : "chapter-six"
 					},
 				]
@@ -166,33 +177,14 @@
 			"chapter-six": {
 				"says":
 				[
-					"Youp!",
-					"Here's how a simple example would look like:",
-					"<img src=images/tutor-install.jpg>",
-					"Why don't you give this a try? Create a text file and copy there everything from above and save as example.html",
-					"Then open that file with your browser"
+					"You can add keyboard input (with custom language processing) and custom functions for user answers.",
+					"You can also dynamically replace working conversation JSON by simply calling the launch command with new data.",
+					"@dmitrizzle is working on making integration a little more elegant and adding more flexibility in how this tool accepts and processes answers 🤖",
+					"And of course you can customize CSS styles when you install this thing 👨‍🎨"
 				],
 				"reply": [
 					{
-						"question": "I'm lazy... Can't you give me the text to copy-paste?",
-						"answer" : "example-text"
-					},
-					{
-						"question": "Done!",
-						"answer" : "chapter-seven"
-					},
-				]
-			},
-			"example-text": {
-				"says":
-				[
-					"Aw, alright",
-					"Copy and paste this into your editor and save as example.html",
-					"&lt;div id=\"chat\"&gt;&lt;/div&gt;<br>&lt;script&gt;<br>var convo = { \"ice\": { \"says\": [ \"Hi\" ] } };<br>var givemeBubbles = new Bubbles(document.getElementById(\"chat\"), \"givemeBubbles\");<br>givemeBubbles.talk(convo);<br>&lt;/script&gt;"
-				],
-				"reply": [
-					{
-						"question": "Done!",
+						"question": "Is that it?",
 						"answer" : "chapter-seven"
 					},
 				]
@@ -214,86 +206,15 @@
 			"chapter-eight": {
 				"says":
 				[
-					"<strong>1.</strong> <a href=https://github.com/dmitrizzle/chat-bubble/archive/master.zip>Download this file</a> and unzip it it.",
-					"<strong>2.</strong> Move the file you've created inside <strong>component</strong> folder.",
-					"<strong>3.</strong> Add the following lines to the top of your file:"
+					"Pretty much, easy right 😜",
+					"Why not have a look at the examples' source code in this folder and make your own bot, it'll take less than 5 minutes - I'm sure 😎",
+					"Check ya later! 👋"
 				],
 				"reply": [
 					{
-						"question": "What do I add... 😒",
-						"answer" : "chapter-nine"
+						"question": "Start over ☝️",
+						"answer" : "chapter-eight"
 					},
-				]
-			},
-			"chapter-nine": {
-				"says":
-				[
-					"This:",
-					"&lt;link rel=\"stylesheet\" href=\"styles/setup.css\"&gt;<br>&lt;link rel=\"stylesheet\" href=\"styles/says.css\"&gt;<br>&lt;link rel=\"stylesheet\" href=\"styles/reply.css\"&gt;<br>&lt;link rel=\"stylesheet\" href=\"styles/typing.css\"&gt;<br>&lt;script src=\"Bubbles.js\"&gt;&lt;/script&gt;",
-					"<strong>And</strong> Move the file you've created inside that <strong>component</strong> folder.",
-				],
-				"reply": [
-					{
-						"question": "It's working! 🙃",
-						"answer" : "chapter-ten"
-					},
-					{
-						"question": "It's NOT woriking! 😩",
-						"answer" : "chapter-nine-help"
-					},
-				]
-			},
-			"chapter-nine-help": {
-				"says":
-				[
-					"Double-check your spelling, and punctuation in the file. Make sure you <a href=https://github.com/dmitrizzle/chat-bubble/archive/master.zip>donloaded this file</a> and unzipped it. Your file needs to be INSIDE of that <strong>component</strong> folder.",
-					"If that still doesn't work, open example-help.html with your text document (inside of the <strong>component</strong> folder) and compare it to your work.",
-					"You can open <a href=../example-help.html target=blank>example-help.html</a> in your browser and see how it's supposed to work."
-				],
-				"reply": [
-					{
-						"question": "It's working! 🙃",
-						"answer" : "chapter-ten"
-					},
-					{
-						"question": "It's NOT woriking! 😩",
-						"answer" : "chapter-nine-help-2"
-					},
-				]
-			},
-			"chapter-nine-help-2": {
-				"says":
-				[
-					"Daym... Why don't give <a href=https://twitter.com/dmitrizzle>@dmitrizzle</a> a shout then? He made this whole thing after all..."
-				],
-				"reply": [
-					{
-						"question": "I fixed it! 🙃",
-						"answer" : "chapter-ten"
-					},
-				]
-			},
-			"chapter-ten": {
-				"says":
-				[
-					"Sweet! 🎉",
-					"Now all you gotta do is add more text bubbles, with commas like this:",
-					"[ \"Hi\", \"I'm the new awesome bot!\", \"Let's chat!\" ]",
-					"Do give this a try!"
-				],
-				"reply": [
-					{
-						"question": "What about adding options, like this button I'm clicking right now?",
-						"answer" : "chapter-eleven"
-					},
-				]
-			},
-			"chapter-eleven": {
-				"says":
-				[
-					"That's for later. For now, practice your bubbles 😜",
-					"Or you can view-source of this file and write something more complex, if you're into hacking, proper 😎",
-					"Bye for now! 👋"
 				]
 			}
 			
@@ -321,18 +242,20 @@
 				
 				// do this if answer found
 				var match = function(key){
-					givemeBubbles.talk(convo, key); // restart current convo from point found in the answer
+					setTimeout(function(){						
+						givemeBubbles.talk(convo, key); // restart current convo from point found in the answer
+					}, (600) );
 				}
 				
 				// sanitize text for search function
 				var strip = function(text){
-					return text.toLowerCase().replace(/\ [.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+					return text.toLowerCase().replace(/[\s.,\/#!$%\^&\*;:{}=\-_'"`~()]/g,"");
 				}
 				
 				// search function
 				var found = false;
 				o.convo[o.standingAnswer].reply.forEach(function(e, i) {
-					(strip(e.question).includes(strip(o.input)) && o.input.length > 0) ? found = e.answer : found ? null : found = false;
+					(strip(e.question).includes(strip(o.input)) && o.input.length > 0) ? found = e.answer : (found ? null : found = false);
 				});
 				found ? match(found) : miss();
 				

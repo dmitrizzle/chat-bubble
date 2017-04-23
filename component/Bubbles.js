@@ -43,6 +43,7 @@ function Bubbles(container, self, options) {
 		});
 		container.appendChild(inputWrap);
 		bubbleWrap.style.paddingBottom = "100px";
+		inputText.focus();
 	}
 	inputCallbackFn ? this.typeInput(inputCallbackFn) : false;
 	

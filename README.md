@@ -1,7 +1,7 @@
-# chat-bubble
+# 💬 chat-bubble
 ## A super-simple, tiny script for creating chat bot interfaces
 
-![Screenshot](screenshot.jpg?raw=true)
+![Screenshot](screenshot.gif?raw=true)
 
 - Super-easy to install & use! Here's the [tutorial bot](https://htmlpreview.github.io/?https://github.com/dmitrizzle/chat-bubble/blob/master/component/examples/0-tutor.html).
 - Insanely small footprint, 1KB GZipped.

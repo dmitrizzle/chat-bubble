@@ -1,12 +1,79 @@
-<link rel="stylesheet" href="styles/setup.css">
-<link rel="stylesheet" href="styles/says.css">
-<link rel="stylesheet" href="styles/reply.css">
-<link rel="stylesheet" href="styles/typing.css">
-<script src="Bubbles.js"></script>
+<html>
+<head>
+	<title>Chat Bubble Basics 1</title>
+	<meta charset="utf-8">
+	
+	<!-- for mobile screens -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- stylesheets for bubbles -->
+	<link rel="stylesheet" media="all" href="../styles/setup.css">
+	<link rel="stylesheet" media="all" href="../styles/says.css">
+	<link rel="stylesheet" media="all" href="../styles/reply.css">
+	<link rel="stylesheet" media="all" href="../styles/typing.css">
+	<link rel="stylesheet" media="all" href="../styles/input.css">
 
+</head><body>
+
+<!-- the script -->
+<script src="../Bubbles.js"></script>
+
+<!-- placeholder for where the chatbox is going to be rendered -->
 <div id="chat"></div>
+
 <script>
-var convo = { "ice": { "says": [ "Hi" ] } }
-var givemeBubbles = new Bubbles(document.getElementById('chat'), "givemeBubbles");
+
+// this is the most basic conversation JSON.
+var convo = {
+	"ice": {	// default conversation block for the bot to start, this key is required.
+		"says" : [ // you can have array of text bubbles here
+			"Hi",
+			"Would you like banana or ice cream?"
+		],
+		"reply" : [ // this is an array of possible answers that user can pick. 3 or less options recommended.
+			{
+				"question" 	: "Banana",	// this is the text label for one of the options
+				"answer" 		: "banana",	// this is the reference for next block in this conversation (see below)
+			},
+			{
+				"question" 	: "Ice Cream", // users can see this text and click it
+				"answer" 		: "ice-cream", // it will take them to the next conversation block
+			}
+		]
+	},
+	"banana": {	// this is another conversation block, to which the chat bot can be sent (see above ^^)
+		"says" : [ // you can have array of text bubbles here
+			"🍌",
+		],
+		"reply" : [ // this is an array of possible answers that user can pick. 3 or less options recommended.
+			{
+				"question" 	: "Start Over",	// this is the text label for one of the options
+				"answer" 		: "ice",	// you can sent the user back to the original (first) conversation block
+			},
+		]
+	},
+	"ice-cream": {	// this is another conversation block, to which the chat bot can be sent (see above ^^)
+		"says" : [ // you can have array of text bubbles here
+			"🍦",
+		],
+		"reply" : [ // this is an array of possible answers that user can pick. 3 or less options recommended.
+			{
+				"question" 	: "Start Over",	// this is the text label for one of the options
+				"answer" 		: "ice",	// you can sent the user back to the original (first) conversation block
+			},
+		]
+	}
+}
+
+// set up the chatbot script
+var givemeBubbles = new Bubbles(
+	document.getElementById('chat'), 	// attach chatbot to placeholder above ^^
+	"givemeBubbles"										// you need to pass the name of the constructor variable that evokes Bubble function here
+);
+
+// pass JSON to your function and you're done!
 givemeBubbles.talk(convo);
+
+
 </script>
+</body>

@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="styles/setup.css">
+<link rel="stylesheet" href="styles/says.css">
+<link rel="stylesheet" href="styles/reply.css">
+<link rel="stylesheet" href="styles/typing.css">
+<script src="Bubbles.js"></script>
+
+<div id="chat"></div>
+<script>
+var convo = { "ice": { "says": [ "Hi" ] } }
+var givemeBubbles = new Bubbles(document.getElementById('chat'), "givemeBubbles");
+givemeBubbles.talk(convo);
+</script>

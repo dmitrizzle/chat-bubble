@@ -1,0 +1,27 @@
+/* style "loading" or "typing" stae */
+
+.bubble-typing {
+	width: 38px;
+	padding: 12px 16px;
+	height: 8px;
+}
+.dot {
+	background-color: rgb(255,255,255);
+	float: left;
+	height: 7px;
+	margin-left: 4px;
+	width: 7px;
+	animation-name: bounce_dot;
+	animation-duration: 2.24s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	border-radius: 5px;
+}
+.dot_1 { animation-delay: 0.45s; }
+.dot_2 { animation-delay: 1.05s; }
+.dot_3 { animation-delay: 1.35s; }
+@keyframes bounce_dot {
+	0% {}
+	50% { background-color:rgb(0,0,0); }
+	100% {}
+}

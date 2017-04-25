@@ -1,0 +1,26 @@
+{
+  "name": "chat-bubble",
+  "version": "1.0.0",
+  "description": "Simple chatbot bubble creator based on JSON",
+  "main": "component/Bubble.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmitrizzle/chat-bubble.git"
+  },
+  "keywords": [
+    "chatbot",
+    "texft",
+    "bubbles",
+    "chat",
+    "bot"
+  ],
+  "author": "dmitrizzle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmitrizzle/chat-bubble/issues"
+  },
+  "homepage": "https://github.com/dmitrizzle/chat-bubble#readme"
+}

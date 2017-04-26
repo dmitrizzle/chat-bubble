@@ -632,7 +632,7 @@ var givemeBubbles = new Bubbles(
 			setTimeout(function(){						
 					givemeBubbles.think();
 					
-					Ajax("https://be722755-78bb-47d0-af67-6433004cfa67:FqGaaUFpj4LK@gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/90e7b7x198-nlc-47324/classify?text=hello" + encodeURI(o.input), function(data){
+					Ajax("https://be722755-78bb-47d0-af67-6433004cfa67:FqGaaUFpj4LK@gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/90e7b7x198-nlc-47324/classify?text=" + encodeURI(o.input), function(data){
 						
 						//parser
 						classifier = data.top_class;

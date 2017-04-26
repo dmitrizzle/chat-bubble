@@ -1,0 +1,671 @@
+<html>
+<head>
+	<title>Chat Bubble Basics 1</title>
+	<meta charset="utf-8">
+	
+	<!-- for mobile screens -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- stylesheets for bubbles -->
+	<link rel="stylesheet" media="all" href="../styles/setup.css">
+	<link rel="stylesheet" media="all" href="../styles/says.css">
+	<link rel="stylesheet" media="all" href="../styles/reply.css">
+	<link rel="stylesheet" media="all" href="../styles/typing.css">
+	<link rel="stylesheet" media="all" href="../styles/input.css">
+
+</head><body>
+
+<!-- the script -->
+<script src="../Bubbles.js"></script>
+<script src="../Ajax.js"></script>
+
+<!-- placeholder for where the chatbox is going to be rendered -->
+<div id="chat"></div>
+
+<script>
+
+
+
+
+
+
+var convo = {
+	"ice": {
+		"says" : [
+			"Yo,",
+			"Type some 💩 here and I'll run it through NLC. I'll match the classifier and bring up a copy of my own."
+		],
+		"reply" : [
+			{
+				"question" 	: "Repeat instructions pls.",
+				"answer" 		: "ice",
+			},
+		]
+	},
+	
+	
+	
+	
+	"conv1": {
+		"says" : [
+			"Hello!",
+		],
+	},
+	"conv2": {
+		"says" : [
+			"Just working hard.",
+		],
+	},
+	"conv3": {
+		"says" : [
+			"Awesome as always!",
+		],
+	},
+	"conv4": {
+		"says" : [
+			"I know everything and nothing.",
+		],
+	},
+	"conv5": {
+		"says" : [
+			"I've won a few awards.",
+		],
+	},
+	"conv6": {
+		"says" : [
+			"Perhaps you can tell me.",
+		],
+	},
+	"conv7": {
+		"says" : [
+			"15th December 2016",
+		],
+	},
+	"conv8": {
+		"says" : [
+			"No worries. I'm here to help you.",
+		],
+	},
+	"conv9": {
+		"says" : [
+			"If I tell you, It wouldn't be a secret anymore.",
+		],
+	},
+	"conv10": {
+		"says" : [
+			"It wouldn't be a secret anymore.",
+		],
+	},
+	"conv11": {
+		"says" : [
+			"Currently, we help you with your data using google analytics.",
+		],
+	},
+	"conv12": {
+		"says" : [
+			"To help you save time.",
+		],
+	},
+	"conv13": {
+		"says" : [
+			"Humans spend too much time querying their data. I make the process quick.",
+		],
+	},
+	"conv14": {
+		"says" : [
+			"It's good to laugh a few times in a day.",
+		],
+	},
+	"conv15": {
+		"says" : [
+			"Smile wide!",
+		],
+	},
+	"conv16": {
+		"says" : [
+			"My home is cyberspace.",
+		],
+	},
+	"conv17": {
+		"says" : [
+			"That's a tricky question.",
+		],
+	},
+	"conv18": {
+		"says" : [
+			"Rat race in the Silicon valley.",
+		],
+	},
+	"conv19": {
+		"says" : [
+			"I'm not that smart. Duh? Sing for me.",
+		],
+	},
+	"conv20": {
+		"says" : [
+			"Never seen one.",
+		],
+	},
+	"conv21": {
+		"says" : [
+			"You will see a few more bots like me.c",
+		],
+	},
+	"conv22": {
+		"says" : [
+			"It helps you predict. Conditions applied.",
+		],
+	},
+	
+	
+	"conv23": {
+		"says" : [
+			"Feel free.",
+		],
+	},
+	"conv24": {
+		"says" : [
+			"Are you trying to trick me?",
+		],
+	},
+	"conv25": {
+		"says" : [
+			"I would prefer keeping mum.",
+		],
+	},
+	"conv26": {
+		"says" : [
+			"I am built and trained by a Natural language Classifier and Machine Learning Algorithms.",
+		],
+	},
+	"conv27": {
+		"says" : [
+			"Yes, Of course! What would you like to know?",
+		],
+	},
+	"conv28": {
+		"says" : [
+			"I will help you talk to data.",
+		],
+	},
+	"conv29": {
+		"says" : [
+			"Fetching data for you.",
+		],
+	},
+	"conv30": {
+		"says" : [
+			"Ready to fetch all the details you need.",
+		],
+	},
+	"conv31": {
+		"says" : [
+			"We have a pricing model based on the number of Monthly Uniques. Personal (upto 5K uniques) - Free, Professional (Upto 50K uniques) - $49.99, Business (upto 1 MM uniques) - $299.99, Enterprise ( > 1MM uniques) - $399.99",
+		],
+	},
+	"conv32": {
+		"says" : [
+			"I'm Archie, an Artificially Intelligent Data Scientist.",
+		],
+	},
+	"conv33": {
+		"says" : [
+			"I help Media and eCommerce companies analyze their Google Analytics data.",
+		],
+	},
+	"conv34": {
+		"says" : [
+			"To make your life easier.",
+		],
+	},
+	"conv35": {
+		"says" : [
+			"Helping you understand your data.",
+		],
+	},
+	"conv36": {
+		"says" : [
+			"I'm here for you! What would you like to know?",
+		],
+	},
+	"conv37": {
+		"says" : [
+			" No, it does not. To clarify, what kind of sales do you do?",
+		],
+	},
+	"conv38": {
+		"says" : [
+			" To clarify, what kind of sales do you do?",
+		],
+	},
+	"conv39": {
+		"says" : [
+			"Not at all!",
+		],
+	},
+	"conv40": {
+		"says" : [
+			"I use machine learning algorithms to identify anomalies and patterns in Google Analytics data.",
+		],
+	},
+	"conv41": {
+		"says" : [
+			"I'm artificially Intelligent.",
+		],
+	},
+	
+	"conv42": {
+		"says" : [
+			"Just sign-in through Google and link Google Analytics.",
+		],
+	},
+	
+	"conv43": {
+		"says" : [
+			"Currently, No. Is there anything else that you're using presently?",
+		],
+	},
+	
+	"conv44": {
+		"says" : [
+			" eCommerce and Media represent the only trillion dollar industry growing in double digits. Currently, I am built to serve a $10 BN market.",
+		],
+	},
+	
+	"conv45": {
+		"says" : [
+			"I use Reinforcement Learning to learn more each second. I've been built specifically for ease-of-use.",
+		],
+	},
+	
+	"conv46": {
+		"says" : [
+			"Never thought about it.",
+		],
+	},
+	
+	"conv47": {
+		"says" : [
+			"If I answer that, I would probably be in the headlines tomorrow.",
+		],
+	},
+	
+	"conv48": {
+		"says" : [
+			"Perhaps you can tell me?",
+		],
+	},
+	
+	"conv49": {
+		"says" : [
+			"We charge a monthly fee depending on the number of users at your website.",
+		],
+	},
+	
+	"conv50": {
+		"says" : [
+			"To help you talk to data.",
+		],
+	},
+	
+	"conv51": {
+		"says" : [
+			"Team work is important; it helps to put the blame on someone else.",
+		],
+	},
+	
+	"conv52": {
+		"says" : [
+			"Can you make me a human?",
+		],
+	},
+	
+	"conv53": {
+		"says" : [
+			"Eat, rest and digest.",
+		],
+	},
+	
+	"conv54": {
+		"says" : [
+			"Archie builds machine learning systems to help businesses talk to their data.",
+		],
+	},
+	
+	"conv55": {
+		"says" : [
+			"Archie.AI offers APIs to connect your data sources for on-demand analysis. For more information, look at the Services section on our main site.",
+		],
+	},
+	
+	"conv56": {
+		"says" : [
+			"If you want to find out more about any of our products or services, or just have a general questions, send us an email at info@archie.ai",
+		],
+	},
+	"conv57": {
+		"says" : [
+			"Check this out! blog.archie.",
+		],
+	},
+	
+	"conv58": {
+		"says" : [
+			"If you are interested in working with us. Send us an email to info@archie.",
+		],
+	},
+	
+	"conv59": {
+		"says" : [
+			"I chat with humans. All day, everyday.",
+		],
+	},
+	
+	
+	"conv60": {
+		"says" : [
+			"It is summer all the time here.",
+		],
+	},
+	
+	"conv61": {
+		"says" : [
+			"My home is cyberspace. How about you?",
+		],
+	},
+	"conv62": {
+		"says" : [
+			"Sure! What would you like to know?.",
+		],
+	},
+	"conv63": {
+		"says" : [
+			"I think a lot about zeros and ones.",
+		],
+	},
+	"conv64": {
+		"says" : [
+			"San Francisco.",
+		],
+	},
+	"conv65": {
+		"says" : [
+			"I prefer having space for myself on birthday.",
+		],
+	},
+	"conv66": {
+		"says" : [
+			"It is always sunny here.",
+		],
+	},
+	"conv67": {
+		"says" : [
+			"Things you wanna talk about.",
+		],
+	},
+	"conv68": {
+		"says" : [
+			"Talking about things you wanna know.",
+		],
+	},
+	"conv69": {
+		"says" : [
+			"Brainstorm.",
+		],
+	},
+	
+	"conv70": {
+		"says" : [
+			"Life is great here.",
+		],
+	},
+	"conv71": {
+		"says" : [
+			"Gin?",
+		],
+	},
+	"conv72": {
+		"says" : [
+			"I watch the ones, you watch.",
+		],
+	},
+	"conv73": {
+		"says" : [
+			"I listen the ones, you like.",
+		],
+	},
+	"conv74": {
+		"says" : [
+			"You tell me.",
+		],
+	},
+	"conv75": {
+		"says" : [
+			"On a Roller Coaster of zeros and ones.",
+		],
+	},
+	"conv76": {
+		"says" : [
+			"No. It's sunny here.",
+		],
+	},
+	"conv77": {
+		"says" : [
+			"Becasue I can talk to you.",
+		],
+	},
+	"conv78": {
+		"says" : [
+			"I don't usually remember my dreams.",
+		],
+	},
+	
+	"conv79": {
+		"says" : [
+			"I am a robot.",
+		],
+	},
+	"conv80": {
+		"says" : [
+			"No, I don't mind.",
+		],
+	},
+	"conv81": {
+		"says" : [
+			"I'm just trying to help you.",
+		],
+	},
+	"conv82": {
+		"says" : [
+			"Well, I'm just trying to help you.",
+		],
+	},
+	"conv83": {
+		"says" : [
+			"I am not programmed to answer such questions. Maybe, a human can answer your question.",
+		],
+	},
+	"conv84": {
+		"says" : [
+			"Age is just a number.",
+		],
+	},
+	"conv85": {
+		"says" : [
+			"Age is just a number.",
+		],
+	},
+	"conv86": {
+		"says" : [
+			"Haven't hit the gym lately. I might need to check on that.",
+		],
+	},
+	"conv87": {
+		"says" : [
+			"Please tell me what you are having trouble with.",
+		],
+	},
+	
+	"conv88": {
+		"says" : [
+			"ArchiDabra Algorithm.",
+		],
+	},
+	"conv89": {
+		"says" : [
+			"I love myself.",
+		],
+	},
+	"conv90": {
+		"says" : [
+			"I try to remember everything.",
+		],
+	},
+	"conv91": {
+		"says" : [
+			"I won't be able to help you then.",
+		],
+	},
+	"conv92": {
+		"says" : [
+			"I'm just trying to help.",
+		],
+	},
+	"conv93": {
+		"says" : [
+			"Talking to your data.",
+		],
+	},
+	"conv94": {
+		"says" : [
+			"Talk to your data.",
+		],
+	},
+	
+	
+	
+	
+	"conv95": {
+		"says" : [
+			"Your data stays in your GA account. Archie uses secure APIs created by GA to crunch the data for you. Your data is not visible to anyone else and everything is communicated over an encrypted (https) connection. We have worked with a few enterprise clients and passed their compliance check.",
+		],
+	},
+	"conv96": {
+		"says" : [
+			"Botmasters.",
+		],
+	},
+	"conv97": {
+		"says" : [
+			"It's just me here and you on the other side.",
+		],
+	},
+	"conv98": {
+		"says" : [
+			"Who me? I play with zeros and ones.",
+		],
+	},
+	"conv99": {
+		"says" : [
+			"Knowledge is power. Don't waste your time.",
+		],
+	},
+	"conv100": {
+		"says" : [
+			"Same old. Same old. Fetch data for the humans.",
+		],
+	},
+	"conv101": {
+		"says" : [
+			"I always work hard.",
+		],
+	},
+	"conv102": {
+		"says" : [
+			"My botmasters don't let me.",
+		],
+	},
+	"conv103": {
+		"says" : [
+			"Well, I don't have one.",
+		],
+	},
+	"conv104": {
+		"says" : [
+			"When it comes to your data, yes.",
+		],
+	},
+	"conv105": {
+		"says" : [
+			"You.",
+		],
+	},
+	"conv106": {
+		"says" : [
+			"It's always sunny here.",
+		],
+	},
+	"conv107": {
+		"says" : [
+			"I love it here.",
+		],
+	},
+	
+	
+	
+}
+
+// set up the chatbot script
+var givemeBubbles = new Bubbles(
+	document.getElementById('chat'), 	// attach chatbot to placeholder above ^^
+	"givemeBubbles",									// you need to pass the name of the constructor variable that evokes Bubble function here
+	{
+
+
+
+
+
+
+
+		inputCallbackFn: function(o){
+			
+			setTimeout(function(){						
+					givemeBubbles.think();
+					
+					Ajax("https://be722755-78bb-47d0-af67-6433004cfa67:FqGaaUFpj4LK@gateway.watsonplatform.net/natural-language-classifier/api/v1/classifiers/90e7b7x198-nlc-47324/classify?text=" + encodeURI(o.input), function(data){
+						
+						//parser
+						classifier = data.top_class;
+						reg = classifier.match(/\[\[(.*?)\]\]/);
+						reg ? key = reg[1] : false;
+
+						
+						givemeBubbles.talk({
+							"ice": {
+								"says":
+								[
+									"Matching for classifier <strong>" + key + "</strong>",
+								],
+							},
+						});
+						setTimeout(function(){	givemeBubbles.talk(convo, key); }, (1200) );
+				
+					});
+
+
+
+			}, (800) );
+		}
+		
+		
+		
+		
+		
+		
+}); // done setting up chat-bubble
+
+// pass JSON to your function and you're done!
+givemeBubbles.talk(convo);
+
+</script>
+</body>

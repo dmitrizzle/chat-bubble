@@ -1,7 +1,7 @@
 {
   "name": "chat-bubble",
-  "version": "1.0.0",
-  "description": "Simple chatbot bubble creator based on JSON",
+  "version": "1.2.0",
+  "description": "Simple chatbot bubble creator based on JSON conversation structure",
   "main": "component/Bubble.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

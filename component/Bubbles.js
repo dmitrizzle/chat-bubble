@@ -70,21 +70,39 @@ function Bubbles(container, self, options) {
   	questionsHTML = "";
   	if(turn.reply !== undefined){
   		turn.reply.reverse();
-			(turn.reply).forEach(function(el, count){
-				questionsHTML
-					+= "<span class=\"bubble-button\" style=\"animation-delay: "
-					+ ( animationTime / 2 * count ) + "ms\" onClick=\""
-					+ self + ".answer('"
-					+ el.answer + "');this.classList.add('bubble-pick')\">"
-					+ el.question + "</span>";
-			});
+
+  			for(var i=0; i<turn.reply.length; i++)
+  			{
+  				randomstuff(turn.reply[i], i);
+  			}
+			//(turn.reply).forEach(
+
+			//	function(el, count)
+			//{
+			//	questionsHTML
+			//		+= "<span class=\"bubble-button\" style=\"animation-delay: "
+			//		+ ( animationTime / 2 * count ) + "ms\" onClick=\""
+			//		+ self + ".answer('"
+			//		+ el.answer + "');this.classList.add('bubble-pick')\">"
+			//		+ el.question + "</span>";
+			//}
+
+			//);
 		}
 		orderBubbles(turn.says, function(){
 			bubbleTyping.classList.remove("imagine");
 			questionsHTML !== "" ? addBubble(questionsHTML, function(){}, "reply") : bubbleTyping.classList.add("imagine");
 		});
   }
-  
+  function randomstuff(el, count)
+			{
+				questionsHTML
+					+= "<span class=\"bubble-button\" style=\"animation-delay: "
+					+ ( animationTime / 2 * count ) + "ms\" onClick=\""
+					+ self + ".answer('"
+					+ el.answer + "');this.classList.add('bubble-pick')\">"
+					+ el.question + "</span>";
+			}
   // navigate "answers"
   this.answer = function(key){
   	var func = function(key){ typeof window[key] === "function" ? window[key]() : false; }
@@ -113,7 +131,15 @@ function Bubbles(container, self, options) {
   	start();
   }
   
-  
+  function looooper(el){
+					el.style.width = 0 + "px";
+					el.classList.contains("bubble-pick") ? el.style.width = "" : false;
+					el.removeAttribute("onclick");
+				}
+  function last_fix(el){
+				if(!el.parentNode.parentNode.classList.contains("reply-freeform"))
+				el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px";
+			}
   
   // create a bubble
   var bubbleQueue = false;
@@ -130,16 +156,29 @@ function Bubbles(container, self, options) {
 		// answer picker styles
 		if(reply !== ""){
 			var bubbleButtons = bubbleContent.querySelectorAll(".bubble-button");
-			bubbleButtons.forEach(function(el){
-				if(!el.parentNode.parentNode.classList.contains("reply-freeform"))
-				el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px";
-			});
+
+			for(var z =0; z<bubbleButtons.length; z++)
+			{
+				last_fix(bubbleButtons[z]);
+			}
+			//last_fix()
+			//bubbleButtons.forEach(function(el){
+			//	if(!el.parentNode.parentNode.classList.contains("reply-freeform"))
+			//	el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px";
+			//});
 			bubble.addEventListener("click", function(){
-				bubbleButtons.forEach(function(el){
-					el.style.width = 0 + "px";
-					el.classList.contains("bubble-pick") ? el.style.width = "" : false;
-					el.removeAttribute("onclick");
-				});
+
+				for (var i = 0; i < bubbleButtons.length; i++)
+				{
+					looooper(bubbleButtons[i]);
+				}
+
+				//bubbleButtons.forEach(function(el){
+				//	el.style.width = 0 + "px";
+				//	el.classList.contains("bubble-pick") ? el.style.width = "" : false;
+				//	el.removeAttribute("onclick");
+				//});
+
 				this.classList.add("bubble-picked");
 			});
 		}

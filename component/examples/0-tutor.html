@@ -214,10 +214,10 @@
 				for(var z =0; z<o.convo[o.standingAnswer].reply.length; z++)
 				{
 					
-					var dog = (o.convo[o.standingAnswer].reply)[z];
-					if( (strip((o.convo[o.standingAnswer].reply)[z]["question"]).includes(strip(o.input))) && o.input.length > 0 )
+					var key = (o.convo[o.standingAnswer].reply)[z];
+					if( (strip(key["question"]).includes(strip(o.input))) && o.input.length > 0 )
 					{
-						found = (o.convo[o.standingAnswer].reply)[z]["answer"] ;
+						found = key["answer"];
 					}
 					else 
 					 found == false;

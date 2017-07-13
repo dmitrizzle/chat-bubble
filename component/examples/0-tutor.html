@@ -207,36 +207,15 @@
 				
 				// search function
 				var found = false;
-
-
-
-
-				for(var z =0; z<o.convo[o.standingAnswer].reply.length; z++)
-				{
-					
+				for(var z =0; z<o.convo[o.standingAnswer].reply.length; z++){	
 					var key = (o.convo[o.standingAnswer].reply)[z];
-					if( (strip(key["question"]).includes(strip(o.input))) && o.input.length > 0 )
-					{
-						found = key["answer"];
-					}
-					else 
-					 found == false;
-
-
+					(strip(key["question"]).includes(strip(o.input))) && o.input.length > 0 )
+					? found = key["answer"];
+					: found == false;
 				}
-
-
 				found ? match(found) : miss();
-				
-				
-				
 			}
 		});
-
-		function idk(e, i)
-		{
-			(strip(e.question).includes(strip(o.input)) && o.input.length > 0) ? found = e.answer : (found ? null : found = false);
-		}
 
 		givemeBubbles.talk(convo);
 		functionOne = function(){ alert("Function One"); }

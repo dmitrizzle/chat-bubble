@@ -1,6 +1,6 @@
 {
   "name": "chat-bubble",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Simple chatbot bubble creator based on JSON conversation structure",
   "main": "component/Bubble.js",
   "scripts": {

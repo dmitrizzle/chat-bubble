@@ -97,17 +97,17 @@ var givemeBubbles = new Bubbles(
 		// this is where you may want to connect this script to NLC backend.
 		inputCallbackFn: function(o){
 					
-			// do this if no answer matched
+			// add error conversation block & recall it if no answer matched
 			var miss = function(){
 				givemeBubbles.talk({
-					"ice": {
+					"i-dont-get-it": {
 						"says":
 						[
 							"Sorry, I don't get it 😕. Pls repeat? Or you can just click below 👇",
 						],
 						"reply" : o.convo[o.standingAnswer].reply
 					},
-				})
+				}, "i-dont-get-it")
 			}
 		
 			// do this if answer found

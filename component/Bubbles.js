@@ -9,6 +9,10 @@ function Bubbles(container, self, options) {
 	inputCallbackFn = options.inputCallbackFn || false;	// should we display an input field?
 	
   var standingAnswer = "ice"; // remember where to restart convo if interrupted
+  
+  var _convo = {};						// local memory for conversation JSON object
+  														//--> NOTE that this object is only assigned once, per session and does not change for this
+  														// 		constructor name during open session.
 		
 		
 		
@@ -23,7 +27,7 @@ function Bubbles(container, self, options) {
 		var inputWrap = document.createElement("div");
 		inputWrap.className = "input-wrap";
 		var inputText = document.createElement("textarea");
-		inputText.setAttribute("placeholder", "Type your question...");
+		inputText.setAttribute("placeholder", "Ask me anything...");
 		inputWrap.appendChild(inputText);
 		inputText.addEventListener("keypress", function(e){ // register user input
 			if(e.keyCode == 13){
@@ -35,7 +39,7 @@ function Bubbles(container, self, options) {
 				// callback
 				typeof callbackFn === "function" ? callbackFn({
 					"input" : this.value,
-					"convo" : convo,
+					"convo" : _convo,
 					"standingAnswer": standingAnswer
 				}) : false;
 				this.value = "";
@@ -61,12 +65,15 @@ function Bubbles(container, self, options) {
   
   // accept JSON & create bubbles
   this.talk = function(convo, here) {
-  	this.convo = convo;
-  	this.reply(this.convo[here]);
+  
+  	// all further .talk() calls will append the conversation with additional blocks defined in convo parameter
+  	_convo = Object.assign(_convo, convo); // POLYFILL REQUIRED FOR OLDER BROWSERS
+  	
+  	this.reply(_convo[here]);
   	here ? standingAnswer = here : false;
   }
   this.reply = function(turn) {
-  	turn = typeof turn !== "undefined" ? turn : this.convo.ice;
+  	turn = typeof turn !== "undefined" ? turn : _convo.ice;
   	questionsHTML = "";
   	if(turn.reply !== undefined){
   		turn.reply.reverse();
@@ -88,7 +95,7 @@ function Bubbles(container, self, options) {
   // navigate "answers"
   this.answer = function(key){
   	var func = function(key){ typeof window[key] === "function" ? window[key]() : false; }
-  	this.convo[key] !== undefined ? (this.reply(this.convo[key]), standingAnswer = key) : func(key);
+  	_convo[key] !== undefined ? (this.reply(_convo[key]), standingAnswer = key) : func(key);
   };
   
   // api for typing bubble

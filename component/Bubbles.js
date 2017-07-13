@@ -7,21 +7,21 @@ function Bubbles(container, self, options) {
 	widerBy = 				options.widerBy || 2;							// add a little extra width to bubbles to make sure they don't break
 	sidePadding = 		options.sidePadding || 6; 				// padding on both sides of chat bubbles
 	inputCallbackFn = options.inputCallbackFn || false;	// should we display an input field?
-	
+
   var standingAnswer = "ice"; // remember where to restart convo if interrupted
-  
+
   var _convo = {};						// local memory for conversation JSON object
   														//--> NOTE that this object is only assigned once, per session and does not change for this
   														// 		constructor name during open session.
-		
-		
-		
+
+
+
 	// set up the stage
 	container.classList.add("bubble-container");
 	var bubbleWrap = document.createElement("div");
 	bubbleWrap.className = "bubble-wrap";
 	container.appendChild(bubbleWrap);
-	
+
 	// install user input textfield
 	this.typeInput = function(callbackFn){
 		var inputWrap = document.createElement("div");
@@ -50,9 +50,9 @@ function Bubbles(container, self, options) {
 		inputText.focus();
 	}
 	inputCallbackFn ? this.typeInput(inputCallbackFn) : false;
-	
-	
-	
+
+
+
 	// init typing bubble
 	var bubbleTyping = document.createElement("div");
 	bubbleTyping.className = "bubble-typing imagine";
@@ -62,13 +62,13 @@ function Bubbles(container, self, options) {
 		bubbleTyping.appendChild(dot);
 	}
 	bubbleWrap.appendChild(bubbleTyping);
-  
+
   // accept JSON & create bubbles
   this.talk = function(convo, here) {
-  
+
   	// all further .talk() calls will append the conversation with additional blocks defined in convo parameter
   	_convo = Object.assign(_convo, convo); // POLYFILL REQUIRED FOR OLDER BROWSERS
-  	
+
   	this.reply(_convo[here]);
   	here ? standingAnswer = here : false;
   }
@@ -77,45 +77,29 @@ function Bubbles(container, self, options) {
   	questionsHTML = "";
   	if(turn.reply !== undefined){
   		turn.reply.reverse();
-
   			for(var i=0; i<turn.reply.length; i++)
   			{
-  				randomstuff(turn.reply[i], i);
+  				(function(el, count){
+						questionsHTML
+							+= "<span class=\"bubble-button\" style=\"animation-delay: "
+							+ ( animationTime / 2 * count ) + "ms\" onClick=\""
+							+ self + ".answer('"
+							+ el.answer + "');this.classList.add('bubble-pick')\">"
+							+ el.question + "</span>";
+					})(turn.reply[i], i);
   			}
-			//(turn.reply).forEach(
-
-			//	function(el, count)
-			//{
-			//	questionsHTML
-			//		+= "<span class=\"bubble-button\" style=\"animation-delay: "
-			//		+ ( animationTime / 2 * count ) + "ms\" onClick=\""
-			//		+ self + ".answer('"
-			//		+ el.answer + "');this.classList.add('bubble-pick')\">"
-			//		+ el.question + "</span>";
-			//}
-
-			//);
 		}
 		orderBubbles(turn.says, function(){
 			bubbleTyping.classList.remove("imagine");
 			questionsHTML !== "" ? addBubble(questionsHTML, function(){}, "reply") : bubbleTyping.classList.add("imagine");
 		});
   }
-  function randomstuff(el, count)
-			{
-				questionsHTML
-					+= "<span class=\"bubble-button\" style=\"animation-delay: "
-					+ ( animationTime / 2 * count ) + "ms\" onClick=\""
-					+ self + ".answer('"
-					+ el.answer + "');this.classList.add('bubble-pick')\">"
-					+ el.question + "</span>";
-			}
   // navigate "answers"
   this.answer = function(key){
   	var func = function(key){ typeof window[key] === "function" ? window[key]() : false; }
   	_convo[key] !== undefined ? (this.reply(_convo[key]), standingAnswer = key) : func(key);
   };
-  
+
   // api for typing bubble
   this.think = function(){
   	bubbleTyping.classList.remove("imagine");
@@ -123,7 +107,7 @@ function Bubbles(container, self, options) {
   		bubbleTyping.classList.add("imagine");
   	}
   }
-  
+
   // "type" each message within the group
   var orderBubbles = function(q, callback){
   	var start = function(){ setTimeout(function() { callback() }, animationTime); };
@@ -137,17 +121,7 @@ function Bubbles(container, self, options) {
   	}
   	start();
   }
-  
-  function looooper(el){
-					el.style.width = 0 + "px";
-					el.classList.contains("bubble-pick") ? el.style.width = "" : false;
-					el.removeAttribute("onclick");
-				}
-  function last_fix(el){
-				if(!el.parentNode.parentNode.classList.contains("reply-freeform"))
-				el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px";
-			}
-  
+
   // create a bubble
   var bubbleQueue = false;
 	var addBubble = function(say, posted, reply){
@@ -166,26 +140,21 @@ function Bubbles(container, self, options) {
 
 			for(var z =0; z<bubbleButtons.length; z++)
 			{
-				last_fix(bubbleButtons[z]);
+				(function(el){
+					if(!el.parentNode.parentNode.classList.contains("reply-freeform"))
+					el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px";
+				})(bubbleButtons[z]);
 			}
-			//last_fix()
-			//bubbleButtons.forEach(function(el){
-			//	if(!el.parentNode.parentNode.classList.contains("reply-freeform"))
-			//	el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px";
-			//});
 			bubble.addEventListener("click", function(){
 
 				for (var i = 0; i < bubbleButtons.length; i++)
 				{
-					looooper(bubbleButtons[i]);
+					(function(el){
+						el.style.width = 0 + "px";
+						el.classList.contains("bubble-pick") ? el.style.width = "" : false;
+						el.removeAttribute("onclick");
+					})(bubbleButtons[i]);
 				}
-
-				//bubbleButtons.forEach(function(el){
-				//	el.style.width = 0 + "px";
-				//	el.classList.contains("bubble-pick") ? el.style.width = "" : false;
-				//	el.removeAttribute("onclick");
-				//});
-
 				this.classList.add("bubble-picked");
 			});
 		}

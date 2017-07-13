@@ -207,15 +207,16 @@
 				
 				// search function
 				var found = false;
-				o.convo[o.standingAnswer].reply.forEach(function(e, i) {
-					(strip(e.question).includes(strip(o.input)) && o.input.length > 0) ? found = e.answer : (found ? null : found = false);
-				});
+				for(var z =0; z<o.convo[o.standingAnswer].reply.length; z++){	
+					var key = (o.convo[o.standingAnswer].reply)[z];
+					(strip(key["question"]).includes(strip(o.input))) && o.input.length > 0 )
+					? found = key["answer"];
+					: found == false;
+				}
 				found ? match(found) : miss();
-				
-				
-				
 			}
 		});
+
 		givemeBubbles.talk(convo);
 		functionOne = function(){ alert("Function One"); }
 		functionTwo = function(){ alert("Function Two"); }

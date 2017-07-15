@@ -25,6 +25,8 @@
 ```
 This component comes with styles in multiple CSS files. You can turn them into Styled Components, SASS or whatever. For now it's just vanilla CSS so that this tool can work anywhere, regardless of the environment. See detailed examples in [./component/examples](https://github.com/dmitrizzle/chat-bubble/tree/master/component/examples) folder.
 
+You can also get this package with NPM: `npm install chat-bubble`
+
 ## How to contribute:
 If you'd like to contribute, please submit an issue, PR or ping me on twitter: [@dmitrizzle](https://twitter.com/dmitrizzle)
 

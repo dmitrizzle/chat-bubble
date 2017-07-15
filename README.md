@@ -29,5 +29,5 @@ This component comes with styles in multiple CSS files. You can turn them into S
 If you'd like to contribute, please submit an issue, PR or ping me on twitter: [@dmitrizzle](https://twitter.com/dmitrizzle)
 
 ### Who uses chat-bubble?
-- [Archie.ai](https://www.archie.ai)
+- **[Archie.AI](https://www.archie.ai)**
 - If you'd like to add your site, pls submit a PR to this README.md ✌️

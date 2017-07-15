@@ -1,33 +1,33 @@
 # 💬 chat-bubble
-## A super-simple, tiny script for creating chat bot interfaces
+> Super-simple JS framework for creating chat bot interfaces.
 
 ![Screenshot](screenshot.gif?raw=true)
 
-- Super-easy to install & use! Here's the [tutorial bot](https://htmlpreview.github.io/?https://github.com/dmitrizzle/chat-bubble/blob/master/component/examples/0-tutor.html).
-- Insanely small footprint, 1KB GZipped.
-- No dependencies. Written with ES5, vanilla JavaScript. Works with modern browsers.
+- Super-easy to install & use. Here's the [tutorial bot](https://dmitrizzle.github.io/chat-bubble/index.html) to help you get started.
+- 1KB GZipped.
+- No dependencies. Written with ES5 (compatible with IE11+, Edge + modern browsers).
 
-### Usage
+## Usage
 ```html
 	<div id="chat"></div>
-```
+	<script src="./component/Bubbles.js"></script>
+	<script>
 
-```javascript
-
-	// set up the chatbot script
 	var givemeBubbles = new Bubbles(
-		document.getElementById('chat'), 	// attach chatbot to placeholder above ^^
-		"givemeBubbles"										// you need to pass the name of the constructor variable that evokes Bubble function here
+	    document.getElementById('chat'),
+	    "givemeBubbles"
 	);
 
-	// pass JSON to your function and you're done!
+	// pass the JSON script and you're done!
 	givemeBubbles.talk({ "ice": { "says": [ "Hi" ] } });
+	
+	</script>
 ```
-Please see examples and the [tutorial bot](https://htmlpreview.github.io/?https://github.com/dmitrizzle/chat-bubble/blob/master/component/examples/0-tutor.html) link to learn more on how to use this thing.
+This component comes with styles in multiple CSS files. You can turn them into Styled Components, SASS or whatever. For now it's just vanilla CSS so that this tool can work anywhere, regardless of the environment. See detailed examples in [./component/examples](https://github.com/dmitrizzle/chat-bubble/tree/master/component/examples) folder.
 
-This component comes with styles in CSS files. They are separated in to multiple files. You can turn them into styled components, SASS or whatever for your convenience. For now it's just vanilla CSS so that this tool can work anywhere, regardless of the environment.
-
-If you'd like to contribute, simply submit an issue, PR or simply ping me on twitter: @dmitrizzle
+## How to contribute:
+If you'd like to contribute, please submit an issue, PR or ping me on twitter: [@dmitrizzle](https://twitter.com/dmitrizzle)
 
 ### Who uses chat-bubble?
-[Archie.ai](https://www.archie.ai)
+- [Archie.ai](https://www.archie.ai)
+- If you'd like to add your site, pls submit a PR to this README.md ✌️

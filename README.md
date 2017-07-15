@@ -1,5 +1,5 @@
 # 💬 chat-bubble
-> Super-simple JS framework for creating chat bot interfaces.
+> Simple chatbot UI for the Web with JSON scripting.
 
 ![Screenshot](screenshot.gif?raw=true)
 

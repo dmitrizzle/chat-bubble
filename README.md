@@ -3,7 +3,7 @@
 
 ![Screenshot](screenshot.gif?raw=true)
 
-- Super-easy to install & use. Here's the [tutorial bot](https://dmitrizzle.github.io/chat-bubble/index.html) to help you get started.
+- Super-easy to install & use. Here's the [tutorial bot](https://dmitrizzle.github.io/chat-bubble/index.html) to help you get started. Or watch [this video](https://www.youtube.com/watch?v=fkJ935a7VSk).
 - 1KB GZipped.
 - No dependencies. Written with ES5 (compatible with IE11+, Edge + modern browsers).
 

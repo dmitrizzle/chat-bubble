@@ -1,10 +1,10 @@
 {
   "name": "chat-bubble",
-  "version": "1.2.2",
-  "description": "Simple chatbot bubble creator based on JSON conversation structure",
+  "version": "1.2.3",
+  "description": "Simple chatbot UI for Web with JSON scripting. Zero dependencies.",
   "main": "component/Bubble.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "playground": "open ./component/examples/4-advanced-keyboard.html"
   },
   "repository": {
     "type": "git",
@@ -12,10 +12,11 @@
   },
   "keywords": [
     "chatbot",
-    "texft",
-    "bubbles",
     "chat",
-    "bot"
+    "bot",
+    "chatui",
+    "conversation",
+    "javascript"
   ],
   "author": "dmitrizzle",
   "license": "MIT",

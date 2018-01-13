@@ -45,9 +45,11 @@
   border-radius: 5px 15px 15px 15px;
 }
 
+/* interaction recall styles */
 .bubble.history,
-.bubble .bubble-content,
-.bubble .bubble-content .bubble-button, .bubble .bubble-content .bubble-button:hover {
+.bubble.history .bubble-content,
+.bubble.history .bubble-content .bubble-button,
+.bubble.history .bubble-content .bubble-button:hover {
   transition: all 0ms !important;
 }
 .bubble.history {

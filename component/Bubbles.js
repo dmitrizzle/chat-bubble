@@ -23,7 +23,8 @@ function Bubbles(container, self, options) {
   // prepare next save point
   interactionsSave = function(say, reply) {
     // limit number of saves
-    if (interactionsHistory.length >= recallInteractions) return
+    if (interactionsHistory.length >= recallInteractions)
+      interactionsHistory.shift() // removes the oldest (first) save to make space
 
     // remove interactive elements from reply bubbles set in `this.reply()` function
     var say = say.replace(/style=".*?"/, "").replace(/onClick=".*?"/, "")
@@ -234,9 +235,8 @@ function Bubbles(container, self, options) {
       posted()
 
       // save the interaction
-      // !iceBreaker && // <-- if turned on very first interaction won't be saved
       interactionsSave(say, reply)
-      interactionsSaveCommit() // save point
+      !iceBreaker && interactionsSaveCommit() // save point
 
       // animate scrolling
       containerHeight = container.offsetHeight

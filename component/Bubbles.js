@@ -18,9 +18,11 @@ function Bubbles(container, self, options) {
   // local storage for recalling conversations upon restart
   var interactionsLS = "chat-bubble-interactions"
   var interactionsHistory =
+    // JSON.parse(localStorage.getItem("chat-bubble-interactions"))
     JSON.parse(localStorage.getItem(interactionsLS)) || []
-  this.interactionsSave = function(say, posted, reply){
-    interactionsHistory.push({say: say, posted: posted, reply: reply});
+  interactionsSave = function(say, reply){
+    console.log(interactionsHistory);
+    interactionsHistory.push({say: say, reply: reply});
     localStorage.setItem(interactionsLS, JSON.stringify(interactionsHistory));
   }
 
@@ -88,9 +90,13 @@ function Bubbles(container, self, options) {
     this.reply(_convo[here])
     here ? (standingAnswer = here) : false
   }
+
+  var iceBreaker = false; // this variable holds answer to whether this is the initative bot interaction or not
   this.reply = function(turn) {
-    turn = typeof turn !== "undefined" ? turn : _convo.ice
+    iceBreaker = typeof turn === "undefined"
+    turn = !iceBreaker ? turn : _convo.ice
     questionsHTML = ""
+
     if (turn.reply !== undefined) {
       turn.reply.reverse()
       for (var i = 0; i < turn.reply.length; i++) {
@@ -157,12 +163,16 @@ function Bubbles(container, self, options) {
 
   // create a bubble
   var bubbleQueue = false
-  var addBubble = function(say, posted, reply) {
+  var addBubble = function(say, posted, reply, live) {
+    live = typeof live !== "undefined" ? live : true // bubbles that are not "live" are not animated and displayed differently
+    var animationTime = live ? animationTime : 0
+    var typeSpeed = live ? typeSpeed : 0
+
     reply = typeof reply !== "undefined" ? reply : ""
     // create bubble element
     var bubble = document.createElement("div")
     var bubbleContent = document.createElement("span")
-    bubble.className = "bubble imagine " + reply
+    bubble.className = "bubble imagine " + (!live ? " history " : "") + reply 
     bubbleContent.className = "bubble-content"
     bubbleContent.innerHTML = say
     bubble.appendChild(bubbleContent)
@@ -189,8 +199,8 @@ function Bubbles(container, self, options) {
       })
     }
     // time, size & animate
-    wait = animationTime * 2
-    minTypingWait = animationTime * 6
+    wait = live ? animationTime * 2 : 0
+    minTypingWait = live ? animationTime * 6 : 0
     if (say.length * typeSpeed > animationTime && reply == "") {
       wait += typeSpeed * say.length
       wait < minTypingWait ? (wait = minTypingWait) : false
@@ -210,6 +220,11 @@ function Bubbles(container, self, options) {
         : bubble.style.width
       bubble.classList.add("say")
       posted()
+
+      // save the interaction
+      !iceBreaker &&
+      interactionsSave(say, reply)
+
       // animate scrolling
       containerHeight = container.offsetHeight
       scrollDifference = bubbleWrap.scrollHeight - bubbleWrap.scrollTop
@@ -227,10 +242,15 @@ function Bubbles(container, self, options) {
       }
       setTimeout(scrollBubbles, animationTime / 2)
     }, wait + animationTime * 2)
-
-    // save the interaction
-    JSON.parse(localStorage.getItem(interactionsLS)) || []
   }
+
+  // recall previous interactions
+  for (var i = 0; i < interactionsHistory.length; i++) {
+    addBubble(interactionsHistory[i].say, function() {}, interactionsHistory[i].reply, false)
+  }
+
+
+
 }
 
 // below functions are specifically for WebPack-type project that work with import()

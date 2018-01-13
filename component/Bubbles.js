@@ -6,6 +6,7 @@ function Bubbles(container, self, options) {
   typeSpeed = options.typeSpeed || 5 // delay per character, to simulate the machine "typing"
   widerBy = options.widerBy || 2 // add a little extra width to bubbles to make sure they don't break
   sidePadding = options.sidePadding || 6 // padding on both sides of chat bubbles
+  recallInteractions = options.recallInteractions || 0 // number of interactions to be remembered and brought back upon restart
   inputCallbackFn = options.inputCallbackFn || false // should we display an input field?
 
   var standingAnswer = "ice" // remember where to restart convo if interrupted
@@ -13,6 +14,15 @@ function Bubbles(container, self, options) {
   var _convo = {} // local memory for conversation JSON object
   //--> NOTE that this object is only assigned once, per session and does not change for this
   // 		constructor name during open session.
+
+  // local storage for recalling conversations upon restart
+  var interactionsLS = "chat-bubble-interactions"
+  var interactionsHistory =
+    JSON.parse(localStorage.getItem(interactionsLS)) || []
+  this.interactionsSave = function(say, posted, reply){
+    interactionsHistory.push({say: say, posted: posted, reply: reply});
+    localStorage.setItem(interactionsLS, JSON.stringify(interactionsHistory));
+  }
 
   // set up the stage
   container.classList.add("bubble-container")
@@ -217,6 +227,9 @@ function Bubbles(container, self, options) {
       }
       setTimeout(scrollBubbles, animationTime / 2)
     }, wait + animationTime * 2)
+
+    // save the interaction
+    JSON.parse(localStorage.getItem(interactionsLS)) || []
   }
 }
 
@@ -227,7 +240,7 @@ function prepHTML(options) {
   // options
   var options = typeof options !== "undefined" ? options : {}
   var container = options.container || "chat" // id of the container HTML element
-	var relative_path = options.relative_path || "./node_modules/chat-bubble/"
+  var relative_path = options.relative_path || "./node_modules/chat-bubble/"
 
   // make HTML container element
   window[container] = document.createElement("div")
@@ -237,20 +250,21 @@ function prepHTML(options) {
   // style everything
   var appendCSS = function(file) {
     var link = document.createElement("link")
-    link.href = file;
+    link.href = file
     link.type = "text/css"
     link.rel = "stylesheet"
     link.media = "screen,print"
     document.getElementsByTagName("head")[0].appendChild(link)
   }
-	appendCSS(relative_path+ "component/styles/input.css");
-	appendCSS(relative_path + "component/styles/reply.css")
-	appendCSS(relative_path + "component/styles/says.css")
-	appendCSS(relative_path + "component/styles/setup.css")
-	appendCSS(relative_path + "component/styles/typing.css")
-
+  appendCSS(relative_path + "component/styles/input.css")
+  appendCSS(relative_path + "component/styles/reply.css")
+  appendCSS(relative_path + "component/styles/says.css")
+  appendCSS(relative_path + "component/styles/setup.css")
+  appendCSS(relative_path + "component/styles/typing.css")
 }
 
 // exports for es6
-exports.Bubbles = Bubbles
-exports.prepHTML = prepHTML
+if(typeof exports !== "undefined"){
+  exports.Bubbles = Bubbles
+  exports.prepHTML = prepHTML
+}

@@ -10,7 +10,7 @@
 	max-width: 65%;
 }
 .bubble.reply.say {
-/* 
+/*
   min-width: 350px;
  */
 }
@@ -69,6 +69,14 @@
 	transform: scale(1) translate3d(0px, 0px, 0px);;
   padding: 8px 16px;
   height: auto;
+}
+
+/* interaction recall styles */
+.bubble.history .bubble-content .bubble-button,
+.bubble.history.reply:not(.bubble-picked) .bubble-content .bubble-button:hover,
+.bubble.history.reply .bubble-content .bubble-button.bubble-pick {
+	background: rgba(44, 44, 44, 0.67);
+	cursor: default;
 }
 
 /* input fields for bubbles */

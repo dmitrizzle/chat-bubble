@@ -2,16 +2,24 @@
 <head>
 	<title>Chat Bubble Basics 1</title>
 	<meta charset="utf-8">
-	
+
 	<!-- for mobile screens -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
 	<!-- stylesheets for bubbles -->
 	<link rel="stylesheet" media="all" href="../styles/setup.css">
 	<link rel="stylesheet" media="all" href="../styles/says.css">
 	<link rel="stylesheet" media="all" href="../styles/reply.css">
 	<link rel="stylesheet" media="all" href="../styles/typing.css">
 	<link rel="stylesheet" media="all" href="../styles/input.css">
+	<style>
+	body {
+		background: #dcdde0;
+	}
+	.bubble-container {
+		height: 100vh;
+	}
+	</style>
 
 </head><body>
 
@@ -22,20 +30,18 @@
 <div id="chat"></div>
 
 <script>
-
 // this is the most basic chat setup possible.
 // "ice" is the default conversation block for the bot to start, this key is required.
 // you can have an array of bubbles, for example: ["Hi", "It's me!"]
-var convo = { "ice": { "says": [ "Hi" ] } }
+var convo = { ice: { says: ["Hi"] } }
 
 // set up the chatbot script
 var givemeBubbles = new Bubbles(
-	document.getElementById('chat'), 	// attach chatbot to placeholder above ^^
-	"givemeBubbles"										// you need to pass the name of the constructor variable that evokes Bubble function here
-);
+  document.getElementById("chat"), // attach chatbot to placeholder above ^^
+  "givemeBubbles" // you need to pass the name of the constructor variable that evokes Bubble function here
+)
 
 // pass JSON to your function and you're done!
-givemeBubbles.talk(convo);
-
+givemeBubbles.talk(convo)
 </script>
 </body>

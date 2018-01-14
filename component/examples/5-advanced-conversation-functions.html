@@ -2,17 +2,24 @@
 <head>
 	<title>Chat Bubble Basics 1</title>
 	<meta charset="utf-8">
-	
+
 	<!-- for mobile screens -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
 	<!-- stylesheets for bubbles -->
 	<link rel="stylesheet" media="all" href="../styles/setup.css">
 	<link rel="stylesheet" media="all" href="../styles/says.css">
 	<link rel="stylesheet" media="all" href="../styles/reply.css">
 	<link rel="stylesheet" media="all" href="../styles/typing.css">
 	<link rel="stylesheet" media="all" href="../styles/input.css">
-
+	<style>
+	body {
+		background: #dcdde0;
+	}
+	.bubble-container {
+		height: 100vh;
+	}
+	</style>
 </head><body>
 
 <!-- the script -->
@@ -43,19 +50,19 @@ var convo = {
 		"reply" : [ // this is an array of possible answers that user can pick. 3 or less options recommended.
 			{
 				"question" 	: "Banana",	// this is the text label for one of the options
-				
-				
-				
+
+
+
 				// instead of the key name for conversation block you can simply pass a name of the function you want to call
 				// it can not accept any parameters at this moment.
 				// this function has to be declared on this very document page
 				// this is for security.
 				// see line 91 for this function.
 				"answer" 		: "bananaFunction",	// this is the reference for next block in this conversation (see below)
-				
-				
-				
-				
+
+
+
+
 			},
 			{
 				"question" 	: "Ice Cream", // users can see this text and click it

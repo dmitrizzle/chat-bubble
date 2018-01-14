@@ -6,13 +6,12 @@
 	right: 0;
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	color: #2c2c2c;
-	background: rgba(255, 255, 255, 0.95);
 }
 .bubble-container .input-wrap textarea {
 	width: calc(100% - 20px);
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	color: #2c2c2c;
-	background: #fafafa;
+	background: rgba(250, 250, 250, 0.95);
 	font-size: 1em;
 	letter-spacing: .5px;
 	font-weight: 400;

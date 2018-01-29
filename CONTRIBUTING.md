@@ -1,5 +1,5 @@
-If you'd like to contribute to the project, please submit a Pull Request.
+If you'd like to contribute to the project, please submit a Pull Request or an issue.
+- All the code is written in ES5 JavaScript with compatibility expectation for IE11 browsers and later.
+- No local server or developement environment is required or recommended to work on/build this project. All examples, Bubbles.js code, and CSS is expected to run straight in-browser.
 
-To get this running on your system you can simply `yarn add chat-bubble` or `npm install chat-bubble` and then run `yarn playground` or `npm run playground`
-
-Feel free to dig around examples folder. **Contributions to documentation are expecially welcome!**
+Thank you!

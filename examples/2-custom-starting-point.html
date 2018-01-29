@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Custom Starting Pont for chat-bubble</title>
+
+	<!-- for mobile screens -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- stylesheets are conveniently separated into components -->
+	<link rel="stylesheet" media="all" href="../component/styles/setup.css">
+	<link rel="stylesheet" media="all" href="../component/styles/says.css">
+	<link rel="stylesheet" media="all" href="../component/styles/reply.css">
+	<link rel="stylesheet" media="all" href="../component/styles/typing.css">
+	<link rel="stylesheet" media="all" href="../component/styles/input.css">
+	<style>
+	body {
+		background: #dcdde0;
+	}
+	.bubble-container {
+		height: 100vh;
+	}
+	</style>
+</head>
+<body>
+
+<!-- container element for chat window -->
+<div id="chat"></div>
+
+<!-- import the JavaScript file -->
+<script src="../component/Bubbles.js"></script>
+<script>
+// initialize by constructing a named function...
+var chatWindow = new Bubbles(
+  document.getElementById("chat"), // ...passing HTML container element...
+  "chatWindow" // ...and name of the function as a parameter
+)
+
+// conversation object defined separately, but just the same as in the
+// "Basic chat-bubble Example" (1-basics.html)
+var convo = {
+  // "ice" (as in "breaking the ice") is a required conversation object
+  // that maps the first thing the bot will say to the user
+  ice: {
+    // "says" defines an array of sequential bubbles
+    // that the bot will produce
+    says: ["Hey!", "Can I have a banana?"],
+
+    // "reply" is an array of possible options the user can pick from
+    // as a reply
+    reply: [
+      {
+        question: "🍌", // label for the reply option
+        answer: "banana" // key for the next conversation object
+      }
+    ]
+  }, // end required "ice" conversation object
+
+  // another conversation object that can be queued from within
+  // any other conversation object, including itself
+  banana: {
+    says: ["Thank you!", "Can I have another banana?"],
+    reply: [
+      {
+        question: "🍌🍌",
+        answer: "banana"
+      }
+    ]
+  } // end conversation object
+}
+
+// CUSTOM STARTPOINT for conversation block defined as a
+// second parameter in .talk() function:
+chatWindow.talk(convo, "banana")
+
+// that's it!
+</script>
+</body>

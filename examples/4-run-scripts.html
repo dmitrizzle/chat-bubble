@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Run Scripts from chat-bubble</title>
+
+	<!-- for mobile screens -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- stylesheets are conveniently separated into components -->
+	<link rel="stylesheet" media="all" href="../component/styles/setup.css">
+	<link rel="stylesheet" media="all" href="../component/styles/says.css">
+	<link rel="stylesheet" media="all" href="../component/styles/reply.css">
+	<link rel="stylesheet" media="all" href="../component/styles/typing.css">
+	<link rel="stylesheet" media="all" href="../component/styles/input.css">
+	<style>
+	body {
+		background: #dcdde0;
+	}
+	.bubble-container {
+		height: 100vh;
+	}
+	.bubble-container .input-wrap textarea {
+		margin: 0;
+		width: calc(100% - 30px);
+	}
+	</style>
+</head>
+<body>
+
+<!-- container element for chat window -->
+<div id="chat"></div>
+
+<!-- import the JavaScript file -->
+<script src="../component/Bubbles.js"></script>
+<script>
+// initialize by constructing a named function...
+var chatWindow = new Bubbles(
+  document.getElementById("chat"), // ...passing HTML container element...
+  "chatWindow" // ...and name of the function as a parameter
+)
+
+// conversation object defined separately, but just the same as in the
+// "Basic chat-bubble Example" (1-basics.html) -- with an exception that...
+// ...allows running your scripts on-demand
+var convo = {
+  ice: {
+    says: ["Hi", "Would you like banana or ice cream?"],
+    reply: [
+      {
+        question: "Banana",
+
+        // instead of the key name for conversation block you can simply pass
+        // a name of the function you want to call
+        // it can not accept any parameters at this moment;
+        // this function has to be declared on this very document page
+        // this is for security;
+        answer: "bananaFunction"
+      },
+      {
+        question: "Ice Cream",
+        answer: "ice-cream"
+      }
+    ]
+  },
+  "ice-cream": {
+    says: ["🍦"],
+    reply: [
+      {
+        question: "Start Over",
+        answer: "ice"
+      }
+    ]
+  }
+}
+
+// this function is called when user asks for banana
+bananaFunction = function() {
+  alert("🍌")
+  chatWindow.talk(convo, "ice") // the conversation can be easily restarted from here.
+}
+
+// pass JSON to your function and you're done!
+chatWindow.talk(convo)
+</script>
+</body>

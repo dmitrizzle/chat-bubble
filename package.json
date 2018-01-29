@@ -1,11 +1,8 @@
 {
   "name": "chat-bubble",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Simple chatbot UI for Web with JSON scripting. Zero dependencies.",
   "main": "component/Bubble.js",
-  "scripts": {
-    "playground": "open ./component/examples/4-advanced-keyboard.html"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dmitrizzle/chat-bubble.git"

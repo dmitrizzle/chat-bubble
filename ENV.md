@@ -1,7 +1,7 @@
 # Get your project environment started for `chat-bubble` with Yarn and WebPack
-> This readme is based on [this](https://appdividend.com/2017/03/28/beginners-guide-to-setup-es6-development-environment/) (no relation).
+> This readme is based on [this](https://appdividend.com/2017/03/28/beginners-guide-to-setup-es6-development-environment/) guide (no relation).
 
-It's presumed that you have [Yarn](https://yarnpkg.com/lang/en/docs/install/) installed on your system. NPM will work too, but you'll need to switch the commands a bit. This guide does not include versioning (like GitHub) setup which you should probably have as well.
+It's presumed that you have [Yarn](https://yarnpkg.com/lang/en/docs/install/) installed on your system. NPM will work too, but you'll need to switch the commands. This guide does not include versioning (like GitHub) setup which you should probably have as well.
 
 1. Run `yarn init` in your project directory. You can leave all fields blank.
 2. Run `yarn add webpack webpack-dev-server babel-core babel-loader babel-preset-es2015 --save-dev`

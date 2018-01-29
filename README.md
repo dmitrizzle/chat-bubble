@@ -1,16 +1,19 @@
-# 🤖 chat-bubble
+# chat-bubble
 [![npm version](https://badge.fury.io/js/chat-bubble.svg)](https://badge.fury.io/js/chat-bubble)
-[![GitHub version](https://badge.fury.io/gh/dmitrizzle%2Fchat-bubble.svg)](https://badge.fury.io/gh/dmitrizzle%2Fchat-bubble)
+![dependencies](https://david-dm.org/dmitrizzle/chat-bubble.svg)
+![downloads](https://img.shields.io/npm/dt/chat-bubble.svg)
 
-> Simple chatbot UI for the Web with JSON scripting.
+> Simple chatbot UI for the Web with JSON scripting 👋🤖🤙
 
 ![Screenshot](screenshot.gif?raw=true)
 
-- Quick set-up, no-brainer implementation. Works with or without Natural Language Classifiers.
-- 1KB GZipped.
-- No dependencies. Written with ES5 (compatible with IE11+, Edge + modern browsers).
+- Quick set-up & implementation.
+- Works with or without Natural Language Classifiers.
+- 1KB GZipped. No dependencies. Written with ES5 (compatible with IE11+).
 
-# [Demo](#demos--more-usage-examples) | [Tutorial Video](https://www.youtube.com/watch?v=fkJ935a7VSk) 👀
+***
+
+**[Demo](#demos--more-usage-examples)** | [Tutorial Video](https://www.youtube.com/watch?v=fkJ935a7VSk)
 
 ***
 
@@ -22,7 +25,7 @@
 Get the .ZIP file [here](https://github.com/dmitrizzle/chat-bubble/archive/master.zip).
 
 ## Quick start
-This method assumes you've got a development environment running that's capable of transpiling ES6 JavaScript. There's a short guide on how to get one working [here](ENV.md). Otherwise see "I have no ES6 dev environment."
+This method assumes you've got a development environment running that's capable of transpiling ES6 JavaScript. There's a short guide on how to get one working [here](ENV.md). Otherwise see "[I have no ES6 dev environment](https://github.com/dmitrizzle/chat-bubble/new/master#i-have-no-es6-dev-environment)." This guide will show you how to build [this](https://dmitrizzle.github.io/chat-bubble/examples/1-basics.html).
 
 ```javascript
 /************************************************************************/
@@ -33,8 +36,9 @@ This method assumes you've got a development environment running that's capable 
 import { Bubbles, prepHTML } from "../node_modules/chat-bubble/component/Bubbles.js"
 
 // this is a convenience script that builds all necessary HTML,
-// imports all scripts and stylesheets
-// you can specify a different ID for the HTML div container with
+// imports all scripts and stylesheets; your container DIV will
+// have a default `id="chat"`;
+// you can specify a different ID with:
 // `container: "my_chatbox_id"` option
 prepHTML({relative_path: "../node_modules/chat-bubble/"})
 
@@ -44,7 +48,7 @@ prepHTML({relative_path: "../node_modules/chat-bubble/"})
 /************************************************************************/
 
 // initialize by constructing a named function...
-var chatWindow = new Bubbles(
+const chatWindow = new Bubbles(
     document.getElementById('chat'), // ...passing HTML container element...
     "chatWindow" // ...and name of the function as a parameter
 );
@@ -88,7 +92,7 @@ chatWindow.talk(
 ```
 
 ## "I have no ES6 dev environment!"
-If you don't want to bother with setting up a development server and transpiler for ES6 code, I get it. Simply unzip the [package](https://github.com/dmitrizzle/chat-bubble/archive/master.zip) and create `index.html` inside of that directory and add all the JavaScript that you see SAMPLE IMPLEMENTATION comment above.
+If you don't want to bother with setting up a development server and transpiler for ES6 code, I get it. Simply unzip the [package](https://github.com/dmitrizzle/chat-bubble/archive/master.zip) and create `index.html` inside of that directory. Then add all the JavaScript that you see below the `/*SAMPLE IMPLEMENTATION*/` comment in the code example above. Replace `const` with `var`.
 
 ```html
 <!DOCTYPE html>

@@ -9,6 +9,9 @@
 	padding: 0;
 	max-width: 65%;
 }
+.bubble.reply.history {
+	margin: 0 0 2px 0; /* remembered bubbles do not need to stand out via margin */
+}
 .bubble.reply.say {
 /*
   min-width: 350px;

@@ -26,8 +26,18 @@ function Bubbles(container, self, options) {
     if (interactionsHistory.length >= recallInteractions)
       interactionsHistory.shift() // removes the oldest (first) save to make space
 
-    // remove interactive elements from reply bubbles set in `this.reply()` function
-    var say = say.replace(/style=".*?"/, "").replace(/onClick=".*?"/, "")
+    // do not memorize buttons; only user input gets memorized:
+    if (
+      // `bubble-button` class name signals that it's a button
+      say.includes("bubble-button") &&
+      // if it is not of a type of textual reply
+      reply !== "reply reply-freeform" &&
+      // if it is not of a type of textual reply or memorized user choice
+      reply !== "reply reply-pick"
+    )
+      // ...it shan't be memorized
+      return
+
 
     // save to memory
     interactionsHistory.push({ say: say, reply: reply })
@@ -35,7 +45,7 @@ function Bubbles(container, self, options) {
 
   // commit save to localStorage
   interactionsSaveCommit = function() {
-    console.log(interactionsHistory.length)
+    //console.log(interactionsHistory.length)
     localStorage.setItem(interactionsLS, JSON.stringify(interactionsHistory))
   }
 
@@ -121,6 +131,8 @@ function Bubbles(container, self, options) {
             self +
             ".answer('" +
             el.answer +
+            "', '" +
+            el.question +
             "');this.classList.add('bubble-pick')\">" +
             el.question +
             "</span>"
@@ -135,13 +147,23 @@ function Bubbles(container, self, options) {
     })
   }
   // navigate "answers"
-  this.answer = function(key) {
+  this.answer = function(key, content) {
     var func = function(key) {
       typeof window[key] === "function" ? window[key]() : false
     }
     _convo[key] !== undefined
       ? (this.reply(_convo[key]), (standingAnswer = key))
       : func(key)
+
+    // add re-generated user picks to the history stack
+    if (_convo[key] !== undefined && content !== undefined) {
+      interactionsSave(
+        '<span class="bubble-button reply-pick">' +
+          content +
+          "</span>",
+        "reply reply-pick"
+      )
+    }
   }
 
   // api for typing bubble

@@ -53,5 +53,5 @@
   transition: all 0ms !important;
 }
 .bubble.history {
-  opacity: .5;
+  opacity: .25;
 }

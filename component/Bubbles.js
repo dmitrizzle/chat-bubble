@@ -45,7 +45,11 @@ function Bubbles(container, self, options) {
 
   // commit save to localStorage
   interactionsSaveCommit = function() {
+<<<<<<< HEAD
     //console.log(interactionsHistory.length)
+=======
+    console.log(interactionsHistory.length)
+>>>>>>> 6690b19549c1c2173107ba5a8bc311be8bc0b451
     localStorage.setItem(interactionsLS, JSON.stringify(interactionsHistory))
   }
 

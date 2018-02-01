@@ -16,12 +16,24 @@ function Bubbles(container, self, options) {
   // 		constructor name during open session.
 
   // local storage for recalling conversations upon restart
-  var interactionsLS = "chat-bubble-interactions"
-  var interactionsHistory =
+  var localStorageCheck = function() {
+    var test = "chat-bubble-storage-test"
+    try {
+      localStorage.setItem(test, test)
+      localStorage.removeItem(test)
+      return true
+    } catch (error) {
+      console.warn("Your server does not allow storing data locally. Most likely it's because you've opened this page from your hard-drive. For testing you can disable your browser's security or start a localhost environment.");
+      return false
+    }
+  }
+  var localStorageAvailable = localStorageCheck()
+  var interactionsHistory = localStorageAvailable &&
     JSON.parse(localStorage.getItem(interactionsLS)) || []
 
   // prepare next save point
   interactionsSave = function(say, reply) {
+    if(!localStorageAvailable) return
     // limit number of saves
     if (interactionsHistory.length >= recallInteractions)
       interactionsHistory.shift() // removes the oldest (first) save to make space
@@ -38,13 +50,13 @@ function Bubbles(container, self, options) {
       // ...it shan't be memorized
       return
 
-
     // save to memory
     interactionsHistory.push({ say: say, reply: reply })
   }
 
   // commit save to localStorage
   interactionsSaveCommit = function() {
+    if(!localStorageAvailable) return
     localStorage.setItem(interactionsLS, JSON.stringify(interactionsHistory))
   }
 
@@ -118,7 +130,6 @@ function Bubbles(container, self, options) {
     iceBreaker = typeof turn === "undefined"
     turn = !iceBreaker ? turn : _convo.ice
     questionsHTML = ""
-
     if (turn.reply !== undefined) {
       turn.reply.reverse()
       for (var i = 0; i < turn.reply.length; i++) {
@@ -157,9 +168,7 @@ function Bubbles(container, self, options) {
     // add re-generated user picks to the history stack
     if (_convo[key] !== undefined && content !== undefined) {
       interactionsSave(
-        '<span class="bubble-button reply-pick">' +
-          content +
-          "</span>",
+        '<span class="bubble-button reply-pick">' + content + "</span>",
         "reply reply-pick"
       )
     }
@@ -199,9 +208,8 @@ function Bubbles(container, self, options) {
   var bubbleQueue = false
   var addBubble = function(say, posted, reply, live) {
     live = typeof live !== "undefined" ? live : true // bubbles that are not "live" are not animated and displayed differently
-    var animationTime = live ? animationTime : 0
+    var animationTime = live ? this.animationTime : 0
     var typeSpeed = live ? typeSpeed : 0
-
     reply = typeof reply !== "undefined" ? reply : ""
     // create bubble element
     var bubble = document.createElement("div")

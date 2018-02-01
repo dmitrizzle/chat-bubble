@@ -23,11 +23,12 @@ function Bubbles(container, self, options) {
       localStorage.removeItem(test)
       return true
     } catch (error) {
-      console.warn("Your server does not allow storing data locally. Most likely it's because you've opened this page from your hard-drive. For testing you can disable your browser's security or start a localhost environment.");
+      console.error("Your server does not allow storing data locally. Most likely it's because you've opened this page from your hard-drive. For testing you can disable your browser's security or start a localhost environment.");
       return false
     }
   }
   var localStorageAvailable = localStorageCheck()
+  var interactionsLS = "chat-bubble-interactions"
   var interactionsHistory = localStorageAvailable &&
     JSON.parse(localStorage.getItem(interactionsLS)) || []
 

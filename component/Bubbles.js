@@ -23,18 +23,22 @@ function Bubbles(container, self, options) {
       localStorage.removeItem(test)
       return true
     } catch (error) {
-      console.error("Your server does not allow storing data locally. Most likely it's because you've opened this page from your hard-drive. For testing you can disable your browser's security or start a localhost environment.");
+      console.error(
+        "Your server does not allow storing data locally. Most likely it's because you've opened this page from your hard-drive. For testing you can disable your browser's security or start a localhost environment."
+      )
       return false
     }
   }
   var localStorageAvailable = localStorageCheck() && recallInteractions > 0
   var interactionsLS = "chat-bubble-interactions"
-  var interactionsHistory = localStorageAvailable &&
-    JSON.parse(localStorage.getItem(interactionsLS)) || []
+  var interactionsHistory =
+    (localStorageAvailable &&
+      JSON.parse(localStorage.getItem(interactionsLS))) ||
+    []
 
   // prepare next save point
   interactionsSave = function(say, reply) {
-    if(!localStorageAvailable) return
+    if (!localStorageAvailable) return
     // limit number of saves
     if (interactionsHistory.length > recallInteractions)
       interactionsHistory.shift() // removes the oldest (first) save to make space
@@ -57,7 +61,7 @@ function Bubbles(container, self, options) {
 
   // commit save to localStorage
   interactionsSaveCommit = function() {
-    if(!localStorageAvailable) return
+    if (!localStorageAvailable) return
     localStorage.setItem(interactionsLS, JSON.stringify(interactionsHistory))
   }
 
@@ -131,6 +135,7 @@ function Bubbles(container, self, options) {
     iceBreaker = typeof turn === "undefined"
     turn = !iceBreaker ? turn : _convo.ice
     questionsHTML = ""
+    if (!turn) return
     if (turn.reply !== undefined) {
       turn.reply.reverse()
       for (var i = 0; i < turn.reply.length; i++) {
@@ -208,10 +213,10 @@ function Bubbles(container, self, options) {
   // create a bubble
   var bubbleQueue = false
   var addBubble = function(say, posted, reply, live) {
+    reply = typeof reply !== "undefined" ? reply : ""
     live = typeof live !== "undefined" ? live : true // bubbles that are not "live" are not animated and displayed differently
     var animationTime = live ? this.animationTime : 0
-    var typeSpeed = live ? typeSpeed : 0
-    reply = typeof reply !== "undefined" ? reply : ""
+    var typeSpeed = live ? this.typeSpeed : 0
     // create bubble element
     var bubble = document.createElement("div")
     var bubbleContent = document.createElement("span")
@@ -223,7 +228,6 @@ function Bubbles(container, self, options) {
     // answer picker styles
     if (reply !== "") {
       var bubbleButtons = bubbleContent.querySelectorAll(".bubble-button")
-
       for (var z = 0; z < bubbleButtons.length; z++) {
         ;(function(el) {
           if (!el.parentNode.parentNode.classList.contains("reply-freeform"))
@@ -251,7 +255,7 @@ function Bubbles(container, self, options) {
         bubbleTyping.classList.remove("imagine")
       }, animationTime)
     }
-    setTimeout(function() {
+    live && setTimeout(function() {
       bubbleTyping.classList.add("imagine")
     }, wait - animationTime * 2)
     bubbleQueue = setTimeout(function() {

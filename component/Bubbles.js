@@ -6,7 +6,7 @@ function Bubbles(container, self, options) {
   typeSpeed = options.typeSpeed || 5 // delay per character, to simulate the machine "typing"
   widerBy = options.widerBy || 2 // add a little extra width to bubbles to make sure they don't break
   sidePadding = options.sidePadding || 6 // padding on both sides of chat bubbles
-  recallInteractions = options.recallInteractions || 10 // number of interactions to be remembered and brought back upon restart
+  recallInteractions = options.recallInteractions || 0 // number of interactions to be remembered and brought back upon restart
   inputCallbackFn = options.inputCallbackFn || false // should we display an input field?
 
   var standingAnswer = "ice" // remember where to restart convo if interrupted
@@ -27,7 +27,7 @@ function Bubbles(container, self, options) {
       return false
     }
   }
-  var localStorageAvailable = localStorageCheck()
+  var localStorageAvailable = localStorageCheck() && recallInteractions > 0
   var interactionsLS = "chat-bubble-interactions"
   var interactionsHistory = localStorageAvailable &&
     JSON.parse(localStorage.getItem(interactionsLS)) || []
@@ -36,7 +36,7 @@ function Bubbles(container, self, options) {
   interactionsSave = function(say, reply) {
     if(!localStorageAvailable) return
     // limit number of saves
-    if (interactionsHistory.length >= recallInteractions)
+    if (interactionsHistory.length > recallInteractions)
       interactionsHistory.shift() // removes the oldest (first) save to make space
 
     // do not memorize buttons; only user input gets memorized:

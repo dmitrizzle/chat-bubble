@@ -23,7 +23,8 @@ module.exports = {
     },
     devServer: {
         port: 3000
-    }
+    },
+    devtool: 'inline-source-map'
 };
 ```
 4. Create `index.html` inside the root of your project directory:

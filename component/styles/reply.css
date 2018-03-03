@@ -1,75 +1,80 @@
 /* style user response reply */
 .bubble.reply {
-	background: transparent;
-	box-shadow: none;
-	float: right;
-	position: relative;
-	transform-origin: right top;
+  background: transparent;
+  box-shadow: none;
+  float: right;
+  position: relative;
+  transform-origin: right top;
   margin: 8px 0 10px;
-	padding: 0;
-	max-width: 65%;
+  padding: 0;
+  max-width: 65%;
 }
 .bubble.reply.history {
-	margin: 0 0 2px 0; /* remembered bubbles do not need to stand out via margin */
+  margin: 0 0 2px 0; /* remembered bubbles do not need to stand out via margin */
 }
 .bubble.reply.say {
-/*
+  /*
   min-width: 350px;
  */
 }
 .bubble.reply .bubble-content {
-	transition: all 200ms;
+  transition: all 200ms;
 }
 .bubble.reply .bubble-content .bubble-button {
-	background: rgba(44, 44, 44, 0.67);
-	color: #fff;
-	padding: 8px 16px;
-	border-radius: 15px 15px 5px 5px;
-	margin-left: 2px;
-	text-align: center;
-	display: inline-block;
+  background: rgba(44, 44, 44, 0.67);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 15px 15px 5px 5px;
+  margin-left: 2px;
+  text-align: center;
+  display: inline-block;
   float: right;
-	cursor: pointer;
-	transition: all 200ms;
-	text-decoration: none;
-	word-break: normal;
-	/* animation-duration: 1s; */
-	animation-name: animate-reply;
-	animation-play-state: paused;
-	animation-fill-mode: forwards;
-	/* opacity: 0; */
-	transform: translate3d(0px, 0px, 0px);
-	animation-delay: -3s;
--ms-animation-delay: -3;
--webkit-animation-delay: -3s;
+  cursor: pointer;
+  transition: all 200ms;
+  text-decoration: none;
+  word-break: normal;
+	box-sizing: content-box;
+  /* animation-duration: 1s; */
+  animation-name: animate-reply;
+  animation-play-state: paused;
+  animation-fill-mode: forwards;
+  /* opacity: 0; */
+  transform: translate3d(0px, 0px, 0px);
+  animation-delay: -3s;
+  -ms-animation-delay: -3;
+  -webkit-animation-delay: -3s;
 }
 @keyframes animate-reply {
-    from { opacity: 0 }
-    to { opacity: 1 }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 .bubble.reply.say .bubble-content .bubble-button {
-	animation-play-state: running;
-	margin-top: 3px;
-	min-height: 24px;
-	overflow: hidden;
+  animation-play-state: running;
+  margin-top: 3px;
+  min-height: 24px;
+  overflow: hidden;
 }
 
 .bubble.reply .bubble-content .bubble-button:first-child {
-	border-radius: 15px 15px 15px 5px;
-	margin-left: 2px;
+  border-radius: 15px 15px 15px 5px;
+  margin-left: 2px;
 }
 .bubble.reply .bubble-content .bubble-button:last-child,
 .bubble.reply .bubble-content .bubble-button.bubble-pick {
-	border-radius: 15px 15px 5px 15px;
+  border-radius: 15px 15px 5px 15px;
 }
 .bubble.reply.bubble-picked .bubble-content .bubble-button {
-	transform: scale(0) translate3d(0px, 0px, 0px);;
-	padding: 0;
+  transform: scale(0) translate3d(0px, 0px, 0px);
+  padding: 0;
 }
 .bubble.reply:not(.bubble-picked) .bubble-content .bubble-button:hover,
 .bubble.reply .bubble-content .bubble-button.bubble-pick {
-	background: rgba(44, 44, 44, 1);
-	transform: scale(1) translate3d(0px, 0px, 0px);;
+  background: rgba(44, 44, 44, 1);
+  transform: scale(1) translate3d(0px, 0px, 0px);
   padding: 8px 16px;
   height: auto;
 }
@@ -78,26 +83,28 @@
 .bubble.history .bubble-content .bubble-button,
 .bubble.history.reply:not(.bubble-picked) .bubble-content .bubble-button:hover,
 .bubble.history.reply .bubble-content .bubble-button.bubble-pick {
-	background: rgba(44, 44, 44, 0.67);
-	cursor: default;
+  background: rgba(44, 44, 44, 0.67);
+  cursor: default;
 }
 
 /* input fields for bubbles */
 .bubble .bubble-content input {
-	background: linear-gradient(193deg, #1faced, #5592dc 100%) !important;
-	box-shadow: 0 0px 1px 0px #000, 0 -1px 0 0px rgba(255, 255, 255, 0.38) inset;
-	text-shadow: 0 1px rgba(0, 0, 0, 0.35);
-	border: 0;
-	outline: 0;
+  background: linear-gradient(193deg, #1faced, #5592dc 100%) !important;
+  box-shadow: 0 0px 1px 0px #000, 0 -1px 0 0px rgba(255, 255, 255, 0.38) inset;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.35);
+  border: 0;
+  outline: 0;
 }
-.bubble .bubble-content input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: rgba(255,255,255,.5);
+.bubble .bubble-content input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: rgba(255, 255, 255, .5);
   text-shadow: none;
 }
-.bubble .bubble-content input::-moz-placeholder { /* Firefox 19+ */
-  color: rgba(255,255,255,.5);
+.bubble .bubble-content input::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, .5);
   text-shadow: none;
 }
 .bubble .bubble-content input:read-only {
-	background: linear-gradient(166deg, #48121d, #0d4058 100%) !important;
+  background: linear-gradient(166deg, #48121d, #0d4058 100%) !important;
 }

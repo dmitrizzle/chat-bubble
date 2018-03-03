@@ -18,6 +18,7 @@
   word-break: break-word;
   transform-origin: left top;
   transition: all 200ms;
+  box-sizing: content-box;
 }
 .bubble .bubble-content {
   transition: opacity 150ms;

@@ -38,187 +38,195 @@
     <!-- import the JavaScript file -->
     <script src="../component/Bubbles.js"></script>
     <script>
-        // initialize by constructing a named function...
-        var chatWindow = new Bubbles(
-            document.getElementById("chat"), // ...passing HTML container element...
-            "chatWindow" // ...and name of the function as a parameter
-        )
-        // `.talk()` will get your bot to begin the conversation
-        chatWindow.talk(
-            // pass your JSON/JavaScript object to `.talk()` function where
-            // you define how the conversation between the bot and user will go
-            {
-                // "ice" (as in "breaking the ice") is a required conversation object
-                // that maps the first thing the bot will say to the user
-                ice: {
-                    // "says" defines an array of sequential bubbles
-                    // that the bot will produce
-                    says: [
-                        "Hello",
-                        "We're exploring chat flows with chat-bubble.",
-                        "Would you like to talk with us about",
-                        "<strong>Bananas</strong>, <strong>Ice Cream</strong>, or <strong>Other Special Things</strong>?",
-                        "<img src=https://meanbusiness.com/wp-content/uploads/2018/04/PuppyEatingBanana.gif />"
-                    ],
-                    // "reply" is an array of possible options the user can pick from
-                    // as a reply
-                    reply: [
-                        {
-                            question: "Bananas or Ice Cream!", // label for the reply option
-                            answer: "chapter-one" // key for the next conversation object
-                        },
-                        {
-                            question: "No, Thanks.", // label for the reply option
-                            answer: "end" // key for an Escape Valve. We refer to this whenever a reply signals the end of the convo. 
-                        },
-                        {
-                            question: "What Kind of Other Special Things?", // label for the reply option
-                            answer: "sidetrack" // key for a side note we can reference from multiple points in the chat
-                        }
-                    ]
-                }, // end required "ice" conversation object
-                "sidetrack": {
-                    "says": [
-                        "Things we can use to take chats beyond one answer or the other.",
-                        "<img src=https://meanbusiness.com/wp-content/uploads/2018/04/Walk-Cycle-Banana-Jelly-Bean-GIF-by-Ethan-Barnowsky-source.gif />",
-                        "These options allow us to take side tracks from the main chat paths,",
-                        "like if we want to provide more instructions or context."
-                    ],
-                    "reply": [
-                        {
-                            "question": "More instructions, please.",
-                            "answer": "intro-context" // key for another side note. In this instance, we're using it to contextualize the Q&A we're heading into 
-                        },
-                        {
-                            "question": "Got it: On with the chat!",
-                            "answer": "chapter-one" // No further sidetrack required
-                        }
-                    ]
-                },
-                "intro-context": {
-                    "says": [
-                        "This is an example of instructions we can give",
-                        "to provide context for chats in a sidetrack or aside,",
-                        "And then flow people back onto the main track of the chat.",
-                    ],
-                    "reply": [
-                        {
-                            "question": "Play On!",
-                            "answer": "chapter-one"
-                        }
-                    ]
-                },
-                "chapter-one": {
-                    "says": [
-                        "Excellent -- Thank you.",
-                        "Now pick an answer,",
-                        "Or ask for help.",
-                        "Which do you prefer best?",
-                    ],
-                    "reply": [
-                        {
-                            "question": "Bananas!",
-                            "answer": "chapter-two" // here both replies send people onto the same next chapter 
-                        },
-                        {
-                            "question": "Ice Cream",  // both replies send people onto the same next chapter 
-                            "answer": "chapter-two"
-                        },
-                        {
-                            "question": "Help me understand what you expect of me.",
-                            "answer": "intro-context"
-                        }
-                    ],
-                },
-                "chapter-two": {
-                    "says": [
-                        "Both <strong>Bananas</strong> and <strong>Ice Cream</strong> take you here.",
-                        "<img src=https://meanbusiness.com/wp-content/uploads/2018/04/IceCream-MultipleCones.gif />",
-                        "Your next answer will take you to another prompt,",
-                        "Or to the end of the chat -- An Escape Valve we can use to exit the chat if we want.",
-                    ],
-                    "reply": [
-                        {
-                            "question": "Give me another prompt",
-                            "answer": "chapter-four"
-                        },
-                        {
-                            "question": "Take me to the End",
-                            "answer": "end" // An example of using the Escape Valve for ineligible, Not Applicable participants 
-                        },
-                    ]
-                },
-                "chapter-three": { // We skip this in this example to show you can do that. Use it if you want. 
-                    "says": [
-                        "Go ahead to the next chapter.",
-                        "<img src=http://meanbusiness.com/wp-content/uploads/2018/03/Coral-Participate-Phone_and_Laptop.jpg />",
-                    ],
-                    "reply": [
-                        {
-                            "question": "OK, I will.", // A Gimme: An easy answer with fewer choices to keep the egagement going. Useful during longer dialogues
-                            "answer": "chapter-four"
-                        }
-                    ]
-                },
-                "chapter-four": {
-                    "says": [
-                        "Thank you very much.",
-                        "<img src=http://meanbusiness.com/wp-content/uploads/2018/02/mel_b-Thank-You.gif />",
-                        "More prompts? Or Quit while we're behind?",
-                    ],
-                    "reply": [
-                        {
-                            "question": "Quit",
-                            "answer": "end"
-                        },
-                        {
-                            "question": "More",
-                            "answer": "chapter-five"
-                        },
-                    ],
-                },
-                "chapter-five": {
-                    "says": [
-                        "Answering 'Yes' here will open a new window with a page from another site", // call a function to an external resource / application outside of chat-bubble's purview
-                        "Answering 'Not Interested' will end the chat.", // call a function to an external resource / application outside of chat-bubble's purview
-                    ],
-                    "reply": [
-                        {
-                            "question": "Not interested, thanks.",
-                            "answer": "end"
-                        },
-                        {
-                            "question": "Yes",
-                            "answer": "externalResourceFunction"
-                        },
-                    ]
-                },
-                "end": {
-                    "says": [
-                        "'No, Thanks' hits the Escape Valve.",
-                        "Thanks for your time & attention.",
-                        "<img src=https://media.giphy.com/media/xUOxeXsWhw6DCW1cSA/giphy.gif>",
-                        "The chat is over, but you can Start Over to explore different chat flow options."
-                    ],
-                    "reply": [
-                        {
-                            "question": "[Start Over] 😁",
-                            "answer": "ice"
-                        },
-                    ]
-                },
-                // another conversation object that can be queued from within
-                // any other conversation object, including itself
-            } // end conversation object
-        )
+    // conversation object stored in separate variable:
+var convo = {
+  // "ice" (as in "breaking the ice") is a required conversation object
+  // that maps the first thing the bot will say to the user
+  ice: {
+    // "says" defines an array of sequential bubbles
+    // that the bot will produce
+    says: [
+      "Hello!",
+      "Let's explore advanced chat flows with <em>chat-bubble</em>.",
+      "In this example you'll see how this simple JavaScript framework can help you create advanced conversational sequences with GIFs!",
+      "To begin, choose how you'd like this (example) conversation to proceed...",
+      "...We can either talk about <strong>bananas and ice cream</strong> or <strong>other special things</strong>. Which one shall it be?",
+      "<img src=https://meanbusiness.com/wp-content/uploads/2018/04/PuppyEatingBanana.gif />"
+    ],
+    // "reply" is an array of possible options the user can pick from
+    // as a reply
+    reply: [
+      {
+        question: "Bananas and ice cream!", // label for the reply option
+        answer: "chapter-one" // key for the next conversation object
+      },
+      {
+        question: "No, thanks.", // label for the reply option
+        answer: "end" // key for an Escape Valve. We refer to this whenever a reply signals the end of the convo.
+      },
+      {
+        question: "What “other special things?”", // label for the reply option
+        answer: "sidetrack" // key for a side note we can reference from multiple points in the chat
+      }
+    ]
+  }, // end required "ice" conversation object
+  sidetrack: {
+    says: [
+      "Things which go way beyond a single topic of conversation!",
+      "<img src=https://meanbusiness.com/wp-content/uploads/2018/04/Walk-Cycle-Banana-Jelly-Bean-GIF-by-Ethan-Barnowsky-source.gif />",
+      "As in this case we are branching out from the main topic of “bananas and ice cream” into another series of prompts and possible replies.",
+      "This could be a useful way provide more instructions or context."
+    ],
+    reply: [
+      {
+        question: "Tell me more.",
+        answer: "intro-context" // key for another side note. In this instance, we're using it to contextualize the Q&A we're heading into
+      },
+      {
+        question: "Got it: on with the chat!",
+        answer: "chapter-one" // No further sidetrack required
+      }
+    ]
+  },
+  "intro-context": {
+    says: [
+      "This is an example of further instructions...",
+      "...Context and side-notes...",
+      "...With a way to return back to the main trunk of the conversation, like so:"
+    ],
+    reply: [
+      {
+        question: "To the main topic, bananas and ice cream!",
+        answer: "chapter-one"
+      }
+    ]
+  },
+  "chapter-one": {
+    says: [
+      "Excellent!",
+      "(This is the main topic of our chat.)",
+      "Bananas and ice cream.",
+      "Now, which do you prefer best?"
+    ],
+    reply: [
+      {
+        question: "Bananas!",
+        answer: "chapter-two" // here both replies send people onto the same next chapter
+      },
+      {
+        question: "Ice cream!", // both replies send people onto the same next chapter
+        answer: "chapter-two"
+      },
+      {
+        question: "What’s this button?",
+        answer: "intro-context"
+      }
+    ]
+  },
+  "chapter-two": {
+    says: [
+      "Both <strong>bananas</strong> and <strong>ice cream</strong> take you here.",
+      "<img src=https://meanbusiness.com/wp-content/uploads/2018/04/IceCream-MultipleCones.gif />",
+      "Your next answer will take you to another prompt...",
+      "...Or to the end of the chat, an “escape valve” we can use to end the chat if you want."
+    ],
+    reply: [
+      {
+        question: "Give me another prompt.",
+        answer: "chapter-four"
+      },
+      {
+        question: "End the chat.",
+        answer: "end" // An example of using the Escape Valve for ineligible, Not Applicable participants
+      }
+    ]
+  },
+  "chapter-three": {
+    // We skip this in this example to show you can do that. Use it if you want.
+    says: [
+      "Go ahead to the next chapter.",
+      "<img src=http://meanbusiness.com/wp-content/uploads/2018/03/Coral-Participate-Phone_and_Laptop.jpg />"
+    ],
+    reply: [
+      {
+        question: "OK, I will.", // A Gimme: An easy answer with fewer choices to keep the egagement going. Useful during longer dialogues
+        answer: "chapter-four"
+      }
+    ]
+  },
+  "chapter-four": {
+    says: [
+      "Hey, you're awesome!",
+      "<img src=http://meanbusiness.com/wp-content/uploads/2018/02/mel_b-Thank-You.gif />",
+      "More prompts?"
+    ],
+    reply: [
+      {
+        question: "Nope.",
+        answer: "end"
+      },
+      {
+        question: "Yes, more prompts!",
+        answer: "chapter-five"
+      }
+    ]
+  },
+  "chapter-five": {
+    says: [
+      "Answering 'Yes' here will open a new window with a page from another site...", // call a function to an external resource / application outside of chat-bubble's purview
+      "...And confirm that you're awesome, again.",
+      "Answering 'Not interested' will end the chat." // call a function to an external resource / application outside of chat-bubble's purview
+    ],
+    reply: [
+      {
+        question: "Not interested.",
+        answer: "end"
+      },
+      {
+        question: "Yes!",
+        answer: "externalResourceFunction"
+      }
+    ]
+  },
+  end: {
+    says: [
+      "Thanks for your time and attention.",
+      "<img src=https://media.giphy.com/media/xUOxeXsWhw6DCW1cSA/giphy.gif>",
+      "The chat is over, but you can <strong>start over</strong> to see how this conversation could have gone differently."
+    ],
+    reply: [
+      {
+        question: "Start over 😁",
+        answer: "ice"
+      }
+    ]
+  }
+  // another conversation object that can be queued from within
+  // any other conversation object, including itself
+} // end conversation object
 
-        // this function is called when user asks for banana
-        externalResourceFunction = function () {
-            window.open("https://meanbusiness.com/wp-content/uploads/2018/04/IceCream-BananaSkis.gif", "_blank",
-                "toolbar=no,scrollbars=no,menubar=no,resizable=no,location=no,titlebar=no,width=300,height=600")
-            chatWindow.talk(convo, "ice") // the conversation can be easily restarted from here.
-        }
-    </script>
+// initialize by constructing a named function...
+var chatWindow = new Bubbles(
+  document.getElementById("chat"), // ...passing HTML container element...
+  "chatWindow" // ...and name of the function as a parameter
+)
+// `.talk()` will get your bot to begin the conversation
+chatWindow.talk(
+  // pass your JSON/JavaScript object to `.talk()` function where
+  // you define how the conversation between the bot and user will go
+  convo
+)
+
+// this function is called when user asks for banana
+externalResourceFunction = function() {
+  chatWindow.talk(convo, "chapter-four") // the conversation can be easily restarted from here.
+  window.open(
+    "https://meanbusiness.com/wp-content/uploads/2018/04/IceCream-BananaSkis.gif",
+    "_blank",
+    "toolbar=no,scrollbars=no,menubar=no,resizable=no,location=no,titlebar=no,width=300,height=600"
+  )
+}
+</script>
 </body>
 
 </html>

@@ -132,7 +132,7 @@ Now open this file in your browser. Done!
 3. [Keyboard input](https://dmitrizzle.github.io/chat-bubble/examples/3-keyboard-input.html): a basic plugin-like structure that lets you implement your own keyboard input and text recognition (though it does not process natural language).
 4. [Run scripts](https://dmitrizzle.github.io/chat-bubble/examples/4-run-scripts.html): your bot's replies can do things. Not only it could say something, but it could point your user towards an action, or perform it by running JavaScript.
 5. Natural Language Classifier implementation (coming soon)
-6. [Advanced Flow](https://dmitrizzle.github.io/chat-bubble/examples/6-advanced-flow.html): logical branches, recurring references, contextual guidance.
+6. [Advanced Flows](https://dmitrizzle.github.io/chat-bubble/examples/6-advanced-flows.html): logical branches, recurring references, contextual guidance.
 
 ## FAQ:
 - Can I add images and HTML code to my bot?

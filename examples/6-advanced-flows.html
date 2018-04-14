@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Advanced chat flows with chat-bubble</title>
+    <title>Advanced Chat Flows with chat-bubble</title>
 
     <!-- for mobile screens -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,14 +62,16 @@ var convo = {
       },
       {
         question: "No, thanks.", // label for the reply option
-        answer: "end" // key for an Escape Valve. We refer to this whenever a reply signals the end of the convo.
+        answer: "end" // key for an "escape valve"; we refer to this whenever a reply signals the end of the convo
       },
       {
         question: "What “other special things?”", // label for the reply option
-        answer: "sidetrack" // key for a side note we can reference from multiple points in the chat
+        answer: "sidetrack" // key for a "side note" we can reference from multiple points in the chat
       }
     ]
   }, // end required "ice" conversation object
+
+  // side note
   sidetrack: {
     says: [
       "Things which go way beyond a single topic of conversation!",
@@ -80,14 +82,16 @@ var convo = {
     reply: [
       {
         question: "Tell me more.",
-        answer: "intro-context" // key for another side note. In this instance, we're using it to contextualize the Q&A we're heading into
+        answer: "intro-context" // key for another side note; in this instance, we're using it to contextualize the Q&A we're heading into
       },
       {
         question: "Got it: on with the chat!",
-        answer: "chapter-one" // No further sidetrack required
+        answer: "chapter-one" // no further sidetrack required, returning to the main conversation tree
       }
     ]
   },
+
+  // another side note
   "intro-context": {
     says: [
       "This is an example of further instructions...",
@@ -101,6 +105,8 @@ var convo = {
       }
     ]
   },
+
+  // main conversation trunk
   "chapter-one": {
     says: [
       "Excellent!",
@@ -137,23 +143,27 @@ var convo = {
       },
       {
         question: "End the chat.",
-        answer: "end" // An example of using the Escape Valve for ineligible, Not Applicable participants
+        answer: "end" // an example of using the Escape Valve for ineligible, Not Applicable participants
       }
     ]
   },
+
+  // this chapter is skipped
   "chapter-three": {
-    // We skip this in this example to show you can do that. Use it if you want.
+    // we skip this in this example to show you can do that; use it if you want.
     says: [
       "Go ahead to the next chapter.",
       "<img src=http://meanbusiness.com/wp-content/uploads/2018/03/Coral-Participate-Phone_and_Laptop.jpg />"
     ],
     reply: [
       {
-        question: "OK, I will.", // A Gimme: An easy answer with fewer choices to keep the egagement going. Useful during longer dialogues
+        question: "OK, I will.",
         answer: "chapter-four"
       }
     ]
   },
+
+  // continue with main conversation trunk
   "chapter-four": {
     says: [
       "Hey, you're awesome!",
@@ -184,7 +194,7 @@ var convo = {
       },
       {
         question: "Yes!",
-        answer: "externalResourceFunction"
+        answer: "externalResourceFunction" // function name that will be executed
       }
     ]
   },
@@ -201,8 +211,6 @@ var convo = {
       }
     ]
   }
-  // another conversation object that can be queued from within
-  // any other conversation object, including itself
 } // end conversation object
 
 // initialize by constructing a named function...
@@ -210,6 +218,7 @@ var chatWindow = new Bubbles(
   document.getElementById("chat"), // ...passing HTML container element...
   "chatWindow" // ...and name of the function as a parameter
 )
+
 // `.talk()` will get your bot to begin the conversation
 chatWindow.talk(
   // pass your JSON/JavaScript object to `.talk()` function where
@@ -217,9 +226,13 @@ chatWindow.talk(
   convo
 )
 
-// this function is called when user asks for banana
+// this function is called when user clicks "Yes!" in the "chapter-four" dialogue
 externalResourceFunction = function() {
-  chatWindow.talk(convo, "chapter-four") // the conversation can be easily restarted from here.
+  // together with the function we'll restart the conversation starting from "capther-four"
+  // to make sure the user isn't left hanging after the function below has been executed
+  chatWindow.talk(convo, "chapter-four")
+
+  // function that opens external window
   window.open(
     "https://meanbusiness.com/wp-content/uploads/2018/04/IceCream-BananaSkis.gif",
     "_blank",

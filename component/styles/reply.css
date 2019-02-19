@@ -35,7 +35,7 @@
   word-break: normal;
 	box-sizing: content-box;
   /* animation-duration: 1s; */
-  animation-name: animate-reply;
+  animation-name: "animate-reply";
   animation-play-state: paused;
   animation-fill-mode: forwards;
   /* opacity: 0; */

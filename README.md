@@ -2,7 +2,6 @@
 [![npm version](https://badge.fury.io/js/chat-bubble.svg)](https://badge.fury.io/js/chat-bubble)
 ![dependencies](https://david-dm.org/dmitrizzle/chat-bubble.svg)
 ![downloads](https://img.shields.io/npm/dt/chat-bubble.svg)
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G814YNW)
 
 > Simple chatbot UI for the Web with JSON scripting 👋🤖🤙
 
@@ -140,6 +139,9 @@ Now open this file in your browser. Done!
   - **Yes!** custom graphics, YouTube videos - whatever you want!
 - How can I contribute?
   - See the contribution guide [here](CONTRIBUTING.md).
+  - Buy me a coffee:
+  
+[<img src="https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2" width="150" />](https://ko-fi.com/dmitrizzle)
 
 ## Browser compatibility
 - You may need to add in polyfills for [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) and [`String.includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
@@ -147,4 +149,5 @@ Now open this file in your browser. Done!
 ### Who uses chat-bubble?
 - **[Archie.AI](https://www.archie.ai)**
 - **[Omer Tarik Koc](https://omertarikkoc.com)**
-- If you'd like to add your site, pls submit a PR to this README.md ✌️
+
+If you'd like to add your site, pls submit a PR to this README.md ✌️

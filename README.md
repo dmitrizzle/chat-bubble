@@ -139,9 +139,7 @@ Now open this file in your browser. Done!
   - **Yes!** custom graphics, YouTube videos - whatever you want!
 - How can I contribute?
   - See the contribution guide [here](CONTRIBUTING.md).
-  - Buy me a coffee:
-  
-[<img src="https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2" width="150" />](https://ko-fi.com/dmitrizzle)
+  - Buy me a coffee: use the GH "Sponsor" button or do it via https://ko-fi.com/dmitrizzle
 
 ## Browser compatibility
 - You may need to add in polyfills for [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) and [`String.includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)

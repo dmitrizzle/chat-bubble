@@ -234,15 +234,17 @@ function Bubbles(container, self, options) {
             el.style.width = el.offsetWidth - sidePadding * 2 + widerBy + "px"
         })(bubbleButtons[z])
       }
-      bubble.addEventListener("click", function() {
-        for (var i = 0; i < bubbleButtons.length; i++) {
-          ;(function(el) {
-            el.style.width = 0 + "px"
-            el.classList.contains("bubble-pick") ? (el.style.width = "") : false
-            el.removeAttribute("onclick")
-          })(bubbleButtons[i])
+      bubble.addEventListener("click", function(e) {
+        if (e.target.classList.contains('bubble-button')) {
+          for (var i = 0; i < bubbleButtons.length; i++) {
+            ;(function(el) {
+              el.style.width = 0 + "px"
+              el.classList.contains("bubble-pick") ? (el.style.width = "") : false
+              el.removeAttribute("onclick")
+            })(bubbleButtons[i])
+          }
+          this.classList.add("bubble-picked")
         }
-        this.classList.add("bubble-picked")
       })
     }
     // time, size & animate

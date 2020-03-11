@@ -2,12 +2,10 @@
   "name": "chat-bubble",
   "main": "component/Bubble.js",
   "homepage": "https://github.com/dmitrizzle/chat-bubble",
-  "authors": [
-    "dmitrizzle <d@analog.cafe>"
-  ],
+  "authors": ["dmitrizzle <d@analog.cafe>"],
   "description": "Simple chatbot bubble creator based on JSON conversation structure",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",

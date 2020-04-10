@@ -164,12 +164,12 @@ function Bubbles(container, self, options) {
   }
   // navigate "answers"
   this.answer = function(key, content) {
-    var func = function(key) {
-      typeof window[key] === "function" ? window[key]() : false
+    var func = function(key, content) {
+      typeof window[key] === "function" ? window[key](content) : false
     }
     _convo[key] !== undefined
       ? (this.reply(_convo[key]), (standingAnswer = key))
-      : func(key)
+      : func(key, content)
 
     // add re-generated user picks to the history stack
     if (_convo[key] !== undefined && content !== undefined) {

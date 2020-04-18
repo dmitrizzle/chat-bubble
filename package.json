@@ -1,6 +1,6 @@
 {
   "name": "chat-bubble",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Simple chatbot UI for Web with JSON scripting. Zero dependencies.",
   "main": "component/Bubble.js",
   "repository": {

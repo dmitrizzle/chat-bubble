@@ -1,4 +1,4 @@
-# chat-bubble
+# `chat-bubble` 👋🤖🤙
 [![npm version](https://badge.fury.io/js/chat-bubble.svg)](https://badge.fury.io/js/chat-bubble)
 ![dependencies](https://david-dm.org/dmitrizzle/chat-bubble.svg)
 ![downloads](https://img.shields.io/npm/dt/chat-bubble.svg)

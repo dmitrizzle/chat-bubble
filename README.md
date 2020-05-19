@@ -1,6 +1,3 @@
-# IF YOU ARE BUILDING AN APPLICATION USING `CHAT-BUBBLE` TO HELP COMBAD COVID-19 CORONAVIRUS OUTBREAK, MESSAGE D AT ANALOG DOT CAFE, OR OPEN AN ISSUE AND I WILL DO MY BEST TO ASSIST WITH YOUR PROJECT.
-
-
 # chat-bubble
 [![npm version](https://badge.fury.io/js/chat-bubble.svg)](https://badge.fury.io/js/chat-bubble)
 ![dependencies](https://david-dm.org/dmitrizzle/chat-bubble.svg)

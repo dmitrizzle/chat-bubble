@@ -131,8 +131,9 @@ Now open this file in your browser. Done!
 2. [Custom starting point](https://dmitrizzle.github.io/chat-bubble/examples/2-custom-starting-point.html): what if you wanted to resume conversation from somewhere other than required `ice:{}` starting point? This is how you'd do it.
 3. [Keyboard input](https://dmitrizzle.github.io/chat-bubble/examples/3-keyboard-input.html): a basic plugin-like structure that lets you implement your own keyboard input and text recognition (though it does not process natural language).
 4. [Run scripts](https://dmitrizzle.github.io/chat-bubble/examples/4-run-scripts.html): your bot's replies can do things. Not only it could say something, but it could point your user towards an action, or perform it by running JavaScript.
-5. Natural Language Classifier implementation (coming soon)
-6. [Advanced Flows](https://dmitrizzle.github.io/chat-bubble/examples/6-advanced-flows.html): logical branches, recurring references, contextual guidance.
+5. Natural Language Classifier implementation is possible with additional effort by intercepting the response message and keyboard input.
+
+Check out `/examples` folder for the source code and more ideas.
 
 ## FAQ:
 - Can I add images and HTML code to my bot?
@@ -143,9 +144,3 @@ Now open this file in your browser. Done!
 
 ## Browser compatibility
 - You may need to add in polyfills for [`Object.assign()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) and [`String.includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
-
-### Who uses chat-bubble?
-- **[Archie.AI](https://www.archie.ai)**
-- **[Omer Tarik Koc](https://omertarikkoc.com)**
-
-If you'd like to add your site, pls submit a PR to this README.md ✌️

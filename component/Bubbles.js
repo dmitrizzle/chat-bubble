@@ -170,7 +170,7 @@ function Bubbles(container, self, options) {
     }
     _convo[key] !== undefined
       ? (this.reply(_convo[key]), (standingAnswer = key))
-      : (bubbleCallbackFn ? bubbleCallbackFn({input: key,convo: _convo,standingAnswer: standingAnswer}, key) : func(key, content))
+      : (typeof bubbleCallbackFn === 'function' ? bubbleCallbackFn({input: key,convo: _convo,standingAnswer: standingAnswer}, key) : func(key, content))
 
     // add re-generated user picks to the history stack
     if (_convo[key] !== undefined && content !== undefined) {

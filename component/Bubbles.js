@@ -8,7 +8,7 @@ function Bubbles(container, self, options) {
   sidePadding = options.sidePadding || 6 // padding on both sides of chat bubbles
   recallInteractions = options.recallInteractions || 0 // number of interactions to be remembered and brought back upon restart
   inputCallbackFn = options.inputCallbackFn || false // should we display an input field?
-  bubbleCallbackFn = options.bubbleCallbackFn || false // is there a callback function for when a user clicks on a bubble button
+  responseCallbackFn = options.responseCallbackFn || false // is there a callback function for when a user clicks on a bubble button
 
   var standingAnswer = "ice" // remember where to restart convo if interrupted
 
@@ -170,7 +170,7 @@ function Bubbles(container, self, options) {
     }
     _convo[key] !== undefined
       ? (this.reply(_convo[key]), (standingAnswer = key))
-      : (typeof bubbleCallbackFn === 'function' ? bubbleCallbackFn({input: key,convo: _convo,standingAnswer: standingAnswer}, key) : func(key, content))
+      : (typeof responseCallbackFn === 'function' ? responseCallbackFn({input: key,convo: _convo,standingAnswer: standingAnswer}, key) : func(key, content))
 
     // add re-generated user picks to the history stack
     if (_convo[key] !== undefined && content !== undefined) {

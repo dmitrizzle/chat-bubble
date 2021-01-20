@@ -137,7 +137,7 @@ Now open this file in your browser. Done!
 2. [Custom starting point](https://dmitrizzle.github.io/chat-bubble/examples/2-custom-starting-point.html): what if you wanted to resume conversation from somewhere other than required `ice:{}` starting point? This is how you'd do it.
 3. [Keyboard input](https://dmitrizzle.github.io/chat-bubble/examples/3-keyboard-input.html): a basic plugin-like structure that lets you implement your own keyboard input and text recognition (though it does not process natural language).
 4. [Run scripts](https://dmitrizzle.github.io/chat-bubble/examples/4-run-scripts.html): your bot's replies can do things. Not only it could say something, but it could point your user towards an action, or perform it by running JavaScript.
-5. Natural Language Classifier implementation is possible with additional effort by intercepting the response message and keyboard input. Example using RASA ([docs](https://dmitrizzle.github.io/chat-bubble/README_RASA.md)) can be found [here](https://dmitrizzle.github.io/chat-bubble/examples/7-nlc-rasa.html).
+5. Natural Language Classifier implementation is possible with additional effort by intercepting the response message and keyboard input. Example using RASA ([docs](https://github.com/dmitrizzle/chat-bubble/blob/master/README_RASA.md)) can be found [here](https://github.com/dmitrizzle/chat-bubble/blob/master/examples/7-nlc-rasa.html).
 
 Check out `/examples` folder for the source code and more ideas.
 
